@@ -424,6 +424,11 @@ was guided by course material, official documentation, and selected tutorials, w
 problem-solving carried out during development.
 
 ## Bugs and Fixes
+### AllAuth
+- I encountered several deprecation errors using settings from the 0.50 version of allauth. I resolved by replacing deprecated settings with the new ones.
+### Stripe 
+### Stripe
+### Django
 
 # Tools and Resources
 **Development Environment:**
@@ -450,7 +455,6 @@ problem-solving carried out during development.
 - Perplexity for discovery, text content generation, and drafting documentation. 
 - Canva for wireframing and image editing
 - Artlist.io for generative image creation
-- TinyPNG for image compression
 - Draw.io for entity relationship model
 
 # Deployment
