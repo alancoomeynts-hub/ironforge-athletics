@@ -1,108 +1,52 @@
+{% load static %}
 <!DOCTYPE html>
 <html lang="en">
-<head>
 
-  {% block meta %}
-  <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  {% endblock %}
+    <head>
+        {% block meta %}
+            <meta http-equiv="X-UA-Compatible" content="ie=edge">
+            <meta charset="utf-8">
+            <meta name="viewport"
+                  content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        {% endblock %}
+        {% block extra_meta %}{% endblock %}
+        <title>IronForge Gym {% block extra_title %}{% endblock %}</title>
+        {% block corecss %}
+            <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+            <link rel="stylesheet"
+                  href="https://fonts.googleapis.com/css?family=Lato&display=swap">
+            <link rel="stylesheet" href="{% static 'css/base.css' %}">
+        {% endblock %}
+        {% block extra_css %}{% endblock %}
+        {% block extra_head %}{% endblock %}
+    </head>
 
-  {% block extra_meta %}
-  {% endblock %}
+    <body class="site-shell d-flex flex-column min-vh-100">
 
-  {% block corecss %}
-    <link
-    rel="stylesheet"
-    href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css"
-    integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB"
-    crossorigin="anonymous"
-  >
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato&display=swap">
-{#  <link rel="stylesheet" href="{% static 'css/styles.css' %}">#}
-  {% endblock %}
+        <header class="top-header">
+            {% include "includes/header.html" %}
+            {% block page_header %}{% endblock %}
+            {% include "includes/navbar.html" %}
+        </header>
 
-  {% block extra_css %}
-  {% endblock %}
+        <main class="flex-grow-1">
+            {% block content %}{% endblock %}
+        </main>
 
-  {% block corejs %}
-  <!-- Font Awesome -->
-  <script
-    src="https://kit.fontawesome.com/<ADD YOUR KIT CODE HERE>.js"
-    crossorigin="anonymous">
-  </script>
+        {% include "includes/footer.html" %}
 
-  <!-- Bootstrap 5 -->
-  <script
-    src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"
-    integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrVwcXK/BmnVDxM+D2scQbITxI"
-    crossorigin="anonymous">
-  </script>
+        {% block corejs %}
+            <!-- Font Awesome -->
+            <script src="https://kit.fontawesome.com/398116af51.js"
+                    crossorigin="anonymous"></script>
+            <!-- Bootstrap 5 -->
+            <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js" integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI" crossorigin="anonymous"></script>
+            <!-- Stripe.js -->
+            <script src="https://js.stripe.com/dahlia/stripe.js"></script>
+        {% endblock %}
 
-  <!-- Stripe.js -->
-  <script src="https://js.stripe.com/dahlia/stripe.js"></script>
+        {% block extra_js %}{% endblock %}
 
-  {% endblock %}
-
-  {% block extra_js %}
-  {% endblock %}
-
-  <title>IronForge Gym {% block extra_title %}{% endblock %}</title>
-</head>
-<body>
-     <header class="top-header">
-    <div class="container-fluid">
-
-      <div class="row align-items-center">
-        <!-- Logo + brand -->
-        <div class="col-12 col-md-4 d-flex align-items-center">
-          <a href="{% url 'home:home' %}" class="d-flex align-items-center text-white text-decoration-none">
-            <img src="" alt="Logo" height="36" class="me-2" />
-            <span class="fw-bold">IronForge Gym</span>
-          </a>
-        </div>
-
-        <!-- Search form -->
-        <div class="col-12 col-md-5 order-3 order-md-2 mt-2 mt-md-0">
-          <form action="" method="get" class="d-flex">
-            <input
-              type="search"
-              name="q"
-              class="form-control me-2"
-              placeholder="Search classes, trainers..."
-              aria-label="Search"
-            />
-            <button class="btn btn-outline-light" type="submit">
-              <i class="bi bi-search"></i>
-            </button>
-          </form>
-        </div>
-
-        <!-- Contact and Log In Links -->
-        <div class="col-12 col-md-3 order-2 order-md-3 text-md-end mt-2 mt-md-0">
-          <a href="" class="me-3">Contact Us</a>
-          <a href="">Log In</a>
-        </div>
-      </div>
-        <div class="row">
-            <nav class="navbar navbar-expand-lg navbar-dark bg-dark w-100">
-
-                    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
-                    </button>
-                        {% include 'includes/navbar.html' %}
-            </nav>
-        </div>
-    </div>
-
-  {% block page_header %}
-  {% endblock %}
-
-  {% block content %}
-  {% endblock %}
-
-  {% block postloadjs %}
-  {% endblock %}
-
-</body>
+        {% block postloadjs %}{% endblock %}
+    </body>
 </html>
