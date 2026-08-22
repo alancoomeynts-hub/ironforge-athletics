@@ -1,0 +1,101 @@
+:root {
+    --main-color: #000;
+    --secondary-color: #1a1c37;
+    --cta: #46c855;
+    --cta-hover: #3aa847;
+    --text-color: #222;
+    --text-color-light: #FFF;
+}
+html {
+    height: 100%;
+}
+
+/* Header Styles */
+
+.top-header{
+
+    background-color:var(--main-color);
+    padding: 0.5rem 0;
+}
+
+.top-header a:not(.navbar-brand){
+    color: var(--text-color-light);
+    text-decoration: none;
+}
+
+
+.top-header a:hover{
+    color: var(--cta);
+
+
+}
+/* Navbar Styles */
+.cta-btn{
+    background-color: var(--cta);
+    color: var(--main-color);
+    font-size: 1.2rem;
+    padding: 0.5rem 1rem;
+    border-radius: 0.5rem;
+    border-color: var(--main-color);
+}
+
+.cta-btn:hover{
+    background-color: var(--cta-hover);
+    transform: translateX(-0.25rem) translateY(-0.25rem);
+}
+
+.site-nav{
+    background-color: var( --secondary-color);
+    color: var(--text-color-light);
+
+}
+
+.site-nav .nav-link{
+    color: var(--text-color-light);
+    font-size: 1.2rem;
+}
+.site-nav .nav-link:hover, .site-nav .nav-link.active{
+    color: var(--cta);
+}
+
+.navbar-brand{
+    color: var(--cta);
+    text-transform: uppercase;
+    font-size: 1.1rem;
+    font-weight: 800;
+    letter-spacing: 0.04rem;
+
+}
+
+.logo-icon{
+    font-size: 2rem;
+    line-height: 1;
+}
+
+/* index.html Content Styles */
+body{
+    background: url('/media/hero-image.png') no-repeat center top fixed;
+    background-size: cover;
+    min-height: calc(100vh - 160px);
+    color: var(--text-color-light);
+
+}
+/* Footer Styles */
+.site-footer{
+    background-color: var(--secondary-color);
+    color: var(--text-color-light);
+    font-size: 0.9rem;
+    padding: 1rem 0;
+}
+
+.site-footer a{
+
+    text-decoration: none;
+    margin: 0 0.4rem;
+    color: var(--cta);
+    transition: all 0.15s ease, transform 0.15s ease;
+}
+.site-footer a:hover{
+    color: var(--cta-hover);
+    transform:translateY(-1px);
+}
