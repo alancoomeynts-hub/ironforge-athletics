@@ -1,27 +1,21 @@
 {% extends "base.html" %}
 
-{% block page_header %}
-    <div class="container header-container">
-        <div class="row">
-            <div class="col"></div>
-        </div>
-    </div>
-{% endblock %}
-
-  <main>
-    {% block content %}
+   {% block content %}
     <section class="hero-section">
       <div class="container">
         <div class="row">
-          <div class="col-lg-7">
+          <div class="col-12">
             <h1>Transform Your Body,<br />Forge Your Mind</h1>
             <p class="lead mb-4">
               Strength training, group classes, and expert coaching to help you hit your goals.
             </p>
-            <a href="" class="btn btn-lg btn-light">Join Now</a>
+
           </div>
+            <div class="col-12 py-4" >
+                <button href="" class="cta-btn btn mx-4">Join Now</button>
+            </div>
+            </div>
         </div>
       </div>
     </section>
     {% endblock %}
-  </main>
