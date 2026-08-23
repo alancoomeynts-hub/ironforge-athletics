@@ -388,6 +388,10 @@ Provide basic moderation capabilities, including:
 - Administrators can moderate forum content by editing or deleting threads and posts.
 - The admin interface is usable and does not display irrelevant fields.
 
+14. Miscellaneous:
+- Admin dashboard to provide overview of members, shop transactions, monthly revenue and status of each member.(Could Have).
+- Search App for members, shop and community message board. (should have)
+- Contact Us Page with form. (should have)
 
 ## Design Choices
 ### Color Scheme
@@ -422,6 +426,8 @@ Provide basic moderation capabilities, including:
 The following resources were used for guidance, implementation support, and debugging during development. Implementation
 was guided by course material, official documentation, and selected tutorials, with additional adaptation and 
 problem-solving carried out during development.
+
+### BEM Methodology for css  - sources: https://getbem.com/ and https://bem.info/en/methodology/naming-convention/
 
 ## Bugs and Fixes
 ### AllAuth

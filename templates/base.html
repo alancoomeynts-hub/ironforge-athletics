@@ -1,7 +1,6 @@
 {% load static %}
 <!DOCTYPE html>
 <html lang="en">
-
     <head>
         {% block meta %}
             <meta http-equiv="X-UA-Compatible" content="ie=edge">
@@ -12,7 +11,10 @@
         {% block extra_meta %}{% endblock %}
         <title>IronForge Athletics {% block extra_title %}{% endblock %}</title>
         {% block corecss %}
-            <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+            <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css"
+                  rel="stylesheet"
+                  integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB"
+                  crossorigin="anonymous">
             <link rel="stylesheet"
                   href="https://fonts.googleapis.com/css?family=Lato&display=swap">
             <link rel="stylesheet" href="{% static 'css/base.css' %}">
@@ -20,32 +22,27 @@
         {% block extra_css %}{% endblock %}
         {% block extra_head %}{% endblock %}
     </head>
-
     <body class="site-shell d-flex flex-column min-vh-100">
-
-        <header class="top-header pt-2 pb-3">
+        <header class="site-header pt-2 pb-3">
             {% include "includes/header.html" %}
             {% include "includes/navbar.html" %}
         </header>
-
         <main class="flex-grow-1">
             {% block content %}{% endblock %}
         </main>
-
         {% include "includes/footer.html" %}
-
         {% block corejs %}
             <!-- Font Awesome -->
             <script src="https://kit.fontawesome.com/398116af51.js"
                     crossorigin="anonymous"></script>
             <!-- Bootstrap 5 -->
-            <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js" integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI" crossorigin="anonymous"></script>
+            <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"
+                    integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI"
+                    crossorigin="anonymous"></script>
             <!-- Stripe.js -->
             <script src="https://js.stripe.com/dahlia/stripe.js"></script>
         {% endblock %}
-
         {% block extra_js %}{% endblock %}
-
         {% block postloadjs %}{% endblock %}
     </body>
 </html>

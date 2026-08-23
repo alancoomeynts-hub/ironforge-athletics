@@ -1,9 +1,13 @@
- <nav class="navbar navbar-expand-lg navbar-dark site-nav py-2 mt-2" aria-label="Primary navigation bar" role="navigation">
-        <div class="container-fluid pe-5">
-         <a class="navbar-brand " href="{% url 'home:home' %}">
-             <i class="fa-solid fa-dumbbell logo-icon" aria-hidden="true"></i>
-             <span>IronForge Athletics</span>
-         </a>
+{% url 'home:home' as home_url %}
+{% url 'home:about' as about_url %}
+<nav class="navbar navbar-expand-lg navbar-dark site-nav py-2 mt-2"
+     aria-label="Primary navigation bar"
+     role="navigation">
+    <div class="container-fluid pe-5">
+        <a class="site-nav__brand navbar-brand" href="{% url 'home:home' %}">
+            <i class="fa-solid fa-dumbbell site-nav__icon" aria-hidden="true"></i>
+            <span>IronForge Athletics</span>
+        </a>
         <button class="navbar-toggler"
                 type="button"
                 data-bs-toggle="collapse"
@@ -16,18 +20,18 @@
         <div class="collapse navbar-collapse" id="main-navbar">
             <ul class="navbar-nav mx-auto">
                 <li class="nav-item">
-                    <a class="nav-link {% if request.resolver_match.url_name == 'home' %}active{% endif %}"
-                       href="{% url 'home:home' %}">Home</a>
+                    <a class="site-nav__link nav-link {% if request.path == home_url %}active{% endif %}"
+                       href="{{ home_url }}">Home</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="">Our Gym</a>
+                    <a class="site-nav__link nav-link {% if request.path == about_url %}active{% endif %}"
+                       href="{{ about_url }}">Our Gym</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="">Shop</a>
+                    <a class="site-nav__link nav-link" href="">Shop</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link text-wrap" href="">Community</a>
+                    <a class="site-nav__link nav-link" href="">Community</a>
                 </li>
             </ul>
-
         </div>

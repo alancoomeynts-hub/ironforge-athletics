@@ -1,10 +1,10 @@
 :root {
-    --main-color: #000;
-    --secondary-color: #1a1c37;
+    --secondary-color: 	#252936;
+    --primary-color: #1a1c37;
     --cta: #46c855;
     --cta-hover: #3aa847;
-    --text-color: #222;
-    --text-color-light: #FFF;
+    --text-color: #000;
+    --text-color-light: #fff;
 }
 html {
     height: 100%;
@@ -12,53 +12,70 @@ html {
 
 /* Header Styles */
 
-.top-header{
+.site-header{
 
-    background-color:var(--main-color);
+    background-color:var(--secondary-color);
     padding: 0.5rem 0;
 }
 
-.top-header a:not(.navbar-brand){
+.site-header__link{
     color: var(--text-color-light);
     text-decoration: none;
 }
 
 
-.top-header a:hover{
+.site-header__link:hover,
+.site-header__link:focus{
     color: var(--cta);
 
 
 }
-/* Navbar Styles */
+/* CTA Button Styles */
 .cta-btn{
     background-color: var(--cta);
-    color: var(--main-color);
+    color: var(--text-color);
     font-size: 1.2rem;
     padding: 0.5rem 1rem;
     border-radius: 0.5rem;
-    border-color: var(--main-color);
+    border-color: var(--secondary-color);
+    transition:
+        background-color 0.15s ease,
+        color 0.15s ease,
+        transform 0.15s ease;
 }
 
-.cta-btn:hover{
+.cta-btn:hover,
+.cta-btn:focus{
     background-color: var(--cta-hover);
+    color: var(--text-color);
     transform: translateX(-0.25rem) translateY(-0.25rem);
 }
-
+/* Navbar Styles */
 .site-nav{
-    background-color: var( --secondary-color);
-    color: var(--text-color-light);
+    background-color: var(--primary-color);
+    border-top: 1px solid #2c2e47;
 
 }
 
-.site-nav .nav-link{
+.site-nav__link{
     color: var(--text-color-light);
     font-size: 1.2rem;
 }
-.site-nav .nav-link:hover, .site-nav .nav-link.active{
+
+.site-nav__link:hover,
+.site-nav__link:focus{
     color: var(--cta);
 }
 
-.navbar-brand{
+.site-nav .nav-link.active{
+    color: var(--cta);
+    text-transform: uppercase;
+    font-weight: 700;
+    letter-spacing: 0.04rem;
+}
+
+
+.site-nav__brand{
     color: var(--cta);
     text-transform: uppercase;
     font-size: 1.1rem;
@@ -67,35 +84,27 @@ html {
 
 }
 
-.logo-icon{
+.site-nav__icon{
     font-size: 2rem;
     line-height: 1;
 }
 
-/* index.html Content Styles */
-body{
-    background: url('/media/hero-image.png') no-repeat center top fixed;
-    background-size: cover;
-    min-height: calc(100vh - 160px);
-    color: var(--text-color-light);
-
-}
 /* Footer Styles */
 .site-footer{
-    background-color: var(--secondary-color);
+    background-color: var(--primary-color);
     color: var(--text-color-light);
     font-size: 0.9rem;
     padding: 1rem 0;
 }
 
-.site-footer a{
-
+.site-footer__link{
     text-decoration: none;
     margin: 0 0.4rem;
     color: var(--cta);
     transition: all 0.15s ease, transform 0.15s ease;
 }
-.site-footer a:hover{
+.site-footer__link:hover,
+.site-footer__link:focus{
     color: var(--cta-hover);
     transform:translateY(-1px);
 }
