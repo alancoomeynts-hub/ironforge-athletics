@@ -1,0 +1,49 @@
+{% extends "base.html" %}
+{%  load static %}
+
+{% block extra_css %}
+    <link rel="stylesheet" href="{% static 'css/home.css' %}">
+{% endblock %}
+
+{% block content %}
+<section class="about__intro mt-3">
+<div class="container">
+    <div class="row">
+        <div class="col-12">
+            <h1>Our Gym</h1>
+            <p >
+              At IronForge Athletics, we believe training should help you become stronger, fitter and more confident—whatever your starting point or goal. Our gym combines high-quality equipment, expert coaching and a welcoming community to create an environment where everyone can train with purpose.
+            </p>
+        </div>
+        <div class="col-12">
+            <p >
+              At [Gym Name], we believe training should help you become stronger, fitter and more confident—whatever your starting point or goal. Our gym combines high-quality equipment, expert coaching and a welcoming community to create an environment where everyone can train with purpose.
+            </p>
+        </div>
+    </div>
+</div>
+</section>
+
+    <section class="about__facilities">
+    <div class="container">
+    <div class="row">
+        <div class="col-12">
+        <h2> Our Facilities</h2>
+
+            <p >We provide a versatile training space with everything you need for effective, enjoyable workouts:</p>
+            <ul>
+            <li>Strength and free-weight equipment.</li>
+            <li>Olympic lifting platforms and bumper plates.</li>
+            <li>Functional training areas for sled work, carries and conditioning.</li>
+            <li>Cardio equipment for structured and low-impact training.</li>
+            <li>Dedicated space for Pilates, yoga and mobility sessions.</li>
+            <li>Changing facilities and a friendly, supportive atmosphere.</li>
+            </ul>
+            <p>Our gym is designed to support both independent training and coached sessions, so you can follow your own programme or benefit from the guidance of our experienced instructors.</p>
+            </div>
+        </div>
+        </div>
+</section>
+
+
+{% endblock %}
