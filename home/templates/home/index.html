@@ -1,26 +1,24 @@
 {% extends "base.html" %}
-{%  load static %}
-
-    {% block extra_css %}
+{% load static %}
+{% block extra_css %}
     <link rel="stylesheet" href="{% static 'css/hero-section.css' %}">
-    {% endblock %}
-
-   {% block content %}
+{% endblock %}
+{% block content %}
     <section class="hero-section">
-      <div class="container">
-        <div class="row">
-          <div class="col-12">
-            <h1>Transform Your Body,<br />Forge Your Mind</h1>
-            <p class="lead mb-4">
-              Strength training, group classes, and expert coaching to help you hit your goals.
-            </p>
-
-          </div>
-            <div class="col-12 py-4" >
-                <button href="" class="cta-btn btn mx-4">Join Now</button>
-            </div>
+        <div class="container">
+            <div class="row">
+                <div class="col-12">
+                    <h1>
+                        Transform Your Body,
+                        <br />
+                        Forge Your Mind
+                    </h1>
+                    <p class="lead mb-4">Strength training, group classes, and expert coaching to help you hit your goals.</p>
+                </div>
+                <div class="col-12 py-4">
+                    <button href="" class="cta-btn btn mx-4">Join Now</button>
+                </div>
             </div>
         </div>
-
     </section>
-    {% endblock %}
+{% endblock %}

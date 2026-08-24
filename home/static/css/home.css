@@ -1,0 +1,21 @@
+.class__image img{
+    height:200px;
+    width: 100%;
+    object-fit: cover;
+
+}
+
+.class__wrapper--dark{
+    background-color: var(--primary-color);
+    color: var(--text-color-light);
+}
+
+.class__title--dark{
+    background-color: var(--primary-color);
+    color: var(--cta);
+}
+
+.class__wrapper--light{
+    background-color: var(--text-color-light);
+    color: var(--text-color);
+}
