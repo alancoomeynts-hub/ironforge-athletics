@@ -5,9 +5,9 @@ from django.views.generic.edit import FormMixin
 from .forms import ContactForm
 from .models import Gym
 
-class AboutView(FormMixin,DetailView):
+class ContactUsView(FormMixin,DetailView):
     model = Gym
-    template_name = 'home/about.html'
+    template_name = 'home/contact_us.html'
     form_class = ContactForm
     context_object_name = 'gym'
 
