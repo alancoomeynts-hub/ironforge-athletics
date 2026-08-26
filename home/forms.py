@@ -11,3 +11,16 @@ class ContactForm(forms.ModelForm):
             'subject',
             'message',
         ]
+
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+        for field in self.fields.keys():
+            self.fields[field].required = True
+            if field == 'message':
+                self.fields[field].widget.attrs.update({
+                    'rows': 4, 'cols': 50
+                })
+
+            self.fields[field].widget.attrs.update({
+                'class': 'form-control',
+            })

@@ -39,3 +39,7 @@ body{
     color: var(--cta);
 
 }
+
+.form-max-width{
+    max-width: 600px;
+}
