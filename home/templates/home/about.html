@@ -4,7 +4,6 @@
     <link rel="stylesheet" href="{% static 'css/home.css' %}">
 {% endblock %}
 {% block content %}
-
     <section class="about__intro mt-3">
         <div class="container">
             <div class="row">
@@ -42,69 +41,67 @@
         </div>
         <div class="container py-3">
             <div class="d-flex flex-column gap-3">
-        <div class="class__wrapper">
-            <div class="row align-items-center class">
-                <div class="col-12 col-lg-5 offset-lg-1 class__content order-1">
-                    <h3 class="class__title">Strength Training</h3>
-                    <p>
-                        Build a strong foundation with structured strength training focused on technique, progressive overload and full-body development. These sessions are suitable for beginners and experienced lifters alike, with exercises adapted to your ability and goals.
-                    </p>
+                <div class="class__wrapper">
+                    <div class="row align-items-center class">
+                        <div class="col-12 col-lg-5 offset-lg-1 class__content order-1">
+                            <h3 class="class__title">Strength Training</h3>
+                            <p>
+                                Build a strong foundation with structured strength training focused on technique, progressive overload and full-body development. These sessions are suitable for beginners and experienced lifters alike, with exercises adapted to your ability and goals.
+                            </p>
+                        </div>
+                        <div class="col-12 col-lg-5 offset-lg-1 order-2 class__image">
+                            <img src="{{ MEDIA_URL }}strength_incline_bench.png"
+                                 alt="Member performing incline bench press"
+                                 class="img-fluid">
+                        </div>
+                    </div>
                 </div>
-                <div class="col-12 col-lg-5 offset-lg-1 order-2 class__image">
-                    <img src="{{ MEDIA_URL }}strength_incline_bench.png"
-                         alt="Member performing incline bench press"
-                         class="img-fluid">
+                <div class="class__wrapper">
+                    <div class="row align-items-center class">
+                        <div class="col-12 col-lg-5 offset-lg-1 class__content order-lg-2 order-1">
+                            <h3 class="class__title">Hyrox</h3>
+                            <p>
+                                Prepare for the demands of HYROX with sessions combining running, functional movements and conditioning. Expect exercises such as sled pushes, sled pulls, rowing, farmer’s carries, wall balls and weighted lunges.
+                            </p>
+                        </div>
+                        <div class="col-12 col-lg-5 offset-lg-1 order-1 class__image">
+                            <img src="{{ MEDIA_URL }}hyrox_sled.png"
+                                 alt="Member performing incline bench press"
+                                 class="img-fluid">
+                        </div>
+                    </div>
+                </div>
+                <div class="class__wrapper">
+                    <div class="row align-items-center class">
+                        <div class="col-12 col-lg-5 offset-lg-1 class__content order-lg-1 order-2">
+                            <h3 class="class__title">Green Zone Cardio</h3>
+                            <p>
+                                Improve your aerobic fitness through controlled, sustainable cardio sessions. Green zone training helps you build endurance while keeping the intensity manageable, making it an effective option for general health, recovery and long-term fitness.
+                            </p>
+                        </div>
+                        <div class="col-12 col-lg-5 offset-lg-1 order-2 class__image">
+                            <img src="{{ MEDIA_URL }}green_zone_rowing.png"
+                                 alt="Member performing incline bench press"
+                                 class="img-fluid">
+                        </div>
+                    </div>
+                </div>
+                <div class="class__wrapper">
+                    <div class="row align-items-center class">
+                        <div class="col-12 col-lg-5 offset-lg-1 class__content order-lg-2 order-1">
+                            <h3 class="class__title">Pilates</h3>
+                            <p>
+                                Improve core strength, posture, stability and body awareness through controlled Pilates movements. These classes are ideal for building a stronger foundation, improving movement quality and supporting your wider training.
+                            </p>
+                        </div>
+                        <div class="col-12 col-lg-5 offset-lg-1 order-lg-1 order-2 class__image">
+                            <img src="{{ MEDIA_URL }}pilates.png"
+                                 alt="Member performing incline bench press"
+                                 class="img-fluid">
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
-        <div class="class__wrapper">
-            <div class="row align-items-center class">
-                <div class="col-12 col-lg-5 offset-lg-1 class__content order-lg-2 order-1">
-                    <h3 class="class__title">Hyrox</h3>
-                    <p>
-                        Prepare for the demands of HYROX with sessions combining running, functional movements and conditioning. Expect exercises such as sled pushes, sled pulls, rowing, farmer’s carries, wall balls and weighted lunges.
-                    </p>
-                </div>
-                <div class="col-12 col-lg-5 offset-lg-1 order-1 class__image">
-                    <img src="{{ MEDIA_URL }}hyrox_sled.png"
-                         alt="Member performing incline bench press"
-                         class="img-fluid">
-                </div>
-            </div>
-        </div>
-        <div class="class__wrapper">
-            <div class="row align-items-center class">
-                <div class="col-12 col-lg-5 offset-lg-1 class__content order-lg-1 order-2">
-                    <h3 class="class__title">Green Zone Cardio</h3>
-                    <p>
-                        Improve your aerobic fitness through controlled, sustainable cardio sessions. Green zone training helps you build endurance while keeping the intensity manageable, making it an effective option for general health, recovery and long-term fitness.
-                    </p>
-                </div>
-                <div class="col-12 col-lg-5 offset-lg-1 order-2 class__image">
-                    <img src="{{ MEDIA_URL }}green_zone_rowing.png"
-                         alt="Member performing incline bench press"
-                         class="img-fluid">
-                </div>
-            </div>
-        </div>
-        <div class="class__wrapper">
-            <div class="row align-items-center class">
-                <div class="col-12 col-lg-5 offset-lg-1 class__content order-lg-2 order-1">
-                    <h3 class="class__title">Pilates</h3>
-                    <p>
-                        Improve core strength, posture, stability and body awareness through controlled Pilates movements. These classes are ideal for building a stronger foundation, improving movement quality and supporting your wider training.
-                    </p>
-                </div>
-                <div class="col-12 col-lg-5 offset-lg-1 order-lg-1 order-2 class__image">
-                    <img src="{{ MEDIA_URL }}pilates.png"
-                         alt="Member performing incline bench press"
-                         class="img-fluid">
-                </div>
-            </div>
-        </div>
-        </div>
-        </div>
-
     </section>
-
 {% endblock %}
