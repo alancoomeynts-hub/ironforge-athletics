@@ -5,12 +5,15 @@
     --cta-hover: #3aa847;
     --text-color: #000;
     --text-color-light: #fff;
+    --background: #eef2f6
 }
 html {
     height: 100%;
 }
 
 /* Header Styles */
+
+
 
 .site-header{
 

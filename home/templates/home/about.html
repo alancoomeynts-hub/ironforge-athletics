@@ -4,6 +4,7 @@
     <link rel="stylesheet" href="{% static 'css/home.css' %}">
 {% endblock %}
 {% block content %}
+
     <section class="about__intro mt-3">
         <div class="container">
             <div class="row">
@@ -11,11 +12,6 @@
                     <h1>Our Gym</h1>
                     <p>
                         At IronForge Athletics, we believe training should help you become stronger, fitter and more confident—whatever your starting point or goal. Our gym combines high-quality equipment, expert coaching and a welcoming community to create an environment where everyone can train with purpose.
-                    </p>
-                </div>
-                <div class="col-12">
-                    <p>
-                        At [Gym Name], we believe training should help you become stronger, fitter and more confident—whatever your starting point or goal. Our gym combines high-quality equipment, expert coaching and a welcoming community to create an environment where everyone can train with purpose.
                     </p>
                 </div>
             </div>
@@ -40,69 +36,75 @@
             </div>
         </div>
     </section>
-    <section class="about-classes d-flex flex-column gap-4">
+    <section class="about__classes d-flex flex-column mb-4">
         <div class="container">
             <h2>Classes Types</h2>
         </div>
-        <div class="container class__wrapper--dark">
+        <div class="container py-3">
+            <div class="d-flex flex-column gap-3">
+        <div class="class__wrapper">
             <div class="row align-items-center class">
-                <div class="col-5 offset-1 class__content order-1">
-                    <h3 class="class__title--dark">Strength Training</h3>
+                <div class="col-12 col-lg-5 offset-lg-1 class__content order-1">
+                    <h3 class="class__title">Strength Training</h3>
                     <p>
                         Build a strong foundation with structured strength training focused on technique, progressive overload and full-body development. These sessions are suitable for beginners and experienced lifters alike, with exercises adapted to your ability and goals.
                     </p>
                 </div>
-                <div class="col-5 offset-1 order-2 class__image">
+                <div class="col-12 col-lg-5 offset-lg-1 order-2 class__image">
                     <img src="{{ MEDIA_URL }}strength_incline_bench.png"
                          alt="Member performing incline bench press"
                          class="img-fluid">
                 </div>
             </div>
         </div>
-        <div class="container class__wrapper--light">
+        <div class="class__wrapper">
             <div class="row align-items-center class">
-                <div class="col-5 offset-1 class__content order-2">
-                    <h3 class="class__title--light">Hyrox</h3>
+                <div class="col-12 col-lg-5 offset-lg-1 class__content order-lg-2 order-1">
+                    <h3 class="class__title">Hyrox</h3>
                     <p>
                         Prepare for the demands of HYROX with sessions combining running, functional movements and conditioning. Expect exercises such as sled pushes, sled pulls, rowing, farmer’s carries, wall balls and weighted lunges.
                     </p>
                 </div>
-                <div class="col-5 offset-1 order-1 class__image">
+                <div class="col-12 col-lg-5 offset-lg-1 order-1 class__image">
                     <img src="{{ MEDIA_URL }}hyrox_sled.png"
                          alt="Member performing incline bench press"
                          class="img-fluid">
                 </div>
             </div>
         </div>
-        <div class="container class__wrapper--dark">
+        <div class="class__wrapper">
             <div class="row align-items-center class">
-                <div class="col-5 offset-1 class__content order-1">
-                    <h3 class="class__title--dark">Green Zone Cardio</h3>
+                <div class="col-12 col-lg-5 offset-lg-1 class__content order-lg-1 order-2">
+                    <h3 class="class__title">Green Zone Cardio</h3>
                     <p>
                         Improve your aerobic fitness through controlled, sustainable cardio sessions. Green zone training helps you build endurance while keeping the intensity manageable, making it an effective option for general health, recovery and long-term fitness.
                     </p>
                 </div>
-                <div class="col-5 offset-1 order-2 class__image">
+                <div class="col-12 col-lg-5 offset-lg-1 order-2 class__image">
                     <img src="{{ MEDIA_URL }}green_zone_rowing.png"
                          alt="Member performing incline bench press"
                          class="img-fluid">
                 </div>
             </div>
         </div>
-        <div class="container class__wrapper--light">
+        <div class="class__wrapper">
             <div class="row align-items-center class">
-                <div class="col-5 offset-1 class__content order-2">
-                    <h3 class="class__title--light">Pilates</h3>
+                <div class="col-12 col-lg-5 offset-lg-1 class__content order-lg-2 order-1">
+                    <h3 class="class__title">Pilates</h3>
                     <p>
                         Improve core strength, posture, stability and body awareness through controlled Pilates movements. These classes are ideal for building a stronger foundation, improving movement quality and supporting your wider training.
                     </p>
                 </div>
-                <div class="col-5 offset-1 order-1 class__image">
+                <div class="col-12 col-lg-5 offset-lg-1 order-lg-1 order-2 class__image">
                     <img src="{{ MEDIA_URL }}pilates.png"
                          alt="Member performing incline bench press"
                          class="img-fluid">
                 </div>
             </div>
         </div>
+        </div>
+        </div>
+
     </section>
+
 {% endblock %}

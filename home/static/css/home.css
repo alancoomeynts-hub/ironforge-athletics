@@ -4,18 +4,38 @@
     object-fit: cover;
 
 }
-
-.class__wrapper--dark{
-    background-color: var(--primary-color);
-    color: var(--text-color-light);
+body{
+    background-color: var(--background);
 }
 
-.class__title--dark{
-    background-color: var(--primary-color);
+.class__outer_wrap{
+
+}
+
+.class__wrapper{
+    background-color: var(--secondary-color);
+    color: var(--text-color-light);
+    border-radius: 0.5rem;
+    box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.15);
+    padding: 1.2rem;
+}
+
+.class__title{
     color: var(--cta);
 }
 
-.class__wrapper--light{
-    background-color: var(--text-color-light);
-    color: var(--text-color);
+
+.contact__wrapper{
+    background-color: var(--secondary-color);
+    color: var(--text-color-light);
+    height: 100%;
+    padding: 1.2rem;
+    border-radius: 0.5rem;
+    box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.15);
+}
+
+.contact__title{color: var(--text-color);}
+.contact__subtitle{
+    color: var(--cta);
+
 }
