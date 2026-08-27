@@ -1,0 +1,1 @@
+web: gunicorn ironforge_athletics.wsgi.application
