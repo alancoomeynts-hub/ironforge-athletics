@@ -1,22 +1,23 @@
 :root {
-    --secondary-color: 	#252936;
+    --secondary-color: 	#4b556f;
     --primary-color: #1a1c37;
     --cta: #46c855;
     --cta-hover: #3aa847;
     --text-color: #000;
     --text-color-light: #fff;
-    --background: #eef2f6
+    --background: #eef2f6;
 }
 html {
     height: 100%;
 }
 
-/* Header Styles */
-
 main{
     margin-top: 140px;
 }
 
+
+
+/* Header Styles */
 
 .site-header{
 
@@ -29,13 +30,12 @@ main{
     text-decoration: none;
 }
 
-
 .site-header__link:hover,
 .site-header__link:focus{
     color: var(--cta);
 
-
 }
+
 /* CTA Button Styles */
 .cta-btn{
     background-color: var(--cta);
@@ -43,7 +43,7 @@ main{
     font-size: 1.2rem;
     padding: 0.5rem 1rem;
     border-radius: 0.5rem;
-    border-color: var(--secondary-color);
+    border: none;
     transition:
         background-color 0.15s ease,
         color 0.15s ease,
@@ -56,11 +56,11 @@ main{
     color: var(--text-color);
     transform: translateX(-0.25rem) translateY(-0.25rem);
 }
+
 /* Navbar Styles */
 .site-nav{
     background-color: var(--primary-color);
     border-top: 1px solid #2c2e47;
-
 }
 
 .site-nav__link{
@@ -79,7 +79,6 @@ main{
     font-weight: 700;
     letter-spacing: 0.04rem;
 }
-
 
 .site-nav__brand{
     color: var(--cta);
@@ -115,6 +114,23 @@ main{
     transform:translateY(-1px);
 }
 
+/* Form Styles */
 .form-max-width{
     max-width: 600px;
+}
+
+form .form-label{
+    color: var(--secondary-color);
+    font-weight:500;
+}
+
+.form .form-control{
+    background-color: var(--text-color-light);
+    border-color: #cfd6e3;
+    color: var(--secondary-color);
+}
+
+.form-control:focus{
+    box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.15);
+    border-color:var(--secondary-color);
 }
