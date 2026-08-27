@@ -13,6 +13,9 @@ html {
 
 /* Header Styles */
 
+main{
+    margin-top: 140px;
+}
 
 
 .site-header{
@@ -110,4 +113,8 @@ html {
 .site-footer__link:focus{
     color: var(--cta-hover);
     transform:translateY(-1px);
+}
+
+.form-max-width{
+    max-width: 600px;
 }
