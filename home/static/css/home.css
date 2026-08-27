@@ -1,14 +1,13 @@
-.class__image img{
-    height:200px;
-    width: 100%;
-    object-fit: cover;
-
-}
 body{
     background-color: var(--background);
 }
 
-.class__outer_wrap{
+/*Our Gym Styles*/
+
+.class__image img{
+    height:200px;
+    width: 100%;
+    object-fit: cover;
 
 }
 
@@ -24,22 +23,39 @@ body{
     color: var(--cta);
 }
 
-
+/*Contact Us Styles*/
 .contact__wrapper{
-    background-color: var(--secondary-color);
-    color: var(--text-color-light);
+    background-color: var(--text-color-light);
+    border: 1px solid  #d1d9e2;
+    color: var(--primary-color);
     height: 100%;
     padding: 1.2rem;
     border-radius: 0.5rem;
-    box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.15);
+     box-shadow: 0 1px 2px rgba(26, 28, 55, 0.06);
 }
 
-.contact__title{color: var(--text-color);}
+.contact__title{
+    color: var(--primary-color);
+}
+
 .contact__subtitle{
+    color: var(--secondary-color);
+    font-weight: 600;
+
+}
+
+.contact__link{
+    color: var(--secondary-color);
+    text-decoration: none;
+}
+
+.contact__link:hover{
+    color: var(--primary-color);
+}
+
+.contact__icon{
     color: var(--cta);
-
 }
 
-.form-max-width{
-    max-width: 600px;
-}
+
+
