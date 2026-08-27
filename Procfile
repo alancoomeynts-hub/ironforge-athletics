@@ -1,1 +1,1 @@
-web: gunicorn ironforge_athletics.wsgi.application
+web: gunicorn ironforge_athletics.wsgi
