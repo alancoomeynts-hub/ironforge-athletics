@@ -4,7 +4,8 @@ from django.db import models
 # Create your models here.
 class Gym(models.Model):
     name = models.CharField(max_length=255)
-    phone = models.CharField(max_length=255)
+    phone = models.CharField(max_length=30)
+    email = models.EmailField()
     description = models.TextField()
     opening_hours = models.TextField()
     address = models.TextField()
@@ -15,7 +16,7 @@ class Gym(models.Model):
 class ContactSubmission(models.Model):
     name = models.CharField(max_length=255)
     email = models.EmailField()
-    phone = models.CharField(max_length=255)
+    phone = models.CharField(max_length=30)
     subject = models.CharField(max_length=255)
     message = models.TextField()
     created_at = models.DateTimeField(auto_now_add=True)
