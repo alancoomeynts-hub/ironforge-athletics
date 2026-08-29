@@ -1,6 +1,0 @@
-body{
-    background: url('/media/hero-image.png') no-repeat center top fixed;
-    background-size: cover;
-    min-height: calc(100vh - 160px);
-    color: var(--text-color-light);
-}
