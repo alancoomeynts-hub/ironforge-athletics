@@ -93,16 +93,16 @@ Administrators need to:
 ###### Features:
 - Present gym information in a clear and concise manner, pages to implements include:
 - Home: Hero image, with call to action to register for a membership.
-- About:gym story, ethod, teams and photos.
+- About:gym story, class types, and photos.
 - Facilities & Services: equipment, classes, opening hours, location/map, contact details and form.
 - Membership overview: description of plans and benefits.
 
 ##### Acceptance Criteria:
-- All pages are accessible from the main navigation.
-- Content clearly explains what the gym offers and who it’s for.
-- Clear CTAs to “View Memberships” and “Register”.
-- Location and contact information are easy to find.
-- Pages render consistently with site branding on desktop and mobile.  
+- [] All pages are accessible from the main navigation.
+- [] Content clearly explains what the gym offers and who it’s for.
+- [] Clear CTAs to “View Memberships” and “Register”.
+- [] Location and contact information are easy to find.
+- [] Pages render consistently with site branding on desktop and mobile.  
 
 2. **User Registration:** Implement user registration so potential members can create an account.
 ###### Features:
@@ -121,7 +121,7 @@ Administrators need to:
 3. **Membership Plans Listing and Comparison:** Implement a membership plans page where potential members can view and 
 compare all available membership options.
 ###### Features:
-- List all active `MembershipPlan` objects.
+- List membership plans.
 - Display the following information for each plan:
   - Name.
   - Description.
@@ -428,13 +428,17 @@ was guided by course material, official documentation, and selected tutorials, w
 problem-solving carried out during development.
 
 ### BEM Methodology for css  - sources: https://getbem.com/ and https://bem.info/en/methodology/naming-convention/
+### Django Introduction to Class Based Views - sources: Learn Django - CLass Based Views 
+Course by Very Academy: https://www.youtube.com/watch?v=GxA2I-n8NR8&list=PLOLrQ9Pn6caxNb9eFZJ6LfY29nZkKmmXT
+
 
 ## Bugs and Fixes
 ### AllAuth
 - I encountered several deprecation errors using settings from the 0.50 version of allauth. I resolved by replacing deprecated settings with the new ones.
-### Stripe 
-### Stripe
-### Django
+### Amazon S3
+- I encountered an error when trying to deploy the application to Heroku with s3 bucket for static and media files. 
+Solved by switching to a Whitenoise and Cloudinary solution.
+
 
 # Tools and Resources
 **Development Environment:**
