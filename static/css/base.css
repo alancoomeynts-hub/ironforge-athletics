@@ -31,8 +31,30 @@ main{
 .site-header__link:hover,
 .site-header__link:focus{
     color: var(--cta);
+    background-color: var(--secondary-color);
 
 }
+
+.site-header__dropdown_menu{
+
+    background-color: var(--secondary-color);
+
+    & p{
+        color: var(--text-color-light);
+        padding: 0.5rem 1rem;
+    }
+
+}
+
+.site-header__icon{
+    color: var(--text-color-light);
+}
+
+.site-header__tag{
+    color: var(--text-color-light);
+    font-size: 0.8rem;
+}
+
 
 /* CTA Button Styles */
 .cta-btn{
@@ -104,7 +126,10 @@ main{
     text-decoration: none;
     margin: 0 0.4rem;
     color: var(--cta);
-    transition: all 0.15s ease, transform 0.15s ease;
+    transition:
+        background-color 0.15s ease,
+        color 0.15s ease,
+        transform 0.15s ease;
 }
 .site-footer__link:hover,
 .site-footer__link:focus{
@@ -116,19 +141,21 @@ main{
 .form-max-width{
     max-width: 600px;
 }
+.form {
+        &.form-label {
+            color: var(--secondary-color);
+            font-weight: 500;
+        }
 
-form .form-label{
-    color: var(--secondary-color);
-    font-weight:500;
-}
+        &.form-control {
+            background-color: var(--text-color-light);
+            border-color: #cfd6e3;
+            color: var(--secondary-color);
 
-.form .form-control{
-    background-color: var(--text-color-light);
-    border-color: #cfd6e3;
-    color: var(--secondary-color);
-}
+            &:focus {
+            box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.15);
+            border-color: var(--secondary-color);
+        }
+        }
 
-.form-control:focus{
-    box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.15);
-    border-color:var(--secondary-color);
 }
