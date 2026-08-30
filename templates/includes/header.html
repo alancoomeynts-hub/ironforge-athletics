@@ -1,27 +1,27 @@
 <div class="container-fluid">
     <div class="row align-items-center">
         <!-- Search form -->
-        <div class="col-9 col-md-5 order-1 ms-auto mt-2 mt-md-0">
+        <div class="site-header__search col-9 col-md-5 order-1 ms-auto mt-2 mt-md-0">
             <form action="" method="get" class="d-flex">
                 <div class="input-group d-flex flex-row">
-                    <select name="page" class="form-select border-end-0">
+                    <select name="page" class="form-select border-end-0 site-header__search-select">
                         <option value="members">Members</option>
                         <option value="shop">Shop</option>
                         <option value="community">Community</option>
                     </select>
                     <input type="search"
                            name="q"
-                           class="form-control border-start-0"
+                           class="form-control border-start-0 site-header__search-input"
                            placeholder="Search..."
                            aria-label="Search" />
-                    <button class="btn btn-outline-light" type="submit">
+                    <button class="btn btn-outline-light site-header__search-btn" type="submit">
                         <i class="fa-solid fa-magnifying-glass"></i>
                     </button>
                 </div>
             </form>
         </div>
         <!--  Account Links -->
-        <div class="col-3 col-md-3 site-header__links order-2 text-end mt-2 mt-md-0">
+        <div class="col-3 site-header__links order-2 text-end mt-2 mt-md-0">
             <div class="dropdown d-inline-block">
                 <a class="text-black nav-link"
                    href="#"
@@ -34,7 +34,7 @@
                         <p class="site-header__tag my-0">My Account</p>
                     </div>
                 </a>
-                <ul class="site-header__dropdown_menu dropdown-menu dropdown-menu-end border-0"
+                <ul class="site-header__dropdown-menu dropdown-menu dropdown-menu-end border-0"
                     aria-labelledby="user-options">
                     {% if request.user.is_authenticated %}
                         <li>

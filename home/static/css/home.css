@@ -1,6 +1,4 @@
-body{
-    background-color: var(--background);
-}
+
 
 /*Our Gym Styles*/
 
@@ -21,6 +19,7 @@ body{
 
 .class__title{
     color: var(--cta);
+    text-transform: uppercase;
 }
 
 /*Contact Us Styles*/

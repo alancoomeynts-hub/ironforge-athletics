@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Oswald:wght@200..700&display=swap');
+
 :root {
     --secondary-color: 	#4b556f;
     --primary-color: #1a1c37;
@@ -6,9 +8,24 @@
     --text-color: #000;
     --text-color-light: #fff;
     --background: #eef2f6;
+
+    --font-body: 'Inter', sans-serif;
+    --font-heading: 'Oswald', sans-serif;
 }
 html {
     height: 100%;
+
+}
+
+body{
+    font-family: var(--font-body);
+    background-color: var(--background);
+}
+
+h1,h2,h3,h4,h5,h6{
+    font-family: var(--font-heading);
+    font-weight: 800;
+    letter-spacing: 0.04rem;
 }
 
 main{
@@ -35,13 +52,14 @@ main{
 
 }
 
-.site-header__dropdown_menu{
+.site-header__dropdown-menu{
 
     background-color: var(--secondary-color);
-
+    font-family: var(--font-heading);
     & p{
         color: var(--text-color-light);
         padding: 0.5rem 1rem;
+
     }
 
 }
@@ -53,13 +71,36 @@ main{
 .site-header__tag{
     color: var(--text-color-light);
     font-size: 0.8rem;
+    font-family: var(--font-heading);
 }
 
+/* Search Form Styles */
+.site-header__search-select{
+    font-family: var(--font-heading);
+    font-size: 0.9rem;
+    color: var(--text-color);
+
+    &:focus{
+        outline: none;
+        box-shadow: none;
+    }
+}
+
+.site-header__search-input{
+    border: none;
+    color: var(--secondary-color);
+}
+
+.site-header__search-btn:hover{
+    background-color: var(--primary-color);
+    color: var(--text-color-light);
+}
 
 /* CTA Button Styles */
 .cta-btn{
     background-color: var(--cta);
     color: var(--text-color);
+    font-family: var(--font-heading);
     font-size: 1.2rem;
     padding: 0.5rem 1rem;
     border-radius: 0.5rem;
@@ -77,6 +118,7 @@ main{
     transform: translateX(-0.25rem) translateY(-0.25rem);
 }
 
+
 /* Navbar Styles */
 .site-nav{
     background-color: var(--primary-color);
@@ -86,6 +128,7 @@ main{
 .site-nav__link{
     color: var(--text-color-light);
     font-size: 1.2rem;
+    font-family: var(--font-heading);
 }
 
 .site-nav__link:hover,
@@ -106,6 +149,7 @@ main{
     font-size: 1.1rem;
     font-weight: 800;
     letter-spacing: 0.04rem;
+    font-family: var(--font-heading);
 
 }
 
@@ -141,21 +185,21 @@ main{
 .form-max-width{
     max-width: 600px;
 }
-.form {
-        &.form-label {
-            color: var(--secondary-color);
-            font-weight: 500;
-        }
 
-        &.form-control {
-            background-color: var(--text-color-light);
-            border-color: #cfd6e3;
-            color: var(--secondary-color);
+.form-label {
+    color: var(--secondary-color);
+    font-weight: 500;
+      letter-spacing: 0.04rem;
+      font-family: var(--font-heading);
+  }
 
-            &:focus {
-            box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.15);
-            border-color: var(--secondary-color);
-        }
-        }
+.form-control {
+    background-color: var(--text-color-light);
+    border-color: #cfd6e3;
+    color: var(--secondary-color);
 
-}
+    &:focus {
+      box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.15);
+      border-color: var(--primary-color);
+    }
+  }
