@@ -5,6 +5,8 @@
     --primary-color: #1a1c37;
     --cta: #46c855;
     --cta-hover: #3aa847;
+    --cta-secondary: #4b556f;
+    --cta-secondary-hover: #3a4155;
     --text-color: #000;
     --text-color-light: #fff;
     --background: #eef2f6;
@@ -99,7 +101,7 @@ main{
 /* CTA Button Styles */
 .cta-btn{
     background-color: var(--cta);
-    color: var(--text-color);
+    color: var(--text-color-light);
     font-family: var(--font-heading);
     font-size: 1.2rem;
     padding: 0.5rem 1rem;
@@ -114,10 +116,30 @@ main{
 .cta-btn:hover,
 .cta-btn:focus{
     background-color: var(--cta-hover);
-    color: var(--text-color);
+    color: var(--text-color-light);
     transform: translateX(-0.25rem) translateY(-0.25rem);
 }
 
+.cta-btn-secondary{
+    background-color: var(--cta-secondary);
+    color: var(--text-color-light);
+    font-family: var(--font-heading);
+    font-size: 1.2rem;
+    padding: 0.5rem 1rem;
+    border-radius: 0.5rem;
+    border: none;
+    transition:
+        background-color 0.15s ease,
+        color 0.15s ease,
+        transform 0.15s ease;
+}
+
+.cta-btn-secondary:hover,
+.cta-btn-secondary:focus{
+    background-color: var(--cta-secondary-hover);
+    color: var(--text-color-light);
+    transform: translateX(-0.25rem) translateY(-0.25rem);
+}
 
 /* Navbar Styles */
 .site-nav{
@@ -203,3 +225,42 @@ main{
       border-color: var(--primary-color);
     }
   }
+
+.content__wrapper{
+    background-color: var(--text-color-light);
+    border: 1px solid  #d1d9e2;
+    color: var(--primary-color);
+    height: 100%;
+    padding: 1.2rem;
+    border-radius: 0.5rem;
+    box-shadow: 0 1px 2px rgba(26, 28, 55, 0.06);
+}
+
+/* all auth forms */
+/* Hide help text on sign up form */
+#id_password1_helptext{
+    display: none;
+}
+
+/* Media Queries */
+/*Media query to pad in content blocks on smaller screens*/
+@media (max-width: 768px) {
+    .container{
+        max-width: 90%;
+    }
+
+    /*remove form labels on smaller screens*/
+    .content__wrapper label:not([for="id_remember"]) {
+        display: none;
+    }
+}
+
+@media (min-width: 769px) {
+
+    /*hide placeholder text on larger screens*/
+    .content__wrapper input::placeholder,
+    .content__wrapper textarea::placeholder{
+        color: transparent;
+    }
+
+}
