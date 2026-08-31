@@ -4,7 +4,8 @@
         <div class="site-header__search col-9 col-md-5 order-1 ms-auto mt-2 mt-md-0">
             <form action="" method="get" class="d-flex">
                 <div class="input-group d-flex flex-row">
-                    <select name="page" class="form-select border-end-0 site-header__search-select">
+                    <select name="page"
+                            class="form-select border-end-0 site-header__search-select">
                         <option value="members">Members</option>
                         <option value="shop">Shop</option>
                         <option value="community">Community</option>
@@ -49,7 +50,8 @@
                         </li>
                     {% else %}
                         <li>
-                            <a class="dropdown-item site-header__link" href="{%  url 'account_login' %}">Log In</a>
+                            <a class="dropdown-item site-header__link"
+                               href="{% url 'account_login' %}">Log In</a>
                         </li>
                         <hr class="dropdown-divider">
                         <li>
