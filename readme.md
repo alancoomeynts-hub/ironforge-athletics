@@ -427,10 +427,15 @@ The following resources were used for guidance, implementation support, and debu
 was guided by course material, official documentation, and selected tutorials, with additional adaptation and 
 problem-solving carried out during development.
 
-### BEM Methodology for css  - sources: https://getbem.com/ and https://bem.info/en/methodology/naming-convention/
-### Django Introduction to Class Based Views - sources: Learn Django - CLass Based Views 
-Course by Very Academy: https://www.youtube.com/watch?v=GxA2I-n8NR8&list=PLOLrQ9Pn6caxNb9eFZJ6LfY29nZkKmmXT
-### Django AllAuth Customization - sources Tutorials Sereis by BugBytes: https://www.youtube.com/playlist?list=PL-2EBeDYMIbQqZZoo5Dj8YAkPnZeJfcZS
+### Django 5 by Example by Antonio Melé: 
+Reference textbook to support course material. Used for Django ORM, templates, models, permissions, view patterns. Also as insight into profile blog, shop and message board app design.
+
+### BEM Methodology for css  - 
+sources: https://getbem.com/ and https://bem.info/en/methodology/naming-convention/
+### Django Introduction to Class Based Views - 
+sources: Learn Django - CLass Based Views Course by Very Academy: https://www.youtube.com/watch?v=GxA2I-n8NR8&list=PLOLrQ9Pn6caxNb9eFZJ6LfY29nZkKmmXT
+### Django AllAuth Customization - 
+Tutorials Series by BugBytes: https://www.youtube.com/playlist?list=PL-2EBeDYMIbQqZZoo5Dj8YAkPnZeJfcZS
 ## Bugs and Fixes
 ### AllAuth
 - I encountered several deprecation errors using settings from the 0.50 version of allauth. I resolved by replacing deprecated settings with the new ones.
