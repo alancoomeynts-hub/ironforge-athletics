@@ -127,6 +127,7 @@ else:
 
 ACCOUNT_FORMS = {
     'signup': 'user_profile.forms.CustomSignupForm',
+    'login': 'user_profile.forms.LoginForm',
 
 }
 
