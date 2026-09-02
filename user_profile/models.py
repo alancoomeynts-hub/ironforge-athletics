@@ -6,8 +6,6 @@ from cloudinary.models import CloudinaryField
 # Create your models here.
 class Profile(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE)
-    first_name = models.CharField(max_length=30, blank=True)
-    last_name = models.CharField(max_length=30, blank=True)
     profile_image=CloudinaryField('image')
     bio = models.TextField(blank=True, max_length=500)
     goals = models.TextField(blank=True, max_length=500)
