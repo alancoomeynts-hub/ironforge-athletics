@@ -46,7 +46,7 @@ INSTALLED_APPS = [
     'allauth.account',
     'allauth.socialaccount',
     'home',
-    'user_profile',
+    'user_profile.apps.UserProfileConfig',
     'django_summernote',
     'crispy_forms',
     'crispy_bootstrap5',
@@ -103,7 +103,7 @@ ACCOUNT_ACCOUNT_LOGIN_METHODS = {'email', 'username'}
 ACCOUNT_SIGNUP_FIELDS = ['email*', 'username*', 'password1*', 'password2*']
 ACCOUNT_EMAIL_VERIFICATION = 'mandatory'
 ACCOUNT_USERNAME_MIN_LENGTH = 4
-LOGIN_URL ='/account/login/'
+LOGIN_URL ='/accounts/login/'
 LOGIN_REDIRECT_URL = '/'
 LOGOUT_REDIRECT_URL = '/'
 
@@ -125,6 +125,10 @@ else:
         }
     }
 
+ACCOUNT_FORMS = {
+    'signup': 'user_profile.forms.CustomSignupForm',
+
+}
 
 
 # Password validation
