@@ -257,7 +257,7 @@ main{
 
 @media (min-width: 769px) {
 
-    /*hide placeholder text on larger screens*/
+    /*hide form placeholder text on larger screens*/
     .content__wrapper input::placeholder,
     .content__wrapper textarea::placeholder{
         color: transparent;

@@ -1,0 +1,144 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block extra_css %}
+    <link rel="stylesheet" href="{% static 'css/user_profile.css' %}">
+{% endblock %}
+
+{% block content %}
+    <div class="container d-flex flex-column gap-3 py-4">
+
+
+    <!-- ROW 1: Profile Info -->
+    <div class="col-12">
+      <div class="content__wrapper">
+
+        <div class="card-header d-flex justify-content-between align-items-center">
+          <h5 class="mb-0">Profile</h5>
+          <div class="d-flex flex-row gap-2 flex-wrap">
+            <a href="" class="cta-btn-secondary btn">Edit Profile</a>
+            <a href="" class="cta-btn-secondary btn">Change Password</a>
+          </div>
+        </div>
+
+        <div class="card-body">
+          <div class="row">
+
+            <div class="col-12 col-md-4 text-center mb-3 mb-md-0">
+              {% if user.profile.profile_image %}
+                <img src="{{ user.profile.profile_image }}"
+                     alt="{{ user.username }}"
+
+                     style="max-width: 200px;">
+              {% else %}
+                <img src="{% static 'media/default.png' %}"
+                     alt="Default avatar"
+
+                     style="max-width: 200px;">
+              {% endif %}
+            </div>
+
+
+            <div class="col-12 col-md-8">
+              <h4>{{ user.username }}</h4>
+              <p class="text-muted mb-1">{{ user.email }}</p>
+              <p class="mb-3">
+                <strong>Location:</strong>
+                {{ user.profile.default_town_or_city|default:"Not set" }}
+                {% if user.profile.default_county %}, {{ user.profile.default_county }}{% endif %}
+                <br>
+                <strong>Member since:</strong> {{ user.profile.member_since|date:"d M Y" }}
+              </p>
+
+              <div class="row ">
+                <div class="col-6 col-lg-4">
+                  <strong>Phone:</strong><br>
+                  {{ user.profile.default_phone_number|default:"Not set" }}
+                </div>
+                <div class="col-6 col-lg-4">
+                  <strong>Date of birth:</strong><br>
+                  {% if user.profile.date_of_birth %}
+                    {{ user.profile.date_of_birth|date:"d M Y" }}
+                  {% else %}
+                    Not set
+                  {% endif %}
+                </div>
+                <div class="col-6 col-lg-4">
+                  <strong>Height / Weight:</strong><br>
+                  {% if user.profile.height and user.profile.weight %}
+                    {{ user.profile.height|floatformat:1 }} cm /
+                    {{ user.profile.weight|floatformat:1 }} kg
+                  {% else %}
+                    Not set
+                  {% endif %}
+                </div>
+              </div>
+
+                <div class="row mt-3">
+                  {% if user.profile.bio %}
+                    <div class="col-12 col-lg-6">
+                      <strong>Bio</strong>
+                      <p class="mb-0">{{ user.profile.bio|linebreaksbr }}</p>
+                    </div>
+                  {% endif %}
+                  {% if user.profile.goals %}
+                    <div class="col-12 col-lg-6">
+                      <strong>Goals</strong>
+                      <p class="mb-0">{{ user.profile.goals|linebreaksbr }}</p>
+                    </div>
+                  {% endif %}
+                </div>
+
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ROW 2: Address -->
+    <div class="col-12">
+      <div class="content__wrapper">
+
+        <div class="card-header d-flex justify-content-between align-items-center">
+          <h5 class="mb-0">Default Address</h5>
+          <div class="d-flex flex-row gap-2 flex-wrap">
+            <a href="" class="cta-btn-secondary btn">Edit Address</a>
+            <a href="" class="cta-btn-secondary btn">View Orders</a>
+          </div>
+        </div>
+
+        <div class="card-body">
+          <div class="row">
+
+
+            <div class="col-12 col-md-8">
+              <address class="mb-0">
+                {% if user.profile.default_street_address1 %}
+                  {{ user.profile.default_street_address1 }}<br>
+                {% endif %}
+                {% if user.profile.default_street_address2 %}
+                  {{ user.profile.default_street_address2 }}<br>
+                {% endif %}
+                {% if user.profile.default_town_or_city %}
+                  {{ user.profile.default_town_or_city }}
+                {% endif %}
+                {% if user.profile.default_county %}
+                  , {{ user.profile.default_county }}
+                {% endif %}
+                {% if user.profile.default_postcode %}
+                  <br>{{ user.profile.default_postcode }}
+                {% endif %}
+                {% if not user.profile.default_street_address1 and not user.profile.default_town_or_city %}
+                  <span class="text-muted">No default address set.</span>
+                {% endif %}
+              </address>
+            </div>
+          </div>
+        </div>
+      </div>
+
+        <!-- ROW 3 - Membership-->
+        <!-- ROW 4 - Posts-->
+
+
+{% endblock %}
