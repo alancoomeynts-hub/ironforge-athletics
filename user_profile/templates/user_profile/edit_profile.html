@@ -1,0 +1,18 @@
+{% extends "base.html" %}
+{% load static %}
+{% load crispy_forms_tags %}
+{% block content %}
+    <div class="container">
+        <div class="content__wrapper row d-flex justify-content-center form-max-width mx-auto mb-3">
+            <div class="col-12 col-lg-9">
+                <h5 class="mb-0"> Edit Profile</h5>
+ <form method="post" enctype="multipart/form-data">
+ {{ user_form|crispy }}
+ {{ profile_form|crispy }}
+ {% csrf_token %}
+<p><input type="submit" value="Save changes"></p>
+ </form>
+    </div>
+        </div>
+    </div>
+{% endblock %}
