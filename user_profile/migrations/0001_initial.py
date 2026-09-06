@@ -7,7 +7,6 @@ from django.db import migrations, models
 
 
 class Migration(migrations.Migration):
-
     initial = True
 
     dependencies = [
@@ -16,26 +15,64 @@ class Migration(migrations.Migration):
 
     operations = [
         migrations.CreateModel(
-            name='Profile',
+            name="Profile",
             fields=[
-                ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('profile_image', cloudinary.models.CloudinaryField(blank=True, max_length=255, null=True, verbose_name='image')),
-                ('bio', models.TextField(blank=True, max_length=500)),
-                ('goals', models.TextField(blank=True, max_length=500)),
-                ('member_since', models.DateField(auto_now_add=True)),
-                ('date_of_birth', models.DateField(blank=True, null=True)),
-                ('height', models.FloatField(blank=True, null=True)),
-                ('weight', models.FloatField(blank=True, null=True)),
-                ('default_phone_number', models.CharField(blank=True, max_length=20, null=True)),
-                ('default_street_address1', models.CharField(blank=True, max_length=80, null=True)),
-                ('default_street_address2', models.CharField(blank=True, max_length=80, null=True)),
-                ('default_town_or_city', models.CharField(blank=True, max_length=40, null=True)),
-                ('default_county', models.CharField(blank=True, max_length=80, null=True)),
-                ('default_postcode', models.CharField(blank=True, max_length=20, null=True)),
-                ('user', models.OneToOneField(on_delete=django.db.models.deletion.CASCADE, related_name='profile', to=settings.AUTH_USER_MODEL)),
+                (
+                    "id",
+                    models.BigAutoField(
+                        auto_created=True,
+                        primary_key=True,
+                        serialize=False,
+                        verbose_name="ID",
+                    ),
+                ),
+                (
+                    "profile_image",
+                    cloudinary.models.CloudinaryField(
+                        blank=True, max_length=255, null=True, verbose_name="image"
+                    ),
+                ),
+                ("bio", models.TextField(blank=True, max_length=500)),
+                ("goals", models.TextField(blank=True, max_length=500)),
+                ("member_since", models.DateField(auto_now_add=True)),
+                ("date_of_birth", models.DateField(blank=True, null=True)),
+                ("height", models.FloatField(blank=True, null=True)),
+                ("weight", models.FloatField(blank=True, null=True)),
+                (
+                    "default_phone_number",
+                    models.CharField(blank=True, max_length=20, null=True),
+                ),
+                (
+                    "default_street_address1",
+                    models.CharField(blank=True, max_length=80, null=True),
+                ),
+                (
+                    "default_street_address2",
+                    models.CharField(blank=True, max_length=80, null=True),
+                ),
+                (
+                    "default_town_or_city",
+                    models.CharField(blank=True, max_length=40, null=True),
+                ),
+                (
+                    "default_county",
+                    models.CharField(blank=True, max_length=80, null=True),
+                ),
+                (
+                    "default_postcode",
+                    models.CharField(blank=True, max_length=20, null=True),
+                ),
+                (
+                    "user",
+                    models.OneToOneField(
+                        on_delete=django.db.models.deletion.CASCADE,
+                        related_name="profile",
+                        to=settings.AUTH_USER_MODEL,
+                    ),
+                ),
             ],
             options={
-                'ordering': ['-member_since'],
+                "ordering": ["-member_since"],
             },
         ),
     ]

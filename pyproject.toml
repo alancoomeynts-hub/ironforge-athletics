@@ -1,0 +1,10 @@
+[tool.ruff]
+target-version= "py312"
+[tool.ruff.lint]
+select =["E","F","DJ","RUF"]
+ignore=["DJ001"] # ignore null=true on CharFields being flagged by ruff
+
+[tool.ruff.lint.per-file-ignores]
+"**/forms.py" = ["RUF012"] #ignore recommendation to use tuples instead of lists, dicts in models, forms and migrations
+"**/models.py" = ["RUF012"]
+"**/migrations/*.py" = ["RUF012"]

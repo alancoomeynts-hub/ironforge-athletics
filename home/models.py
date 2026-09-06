@@ -13,6 +13,7 @@ class Gym(models.Model):
     def __str__(self):
         return self.name
 
+
 class ContactSubmission(models.Model):
     name = models.CharField(max_length=255)
     email = models.EmailField()
@@ -22,7 +23,7 @@ class ContactSubmission(models.Model):
     created_at = models.DateTimeField(auto_now_add=True)
 
     class Meta:
-        ordering = ['-created_at']
+        ordering = ("-created_at",)
 
     def __str__(self):
         return f"Subject: {self.subject}"
