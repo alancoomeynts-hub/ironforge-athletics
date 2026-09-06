@@ -1,0 +1,30 @@
+{% extends "base.html" %}
+{% load static %}
+{% block content %}
+    <h1>Products</h1>
+  <div class="content__wrapper">
+  <
+    <!-- render product catalogue as Bootstrap tabs -->
+    <ul class="nav nav-pills gap-2 mb-4 flex-wrap">
+    <!-- Render All -->
+    <li class="nav-item">
+        <a
+            class="nav-link {% if not category %}active{% endif %}"
+            href="{% url 'product_list' %}">
+            All
+        </a>
+    </li>
+
+    <!-- render each category -->
+    {% for cat in categories %}
+        <li class="nav-item">
+            <a
+                class="nav-link {% if category and category.slug == cat.slug %}active{% endif %}"
+                href="{% url 'product_list_by_category' cat.slug %}">
+                {{ cat.name }}
+            </a>
+        </li>
+    {% endfor %}
+</ul>
+</div>
+{% endblock %}
