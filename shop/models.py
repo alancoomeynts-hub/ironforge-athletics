@@ -23,7 +23,7 @@ class Product(models.Model):
     description = models.TextField()
     price = models.DecimalField(max_digits=10, decimal_places=2)
     category = models.ForeignKey(Category, blank=True,null=True, on_delete=models.SET_NULL, related_name='products')
-    image = CloudinaryField('image')
+    image = CloudinaryField('image', blank=True, null=True)
     is_available = models.BooleanField(default=True)
     created_on = models.DateTimeField(auto_now_add=True)
     updated_on = models.DateTimeField(auto_now=True)
