@@ -1,0 +1,632 @@
+[
+    {
+        "model": "shop.product",
+        "pk": 1,
+        "fields": {
+            "category": 1,
+            "name": "Whey Protein \u2013 Chocolate",
+            "slug": "whey-protein-chocolate",
+            "sku": "PRO-2824",
+            "description": "Creamy chocolate whey protein for muscle support.",
+            "price": "34.99",
+            "is_available": true,
+            "created_on": "2026-09-07T18:00:00Z",
+            "updated_on": "2026-09-07T18:00:00Z"
+        }
+    },
+    {
+        "model": "shop.product",
+        "pk": 2,
+        "fields": {
+            "category": 1,
+            "name": "Whey Protein \u2013 Vanilla",
+            "slug": "whey-protein-vanilla",
+            "sku": "PRO-1409",
+            "description": "Smooth vanilla whey protein, great in shakes.",
+            "price": "34.99",
+            "is_available": true,
+            "created_on": "2026-09-07T18:00:00Z",
+            "updated_on": "2026-09-07T18:00:00Z"
+        }
+    },
+    {
+        "model": "shop.product",
+        "pk": 3,
+        "fields": {
+            "category": 1,
+            "name": "Whey Protein \u2013 Strawberry",
+            "slug": "whey-protein-strawberry",
+            "sku": "PRO-5506",
+            "description": "Light strawberry flavour, mixes easily.",
+            "price": "34.99",
+            "is_available": true,
+            "created_on": "2026-09-07T18:00:00Z",
+            "updated_on": "2026-09-07T18:00:00Z"
+        }
+    },
+    {
+        "model": "shop.product",
+        "pk": 4,
+        "fields": {
+            "category": 1,
+            "name": "Protein Juice \u2013 Orange",
+            "slug": "protein-juice-orange",
+            "sku": "PRO-5012",
+            "description": "Refreshing orange protein juice, low foam.",
+            "price": "29.99",
+            "is_available": true,
+            "created_on": "2026-09-07T18:00:00Z",
+            "updated_on": "2026-09-07T18:00:00Z"
+        }
+    },
+    {
+        "model": "shop.product",
+        "pk": 5,
+        "fields": {
+            "category": 1,
+            "name": "Protein Juice \u2013 Berry",
+            "slug": "protein-juice-berry",
+            "sku": "PRO-4657",
+            "description": "Mixed berry protein juice, light and crisp.",
+            "price": "29.99",
+            "is_available": true,
+            "created_on": "2026-09-07T18:00:00Z",
+            "updated_on": "2026-09-07T18:00:00Z"
+        }
+    },
+    {
+        "model": "shop.product",
+        "pk": 6,
+        "fields": {
+            "category": 1,
+            "name": "Protein Juice \u2013 Lemon",
+            "slug": "protein-juice-lemon",
+            "sku": "PRO-3286",
+            "description": "Zesty lemon protein juice, refreshing post-workout.",
+            "price": "29.99",
+            "is_available": true,
+            "created_on": "2026-09-07T18:00:00Z",
+            "updated_on": "2026-09-07T18:00:00Z"
+        }
+    },
+    {
+        "model": "shop.product",
+        "pk": 7,
+        "fields": {
+            "category": 2,
+            "name": "Daily Multivitamin",
+            "slug": "daily-multivitamin",
+            "sku": "MULT-2679",
+            "description": "Complete daily vitamin and mineral formula.",
+            "price": "14.99",
+            "is_available": true,
+            "created_on": "2026-09-07T18:00:00Z",
+            "updated_on": "2026-09-07T18:00:00Z"
+        }
+    },
+    {
+        "model": "shop.product",
+        "pk": 8,
+        "fields": {
+            "category": 2,
+            "name": "Sport Multivitamin",
+            "slug": "sport-multivitamin",
+            "sku": "MULT-9935",
+            "description": "Enhanced formula for active individuals.",
+            "price": "18.99",
+            "is_available": true,
+            "created_on": "2026-09-07T18:00:00Z",
+            "updated_on": "2026-09-07T18:00:00Z"
+        }
+    },
+    {
+        "model": "shop.product",
+        "pk": 9,
+        "fields": {
+            "category": 2,
+            "name": "Women's Multivitamin",
+            "slug": "womens-multivitamin",
+            "sku": "MULT-2424",
+            "description": "Tailored micronutrient support for women.",
+            "price": "16.99",
+            "is_available": true,
+            "created_on": "2026-09-07T18:00:00Z",
+            "updated_on": "2026-09-07T18:00:00Z"
+        }
+    },
+    {
+        "model": "shop.product",
+        "pk": 10,
+        "fields": {
+            "category": 2,
+            "name": "Men's Multivitamin",
+            "slug": "mens-multivitamin",
+            "sku": "MULT-7912",
+            "description": "Tailored micronutrient support for men.",
+            "price": "16.99",
+            "is_available": true,
+            "created_on": "2026-09-07T18:00:00Z",
+            "updated_on": "2026-09-07T18:00:00Z"
+        }
+    },
+    {
+        "model": "shop.product",
+        "pk": 11,
+        "fields": {
+            "category": 2,
+            "name": "Omega-3 Fish Oil",
+            "slug": "omega-3-fish-oil",
+            "sku": "MULT-1520",
+            "description": "High-EPA/DHA fish oil for heart and brain health.",
+            "price": "12.99",
+            "is_available": true,
+            "created_on": "2026-09-07T18:00:00Z",
+            "updated_on": "2026-09-07T18:00:00Z"
+        }
+    },
+    {
+        "model": "shop.product",
+        "pk": 12,
+        "fields": {
+            "category": 2,
+            "name": "Vitamin D3 + K2",
+            "slug": "vitamin-d3-k2",
+            "sku": "MULT-1488",
+            "description": "Bone and immune support combination.",
+            "price": "11.99",
+            "is_available": true,
+            "created_on": "2026-09-07T18:00:00Z",
+            "updated_on": "2026-09-07T18:00:00Z"
+        }
+    },
+    {
+        "model": "shop.product",
+        "pk": 13,
+        "fields": {
+            "category": 2,
+            "name": "B-Complex",
+            "slug": "b-complex",
+            "sku": "MULT-2535",
+            "description": "Full spectrum B vitamins for energy and metabolism.",
+            "price": "10.99",
+            "is_available": true,
+            "created_on": "2026-09-07T18:00:00Z",
+            "updated_on": "2026-09-07T18:00:00Z"
+        }
+    },
+    {
+        "model": "shop.product",
+        "pk": 14,
+        "fields": {
+            "category": 3,
+            "name": "Pre Workout Stimulant",
+            "slug": "pre-workout-stimulant",
+            "sku": "PRE-4582",
+            "description": "High-energy pre-workout with caffeine and beta-alanine.",
+            "price": "27.99",
+            "is_available": true,
+            "created_on": "2026-09-07T18:00:00Z",
+            "updated_on": "2026-09-07T18:00:00Z"
+        }
+    },
+    {
+        "model": "shop.product",
+        "pk": 15,
+        "fields": {
+            "category": 3,
+            "name": "Pre Workout Stim-Free",
+            "slug": "pre-workout-stim-free",
+            "sku": "PRE-4811",
+            "description": "Stimulant-free pump and focus formula.",
+            "price": "24.99",
+            "is_available": true,
+            "created_on": "2026-09-07T18:00:00Z",
+            "updated_on": "2026-09-07T18:00:00Z"
+        }
+    },
+    {
+        "model": "shop.product",
+        "pk": 16,
+        "fields": {
+            "category": 3,
+            "name": "Caffeine Tablets",
+            "slug": "caffeine-tablets",
+            "sku": "PRE-9279",
+            "description": "Pure caffeine for energy and focus.",
+            "price": "9.99",
+            "is_available": true,
+            "created_on": "2026-09-07T18:00:00Z",
+            "updated_on": "2026-09-07T18:00:00Z"
+        }
+    },
+    {
+        "model": "shop.product",
+        "pk": 17,
+        "fields": {
+            "category": 3,
+            "name": "Beta-Alanine",
+            "slug": "beta-alanine",
+            "sku": "PRE-1434",
+            "description": "Endurance and buffering support for high-intensity training.",
+            "price": "19.99",
+            "is_available": true,
+            "created_on": "2026-09-07T18:00:00Z",
+            "updated_on": "2026-09-07T18:00:00Z"
+        }
+    },
+    {
+        "model": "shop.product",
+        "pk": 18,
+        "fields": {
+            "category": 3,
+            "name": "Citrulline Malate",
+            "slug": "citrulline-malate",
+            "sku": "PRE-4257",
+            "description": "Nitric oxide support for pumps and performance.",
+            "price": "21.99",
+            "is_available": true,
+            "created_on": "2026-09-07T18:00:00Z",
+            "updated_on": "2026-09-07T18:00:00Z"
+        }
+    },
+    {
+        "model": "shop.product",
+        "pk": 19,
+        "fields": {
+            "category": 3,
+            "name": "Nitric Oxide Blend",
+            "slug": "nitric-oxide-blend",
+            "sku": "PRE-9928",
+            "description": "Advanced pump formula with citrulline and nitrates.",
+            "price": "26.99",
+            "is_available": true,
+            "created_on": "2026-09-07T18:00:00Z",
+            "updated_on": "2026-09-07T18:00:00Z"
+        }
+    },
+    {
+        "model": "shop.product",
+        "pk": 20,
+        "fields": {
+            "category": 3,
+            "name": "Focus Pre-Workout",
+            "slug": "focus-pre-workout",
+            "sku": "PRE-7873",
+            "description": "Nootropic-focused pre-workout for mental drive.",
+            "price": "25.99",
+            "is_available": true,
+            "created_on": "2026-09-07T18:00:00Z",
+            "updated_on": "2026-09-07T18:00:00Z"
+        }
+    },
+    {
+        "model": "shop.product",
+        "pk": 21,
+        "fields": {
+            "category": 4,
+            "name": "Creatine Monohydrate Powder",
+            "slug": "creatine-monohydrate-powder",
+            "sku": "CRE-4611",
+            "description": "Pure micronized creatine monohydrate powder for strength and power.",
+            "price": "19.99",
+            "is_available": true,
+            "created_on": "2026-09-07T18:00:00Z",
+            "updated_on": "2026-09-07T18:00:00Z"
+        }
+    },
+    {
+        "model": "shop.product",
+        "pk": 22,
+        "fields": {
+            "category": 4,
+            "name": "Creatine Monohydrate Capsules",
+            "slug": "creatine-monohydrate-capsules",
+            "sku": "CRE-8359",
+            "description": "Convenient creatine monohydrate capsules.",
+            "price": "20.99",
+            "is_available": true,
+            "created_on": "2026-09-07T18:00:00Z",
+            "updated_on": "2026-09-07T18:00:00Z"
+        }
+    },
+    {
+        "model": "shop.product",
+        "pk": 23,
+        "fields": {
+            "category": 5,
+            "name": "Lifting Belt",
+            "slug": "lifting-belt",
+            "sku": "ACC-5557",
+            "description": "Leather lifting belt for core support.",
+            "price": "34.99",
+            "is_available": true,
+            "created_on": "2026-09-07T18:00:00Z",
+            "updated_on": "2026-09-07T18:00:00Z"
+        }
+    },
+    {
+        "model": "shop.product",
+        "pk": 24,
+        "fields": {
+            "category": 5,
+            "name": "Knee Sleeves",
+            "slug": "knee-sleeves",
+            "sku": "ACC-1106",
+            "description": "7mm neoprene knee sleeves for squats.",
+            "price": "24.99",
+            "is_available": true,
+            "created_on": "2026-09-07T18:00:00Z",
+            "updated_on": "2026-09-07T18:00:00Z"
+        }
+    },
+    {
+        "model": "shop.product",
+        "pk": 25,
+        "fields": {
+            "category": 5,
+            "name": "Wrist Wraps",
+            "slug": "wraps-wrist",
+            "sku": "ACC-3615",
+            "description": "Stiff wrist wraps for pressing movements.",
+            "price": "12.99",
+            "is_available": true,
+            "created_on": "2026-09-07T18:00:00Z",
+            "updated_on": "2026-09-07T18:00:00Z"
+        }
+    },
+    {
+        "model": "shop.product",
+        "pk": 26,
+        "fields": {
+            "category": 5,
+            "name": "Lifting Straps",
+            "slug": "lifting-straps",
+            "sku": "ACC-7924",
+            "description": "Cotton lifting straps for heavy pulls.",
+            "price": "14.99",
+            "is_available": true,
+            "created_on": "2026-09-07T18:00:00Z",
+            "updated_on": "2026-09-07T18:00:00Z"
+        }
+    },
+    {
+        "model": "shop.product",
+        "pk": 27,
+        "fields": {
+            "category": 5,
+            "name": "Gym Bag",
+            "slug": "gym-bag",
+            "sku": "ACC-6574",
+            "description": "Durable gym bag with shoe compartment.",
+            "price": "39.99",
+            "is_available": true,
+            "created_on": "2026-09-07T18:00:00Z",
+            "updated_on": "2026-09-07T18:00:00Z"
+        }
+    },
+    {
+        "model": "shop.product",
+        "pk": 28,
+        "fields": {
+            "category": 5,
+            "name": "Shaker Bottle",
+            "slug": "shaker-bottle",
+            "sku": "ACC-5552",
+            "description": "Leak-proof shaker bottle with mixing ball.",
+            "price": "7.99",
+            "is_available": true,
+            "created_on": "2026-09-07T18:00:00Z",
+            "updated_on": "2026-09-07T18:00:00Z"
+        }
+    },
+    {
+        "model": "shop.product",
+        "pk": 29,
+        "fields": {
+            "category": 5,
+            "name": "Jump Rope",
+            "slug": "jump-rope",
+            "sku": "ACC-3547",
+            "description": "Speed jump rope for conditioning.",
+            "price": "11.99",
+            "is_available": true,
+            "created_on": "2026-09-07T18:00:00Z",
+            "updated_on": "2026-09-07T18:00:00Z"
+        }
+    },
+    {
+        "model": "shop.product",
+        "pk": 30,
+        "fields": {
+            "category": 6,
+            "name": "BCAAs",
+            "slug": "bcaas",
+            "sku": "REC-4527",
+            "description": "Branched-chain amino acids for recovery.",
+            "price": "17.99",
+            "is_available": true,
+            "created_on": "2026-09-07T18:00:00Z",
+            "updated_on": "2026-09-07T18:00:00Z"
+        }
+    },
+    {
+        "model": "shop.product",
+        "pk": 31,
+        "fields": {
+            "category": 6,
+            "name": "EAAs",
+            "slug": "eaas",
+            "sku": "REC-6514",
+            "description": "Essential amino acids for muscle protein synthesis.",
+            "price": "22.99",
+            "is_available": true,
+            "created_on": "2026-09-07T18:00:00Z",
+            "updated_on": "2026-09-07T18:00:00Z"
+        }
+    },
+    {
+        "model": "shop.product",
+        "pk": 32,
+        "fields": {
+            "category": 6,
+            "name": "Glutamine",
+            "slug": "glutamine",
+            "sku": "REC-2674",
+            "description": "L-Glutamine for recovery and immune support.",
+            "price": "15.99",
+            "is_available": true,
+            "created_on": "2026-09-07T18:00:00Z",
+            "updated_on": "2026-09-07T18:00:00Z"
+        }
+    },
+    {
+        "model": "shop.product",
+        "pk": 33,
+        "fields": {
+            "category": 6,
+            "name": "ZMA",
+            "slug": "zma",
+            "sku": "REC-2519",
+            "description": "Zinc, magnesium and B6 for sleep and recovery.",
+            "price": "13.99",
+            "is_available": true,
+            "created_on": "2026-09-07T18:00:00Z",
+            "updated_on": "2026-09-07T18:00:00Z"
+        }
+    },
+    {
+        "model": "shop.product",
+        "pk": 34,
+        "fields": {
+            "category": 6,
+            "name": "Magnesium Glycinate",
+            "slug": "magnesium-glycinate",
+            "sku": "REC-7224",
+            "description": "Highly absorbable magnesium for relaxation.",
+            "price": "12.99",
+            "is_available": true,
+            "created_on": "2026-09-07T18:00:00Z",
+            "updated_on": "2026-09-07T18:00:00Z"
+        }
+    },
+    {
+        "model": "shop.product",
+        "pk": 35,
+        "fields": {
+            "category": 6,
+            "name": "Tart Cherry Extract",
+            "slug": "tart-cherry-extract",
+            "sku": "REC-2584",
+            "description": "Supports recovery and sleep quality.",
+            "price": "16.99",
+            "is_available": true,
+            "created_on": "2026-09-07T18:00:00Z",
+            "updated_on": "2026-09-07T18:00:00Z"
+        }
+    },
+    {
+        "model": "shop.product",
+        "pk": 36,
+        "fields": {
+            "category": 6,
+            "name": "Ashwagandha",
+            "slug": "ashwagandha",
+            "sku": "REC-6881",
+            "description": "Adaptogen for stress and recovery support.",
+            "price": "14.99",
+            "is_available": true,
+            "created_on": "2026-09-07T18:00:00Z",
+            "updated_on": "2026-09-07T18:00:00Z"
+        }
+    },
+    {
+        "model": "shop.product",
+        "pk": 37,
+        "fields": {
+            "category": 7,
+            "name": "IronForge T-Shirt",
+            "slug": "ironforge-tshirt",
+            "sku": "GW-6635",
+            "description": "Breathable cotton-blend gym tee.",
+            "price": "24.99",
+            "is_available": true,
+            "created_on": "2026-09-07T18:00:00Z",
+            "updated_on": "2026-09-07T18:00:00Z"
+        }
+    },
+    {
+        "model": "shop.product",
+        "pk": 38,
+        "fields": {
+            "category": 7,
+            "name": "Performance Tank",
+            "slug": "performance-tank",
+            "sku": "GW-5333",
+            "description": "Lightweight tank for training.",
+            "price": "22.99",
+            "is_available": true,
+            "created_on": "2026-09-07T18:00:00Z",
+            "updated_on": "2026-09-07T18:00:00Z"
+        }
+    },
+    {
+        "model": "shop.product",
+        "pk": 39,
+        "fields": {
+            "category": 7,
+            "name": "Training Shorts",
+            "slug": "training-shorts",
+            "sku": "GW-1711",
+            "description": "Flexible shorts with pockets.",
+            "price": "27.99",
+            "is_available": true,
+            "created_on": "2026-09-07T18:00:00Z",
+            "updated_on": "2026-09-07T18:00:00Z"
+        }
+    },
+    {
+        "model": "shop.product",
+        "pk": 40,
+        "fields": {
+            "category": 7,
+            "name": "Compression Leggings",
+            "slug": "compression-leggings",
+            "sku": "GW-8527",
+            "description": "Supportive compression tights.",
+            "price": "34.99",
+            "is_available": true,
+            "created_on": "2026-09-07T18:00:00Z",
+            "updated_on": "2026-09-07T18:00:00Z"
+        }
+    },
+    {
+        "model": "shop.product",
+        "pk": 41,
+        "fields": {
+            "category": 7,
+            "name": "Hooded Sweatshirt",
+            "slug": "hooded-sweatshirt",
+            "sku": "GW-9785",
+            "description": "Warm hoodie for warm-ups and cool-downs.",
+            "price": "44.99",
+            "is_available": true,
+            "created_on": "2026-09-07T18:00:00Z",
+            "updated_on": "2026-09-07T18:00:00Z"
+        }
+    },
+    {
+        "model": "shop.product",
+        "pk": 42,
+        "fields": {
+            "category": 7,
+            "name": "Gym Joggers",
+            "slug": "gym-joggers",
+            "sku": "GW-3045",
+            "description": "Tapered joggers for training and casual wear.",
+            "price": "39.99",
+            "is_available": true,
+            "created_on": "2026-09-07T18:00:00Z",
+            "updated_on": "2026-09-07T18:00:00Z"
+        }
+    }
+]
