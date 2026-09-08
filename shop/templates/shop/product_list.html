@@ -8,9 +8,9 @@
 
     <div class="content__wrapper m-4">
         <!-- render product catalogue as Bootstrap tabs -->
-        <ul class=" shop__tabs nav nav-pills nav-justified gap-2 mb-4">
+        <ul class=" shop__tabs nav nav-pills nav-justified flex-column flex-lg-row gap-2 mb-4">
             <!-- Render All -->
-            <li class="nav-item">
+            <li class="nav-item ">
                 <a
                     class="shop__tab nav-link {% if not category %}active{% endif %}"
                     href="{% url 'product_list' %}">
@@ -20,7 +20,7 @@
             </li>
             <!-- render each category -->
             {% for cat in categories %}
-                <li class="nav-item">
+                <li class="nav-item ">
                     <a
                         class="shop__tab nav-link {% if category and category.slug == cat.slug %}active{% endif %}"
                         href="{% url 'product_list_by_category' cat.slug %}">
