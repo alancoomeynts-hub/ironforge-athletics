@@ -28,3 +28,33 @@
 
 }
 
+.cart__form-input{
+    width:10rem;
+}
+
+.product__image {
+  width: 100%;
+  height: auto;
+  border-radius: 8px;
+  object-fit: cover;
+}
+
+.product-detail__link{
+    color: var(--text-color-light);
+    text-decoration: none;
+
+}
+.product-detail__category-link {
+    color: var(--primary-color);
+    text-decoration: none;
+
+    &:hover {
+        color: var(--secondary-color);
+    }
+}
+
+/* customise Bootstrap tooltip data-bs-custom-class */
+.tooltip-grey{
+    --bs-tooltip-bg: var(--secondary-color);
+    --bs-tooltip-color: var(--text-color-light);
+}

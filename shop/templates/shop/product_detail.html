@@ -1,0 +1,76 @@
+{% extends "base.html" %}
+{% load static %}
+{% block extra_css %}
+    <link rel="stylesheet" href="{% static 'css/shop.css' %}">
+{% endblock %}
+{% block content %}
+    <div class="content__wrapper container my-4 p-3">
+        <div class="row g-4 justify-content-center">
+            <!-- Product Image -->
+            <div class="col-12 col-md-6">
+                {% if product.image %}
+                    <img src="{{ product.image.url }}"
+                         class="product__image"
+                         alt="{{ product.name }}">
+                {% else %}
+                    <img src="{% static 'media/default-product.jpeg' %}"
+                         class="product__image"
+                         alt="{{ product.name }}">
+                {% endif %}
+            </div>
+            <!-- Product Details + Add to Cart Form-->
+            <div class="col-12 col-md-6">
+                <h1 class="mb-3">{{ product.name }}</h1>
+                <p class="lead mb-3">€{{ product.price }}</p>
+            <!-- back to category in store with bootstrap tooltip attributes-->
+                {% if product.category %}
+                    <p class="text-muted mb-3">
+                        Category:
+                        <a href="{% url 'product_list_by_category' product.category.slug %}"
+                           class="product-detail__category-link"
+                           data-bs-toggle="tooltip"
+                           data-bs-placement="bottom"
+                           data-bs-custom-class="tooltip-grey"
+                           data-bs-title="Go to Category"
+                           aria-label="Go to Category">{{ product.category.name }}</a>
+                    </p>
+                {% endif %}
+                <div class="mb-4">{{ product.description|linebreaks }}</div>
+                <form id="cart-form" class="cart__form" method="post" action="">
+                    {% csrf_token %}
+                    <div class="mb-3">
+                        <label for="qty-{{ product.id }}" class="form-label">Quantity</label>
+                        <input type="number"
+                               id="qty-{{ product.id }}"
+                               name="quantity"
+                               min="1"
+                               value="1"
+                               class="cart__form-input form-control">
+                    </div>
+                </form>
+                <div class="d-flex flex-wrap gap-2 align-items-center">
+                    <!-- back to product pages with bootstrap tooltip attributes-->
+                    <a href="{% url 'product_list' %}"
+                       class="cta-btn-secondary btn product-detail__link"
+                       data-bs-toggle="tooltip"
+                       data-bs-placement="bottom"
+                       data-bs-custom-class="tooltip-grey"
+                       data-bs-title="Back to Shop"
+                       aria-label="Back to Shop"><i class="fa-solid fa-circle-left"> </i> </a>
+                    <button type="submit" class="cta-btn btn" form="cart-form">Add to Cart</button>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}
+{% block extra_js %}
+    <!-- Script for Bootstrap tooltips -->
+    <script>
+    document.addEventListener('DOMContentLoaded', function() {
+        const tooltipTriggerList = document.querySelectorAll('[data-bs-toggle="tooltip"]')
+        tooltipTriggerList.forEach(function (tooltipTriggerEl) {
+            new bootstrap.Tooltip(tooltipTriggerEl)
+        });
+    });
+    </script>
+{% endblock %}
