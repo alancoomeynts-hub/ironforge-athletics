@@ -181,3 +181,5 @@ import cloudinary
 cloudinary.config(
     cloudinary_url=os.environ.get("CLOUDINARY_URL"),
 )
+
+CART_SESSION_ID = "cart"
