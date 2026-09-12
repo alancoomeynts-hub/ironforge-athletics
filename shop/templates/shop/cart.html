@@ -1,0 +1,118 @@
+{% extends "base.html" %}
+{% load static %}
+{% block extra_css %}
+    <link rel="stylesheet" href="{% static 'css/shop.css' %}">
+{% endblock %}
+{% block title %}
+    Your shopping cart
+{% endblock %}
+{% block content %}
+    <div class="container py-5">
+        <div class="d-flex flex-column flex-md-row justify-content-between align-items-md-center mb-4">
+            <div>
+                <h1 class="mb-1">Your shopping cart</h1>
+                <p class="text-muted mb-0">Review your items before checkout.</p>
+            </div>
+            <a href="{% url 'shop:product_list' %}"
+               class="btn cta-btn-secondary mt-3 mt-md-0">Continue shopping</a>
+        </div>
+        {% if cart %}
+            <div class="table-responsive">
+            <!-- Bootstrap table to display cart items-->
+                <table class="table table-sm table-hover align-middle cart__table">
+                    <thead class="cart__table-head">
+                        <tr>
+                            <th scope="col">Product</th>
+                            <th scope="col">Quantity</th>
+                            <th scope="col" class="text-center">Remove</th>
+                            <th scope="col" class="text-end">Unit price</th>
+                            <th scope="col" class="text-end">Price</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for item in cart %}
+                            {% with product=item.product %}
+                                <tr>
+                                    <td>
+                                        <div class="d-flex align-items-center gap-3">
+                                            <a href="{% url 'shop:product_detail' product.id product.slug %}"
+                                               class=" cart__image-container d-none d-md-flex align-items-center justify-content-center">
+                                                {% if product.image %}
+                                                    <img src="{{ product.image.url }}"
+                                                         alt="{{ product.name }}"
+                                                         class="img-fluid cart__image">
+                                                {% else %}
+                                                    <img src="{% static 'media/default-product.jpeg' %}"
+                                                         alt="{{ product.name }}"
+                                                         class="img-fluid cart__image ">
+                                                {% endif %}
+                                            </a>
+                                            <a href="{% url 'shop:product_detail' product.id product.slug %}"
+                                               data-bs-toggle="tooltip"
+                                               data-bs-placement="bottom"
+                                               data-bs-custom-class="tooltip-grey"
+                                               data-bs-title="Go to Product"
+                                               aria-label="Go to Product"
+                                               class="cart__product-name">{{ product.name }}</a>
+                                        </div>
+                                    </td>
+                                    <td>
+                                        <form action="" method="post" class="cart__update-form">
+                                            {% csrf_token %}
+                                            <label for="quantity-{{ product.id }}" class="visually-hidden">Quantity for {{ product.name }}</label>
+                                            <div class="input-group input-group-sm">
+                                                <input id="quantity-{{ product.id }}"
+                                                       type="number"
+                                                       name="quantity"
+                                                       value="{{ item.quantity }}"
+                                                       min="1"
+                                                       class="form-control cart__quantity-input">
+                                                <button type="submit" class="btn cta-btn-secondary">Update</button>
+                                            </div>
+                                        </form>
+                                    </td>
+                                    <td>
+                                        <div class="d-flex justify-content-center">
+                                        <form action="{% url 'shop:cart_remove' product.id %}" method="post">
+                                            {% csrf_token %}
+                                            <button type="submit"
+                                                    data-bs-toggle="tooltip"
+                                                    data-bs-placement="bottom"
+                                                    data-bs-custom-class="tooltip-grey"
+                                                    data-bs-title="Remove from cart"
+                                                    aria-label="Remove from Cart"
+                                                    class="btn btn-outline-danger">
+                                                <i class="fa-solid fa-trash-can"></i>
+                                            </button>
+                                        </form>
+                                        </div>
+                                    </td>
+                                    <td class="text-end text-nowrap">€{{ item.price|floatformat:2 }}</td>
+                                    <td class="text-end text-nowrap fw-semibold">€{{ item.total_price|floatformat:2 }}</td>
+                                </tr>
+                            {% endwith %}
+                        {% endfor %}
+                    </tbody>
+                    <tfoot>
+                        <tr class="table-light">
+                            <th colspan="4" class="text-end">Total</th>
+                            <th class="text-end text-nowrap">€{{ cart.get_total_price|floatformat:2 }}</th>
+                        </tr>
+                    </tfoot>
+                </table>
+            </div>
+            <div class="d-flex justify-content-end mt-4">
+                <a href="#" class="btn cta-btn">Checkout</a>
+            </div>
+        {% else %}
+            <div class="text-center pb-3">Your cart is currently empty.</div>
+            <div class="text-center">
+                <a href="{% url 'shop:product_list' %}" class="btn cta-btn">Browse the shop</a>
+            </div>
+        {% endif %}
+    </div>
+{% endblock %}
+{% block extra_js %}
+    {{ block.super }}
+    <script src="{% static 'js/shop.js' %}"> </script>
+{% endblock %}

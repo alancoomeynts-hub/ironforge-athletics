@@ -117,7 +117,7 @@ main{
 .cta-btn:focus{
     background-color: var(--cta-hover);
     color: var(--text-color-light);
-    transform: translateX(-0.25rem) translateY(-0.25rem);
+    
 }
 
 .cta-btn-secondary{
@@ -138,7 +138,7 @@ main{
 .cta-btn-secondary:focus{
     background-color: var(--cta-secondary-hover);
     color: var(--text-color-light);
-    transform: translateX(-0.25rem) translateY(-0.25rem);
+
 }
 
 /* Navbar Styles */

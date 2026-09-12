@@ -58,3 +58,31 @@
     --bs-tooltip-bg: var(--secondary-color);
     --bs-tooltip-color: var(--text-color-light);
 }
+
+/*shop cart*/
+.cart__table-head tr th{
+    background-color: var(--secondary-color);
+    color: var(--text-color-light);
+    font-family: var(--font-heading);
+}
+
+.cart__product-name{
+    text-decoration: none;
+    color: var(--text-color);
+    }
+
+
+.cart__image{
+    min-width:30px ;
+    max-width: 120px;
+    height: 120px;
+    object-fit: contain;
+
+}
+
+.cart__update-form{
+
+    width: 100%;
+    max-width: 13rem;
+
+}
