@@ -5,48 +5,44 @@
 {% endblock %}
 {% block content %}
     <h1 class="p-4 text-center">Shop</h1>
-
     <div class="content__wrapper m-4">
         <!-- render product catalogue as Bootstrap tabs -->
-        <ul class=" shop__tabs nav nav-pills nav-justified flex-column flex-lg-row gap-2 mb-4">
+        <ul class="shop__tabs nav nav-pills nav-justified flex-column flex-lg-row gap-2 mb-4">
             <!-- Render All -->
-            <li class="nav-item ">
-                <a
-                    class="shop__tab nav-link {% if not category %}active{% endif %}"
-                    href="{% url 'product_list' %}">
-                    All
-                </a>
-
+            <li class="nav-item">
+                <a class="shop__tab nav-link {% if not category %}active{% endif %}"
+                   href="{% url 'shop:product_list' %}">All</a>
             </li>
             <!-- render each category -->
             {% for cat in categories %}
-                <li class="nav-item ">
-                    <a
-                        class="shop__tab nav-link {% if category and category.slug == cat.slug %}active{% endif %}"
-                        href="{% url 'product_list_by_category' cat.slug %}">
-                        {{ cat.name }}
-                    </a>
+                <li class="nav-item">
+                    <a class="shop__tab nav-link {% if category and category.slug == cat.slug %}active{% endif %}"
+                       href="{% url 'shop:product_list_by_category' cat.slug %}">{{ cat.name }}</a>
                 </li>
             {% endfor %}
         </ul>
-
         <!-- product grid -->
         <div class="shop__grid row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4">
             {% for product in products %}
                 <div class="col d-flex justify-content-center">
                     <div class="shop__card card h-100" ">
                         {% if product.image %}
-                            <img src="{{ product.image.url }}" class="card-img-top" alt="{{ product.name }}">
+                            <img src="{{ product.image.url }}"
+                                class="card-img-top"
+                                alt="{{ product.name }}">
                         {% else %}
-                            <img src="{% static 'media/default-product.jpeg' %}" class="card-img-top" alt="{{ product.name }}">
+                            <img src="{% static 'media/default-product.jpeg' %}"
+                                class="card-img-top"
+                                alt="{{ product.name }}">
                         {% endif %}
-                        <div class="card-body d-flex flex-column align-items-center">
-                            <h5 class="card-title">{{ product.name }}</h5>
-                            <p class="card-text">€{{ product.price }}</p>
-                            <a href="{% url 'product_detail' product.id product.slug %}" class="shop__card-action cta-btn btn ">View Item</a>
+                            <div class="card-body d-flex flex-column align-items-center">
+                                <h5 class="card-title">{{ product.name }}</h5>
+                                <p class="card-text">€{{ product.price }}</p>
+                                <a href="{% url 'shop:product_detail' product.id product.slug %}"
+                                class="shop__card-action cta-btn btn ">View Item</a>
+                            </div>
                         </div>
                     </div>
-                </div>
             {% endfor %}
         </div>
     </div>

@@ -18,7 +18,7 @@
         </div>
         {% if cart %}
             <div class="table-responsive">
-            <!-- Bootstrap table to display cart items-->
+                <!-- Bootstrap table to display cart items-->
                 <table class="table table-sm table-hover align-middle cart__table">
                     <thead class="cart__table-head">
                         <tr>
@@ -36,7 +36,7 @@
                                     <td>
                                         <div class="d-flex align-items-center gap-3">
                                             <a href="{% url 'shop:product_detail' product.id product.slug %}"
-                                               class=" cart__image-container d-none d-md-flex align-items-center justify-content-center">
+                                               class="cart__image-container d-none d-md-flex align-items-center justify-content-center">
                                                 {% if product.image %}
                                                     <img src="{{ product.image.url }}"
                                                          alt="{{ product.name }}"
@@ -44,7 +44,7 @@
                                                 {% else %}
                                                     <img src="{% static 'media/default-product.jpeg' %}"
                                                          alt="{{ product.name }}"
-                                                         class="img-fluid cart__image ">
+                                                         class="img-fluid cart__image">
                                                 {% endif %}
                                             </a>
                                             <a href="{% url 'shop:product_detail' product.id product.slug %}"
@@ -57,7 +57,7 @@
                                         </div>
                                     </td>
                                     <td>
-                                        <form action="" method="post" class="cart__update-form">
+                                        <form action="" method="post" class="shop__update-form">
                                             {% csrf_token %}
                                             <label for="quantity-{{ product.id }}" class="visually-hidden">Quantity for {{ product.name }}</label>
                                             <div class="input-group input-group-sm">
@@ -73,18 +73,18 @@
                                     </td>
                                     <td>
                                         <div class="d-flex justify-content-center">
-                                        <form action="{% url 'shop:cart_remove' product.id %}" method="post">
-                                            {% csrf_token %}
-                                            <button type="submit"
-                                                    data-bs-toggle="tooltip"
-                                                    data-bs-placement="bottom"
-                                                    data-bs-custom-class="tooltip-grey"
-                                                    data-bs-title="Remove from cart"
-                                                    aria-label="Remove from Cart"
-                                                    class="btn btn-outline-danger">
-                                                <i class="fa-solid fa-trash-can"></i>
-                                            </button>
-                                        </form>
+                                            <form action="{% url 'shop:cart_remove' product.id %}" method="post">
+                                                {% csrf_token %}
+                                                <button type="submit"
+                                                        data-bs-toggle="tooltip"
+                                                        data-bs-placement="bottom"
+                                                        data-bs-custom-class="tooltip-grey"
+                                                        data-bs-title="Remove from cart"
+                                                        aria-label="Remove from Cart"
+                                                        class="btn btn-outline-danger">
+                                                    <i class="fa-solid fa-trash-can"></i>
+                                                </button>
+                                            </form>
                                         </div>
                                     </td>
                                     <td class="text-end text-nowrap">€{{ item.price|floatformat:2 }}</td>
