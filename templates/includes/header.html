@@ -21,45 +21,65 @@
                 </div>
             </form>
         </div>
-        <!--  Account Links -->
-        <div class="col-3 site-header__links order-2 text-end mt-2 mt-md-0">
-            <div class="dropdown d-inline-block">
-                <a class="text-black nav-link"
-                   href="#"
-                   id="user-options"
-                   role="button"
-                   data-bs-toggle="dropdown"
-                   aria-expanded="false">
-                    <div class="text-center">
-                        <i class="site-header__icon fas fa-user"></i>
-                        <p class="site-header__tag my-0">My Account</p>
-                    </div>
+        <!--  Account and Cart Icons -->
+        <div class="col-3 site-header__links order-2 text-end mt-2 mt-md-0 pt-md-2">
+            <div class="d-flex justify-content-end align-items-center gap-3">
+                <a href="{% url 'shop:cart_detail' %}"
+                   class="nav-link position-relative"
+                   aria-label="Shopping cart">
+                    <i class="site-header__icon fa-solid fa-cart-shopping"
+                       aria-hidden="true"></i>
+                    <!-- Cart badge -->
+                    {% with total_items=cart|length %}
+                        {% if total_items > 0 %}
+                            <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
+                                {{ total_items }}
+                                <span class="visually-hidden">items in cart</span>
+                            </span>
+                        {% endif %}
+                    {% endwith %}
+                    <p class="site-header__tag my-0">
+                        Cart
+                    </p>
                 </a>
-                <ul class="site-header__dropdown-menu dropdown-menu dropdown-menu-end border-0"
-                    aria-labelledby="user-options">
-                    {% if request.user.is_authenticated %}
-                        <li>
-                            <a class="dropdown-item site-header__link" href="{% url 'dashboard' %}">Dashboard</a>
-                        </li>
-                        <li>
+                <div class="dropdown d-inline-block">
+                    <a class="text-black nav-link"
+                       href="#"
+                       id="user-options"
+                       role="button"
+                       data-bs-toggle="dropdown"
+                       aria-expanded="false">
+                        <div class="text-center">
+                            <i class="site-header__icon fas fa-user"></i>
+                            <p class="site-header__tag my-0">My Account</p>
+                        </div>
+                    </a>
+                    <ul class="site-header__dropdown-menu dropdown-menu dropdown-menu-end border-0"
+                        aria-labelledby="user-options">
+                        {% if request.user.is_authenticated %}
+                            <li>
+                                <a class="dropdown-item site-header__link" href="{% url 'dashboard' %}">Dashboard</a>
+                            </li>
+                            <li>
+                                <hr class="dropdown-divider">
+                            </li>
+                            <li>
+                                <a class="dropdown-item site-header__link"
+                                   href="{% url 'account_logout' %}">Log Out</a>
+                            </li>
+                        {% else %}
+                            <li>
+                                <a class="dropdown-item site-header__link"
+                                   href="{% url 'account_login' %}">Log In</a>
+                            </li>
                             <hr class="dropdown-divider">
-                        </li>
-                        <li>
-                            <a class="dropdown-item site-header__link"
-                               href="{% url 'account_logout' %}">Log Out</a>
-                        </li>
-                    {% else %}
-                        <li>
-                            <a class="dropdown-item site-header__link"
-                               href="{% url 'account_login' %}">Log In</a>
-                        </li>
-                        <hr class="dropdown-divider">
-                        <li>
-                            <a class="dropdown-item site-header__link"
-                               href="{% url 'account_signup' %}">Register</a>
-                        </li>
-                    {% endif %}
-                </ul>
+                            <li>
+                                <a class="dropdown-item site-header__link"
+                                   href="{% url 'account_signup' %}">Register</a>
+                            </li>
+                        {% endif %}
+                    </ul>
+                </div>
             </div>
         </div>
     </div>
