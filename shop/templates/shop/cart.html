@@ -57,7 +57,7 @@
                                         </div>
                                     </td>
                                     <td>
-                                        <form action="" method="post" class="shop__update-form">
+                                        <form action="{% url 'shop:cart_update' product.id %}" data-product-id="{{ product.id }}" method="post" class="shop__update-form">
                                             {% csrf_token %}
                                             <label for="quantity-{{ product.id }}" class="visually-hidden">Quantity for {{ product.name }}</label>
                                             <div class="input-group input-group-sm">
@@ -87,8 +87,8 @@
                                             </form>
                                         </div>
                                     </td>
-                                    <td class="text-end text-nowrap">€{{ item.price|floatformat:2 }}</td>
-                                    <td class="text-end text-nowrap fw-semibold">€{{ item.total_price|floatformat:2 }}</td>
+                                    <td  class="text-end text-nowrap">€{{ item.price|floatformat:2 }}</td>
+                                    <td id="line-total-{{ product.id }}" class="text-end text-nowrap fw-semibold">€{{ item.total_price|floatformat:2 }}</td>
                                 </tr>
                             {% endwith %}
                         {% endfor %}
@@ -96,7 +96,7 @@
                     <tfoot>
                         <tr class="table-light">
                             <th colspan="4" class="text-end">Total</th>
-                            <th class="text-end text-nowrap">€{{ cart.get_total_price|floatformat:2 }}</th>
+                            <th id="cart-total" class="text-end text-nowrap">€{{ cart.get_total_price|floatformat:2 }}</th>
                         </tr>
                     </tfoot>
                 </table>
@@ -114,5 +114,5 @@
 {% endblock %}
 {% block extra_js %}
     {{ block.super }}
-    <script src="{% static 'js/shop.js' %}"> </script>
+    <script src="{% static 'js/cart.js' %}" defer> </script>
 {% endblock %}

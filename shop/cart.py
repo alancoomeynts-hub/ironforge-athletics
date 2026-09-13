@@ -52,6 +52,15 @@ class Cart:
         """Count all items in the cart"""
         return sum(item['quantity'] for item in self.cart.values())
 
+    def get_line_total(self,product_id):
+        """return price of one cart item"""
+        item=self.cart.get(str(product_id))
+
+        if item is None:
+            return 0
+
+        return Decimal(item['price'])*item['quantity']
+
     def get_total_price(self):
         """Get the total price of all items in the cart"""
         return sum(Decimal(item['price'])*item['quantity'] for item in self.cart.values())
