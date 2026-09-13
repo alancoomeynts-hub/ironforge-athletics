@@ -45,6 +45,12 @@ function updateForm(updateForms) {
                 if (cartTotal) {
                     cartTotal.textContent = `€${data.cart_total}`;
                 }
+
+                const cartCount=document.querySelector('#cart-count');
+                if(cartCount){
+                    cartCount.textContent=`${data.cart_item_count}`;
+                }
+
             } catch (error) {
                 console.error(error);
             } finally {

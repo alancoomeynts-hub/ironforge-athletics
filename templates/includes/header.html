@@ -32,7 +32,7 @@
                     <!-- Cart badge -->
                     {% with total_items=cart|length %}
                         {% if total_items > 0 %}
-                            <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
+                            <span id="cart-count" class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
                                 {{ total_items }}
                                 <span class="visually-hidden">items in cart</span>
                             </span>

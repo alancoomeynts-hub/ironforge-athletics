@@ -85,6 +85,7 @@ def cart_update(request, product_id):
         quantity=quantity,
         override_quantity=True,
     )
+
     return JsonResponse(
         {
             "success": True,
@@ -92,5 +93,6 @@ def cart_update(request, product_id):
             "quantity": quantity,
             "line_total": f"{cart.get_line_total(product.id):.2f}",
             "cart_total": f"{cart.get_total_price():.2f}",
+            "cart_item_count": len(cart),
         }
     )
