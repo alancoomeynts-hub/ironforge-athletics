@@ -241,6 +241,21 @@ main{
 #id_password1_helptext{
     display: none;
 }
+/*toast style */
+.custom__toast-container{
+    position: fixed;
+    top: 72px;
+    right: 15px;
+    z-index: 1000;
+
+}
+
+.custom__toast{
+    background-color: var(--cta);
+    color: var(--text-color-light);
+    font-family: var(--font-heading);
+    font-size: 0.9rem;
+}
 
 /* Media Queries */
 /*Media query to pad in content blocks on smaller screens*/
