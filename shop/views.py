@@ -58,7 +58,7 @@ def cart_add(request, product_id):
             override_quantity=cd["override"],
         )
 
-    messages.info(request, f"Product {product.name} added to cart")
+    messages.success(request, f"Product {product.name} added to cart")
 
     return redirect(
         "shop:product_list_by_category", category_slug=product.category.slug
@@ -70,7 +70,7 @@ def cart_remove(request, product_id):
     cart = Cart(request)
     product = get_object_or_404(Product, id=product_id)
     cart.remove_from_cart(product)
-    messages.info(request, f"Product {product.name} removed from cart")
+    messages.success(request, f"Product {product.name} removed from cart")
     return redirect("shop:cart_detail")
 
 
@@ -100,6 +100,7 @@ def cart_update(request, product_id):
             "line_total": f"{cart.get_line_total(product.id):.2f}",
             "cart_total": f"{cart.get_total_price():.2f}",
             "cart_item_count": len(cart),
+            "type": "success",
             "message": message,
         }
     )

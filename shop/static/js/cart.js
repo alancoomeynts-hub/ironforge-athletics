@@ -51,7 +51,7 @@ function updateForm(updateForms) {
                     cartCount.textContent=`${data.cart_item_count}`;
                 }
 
-                showToast(data.message);
+                showToast(data.message,data.type);
 
             } catch (error) {
                 console.error(error);

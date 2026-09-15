@@ -251,11 +251,22 @@ main{
 }
 
 .custom__toast{
-    background-color: var(--cta);
-    color: var(--text-color-light);
+    background-color: var(--text-color-light);
+    color: var(--text-color);
     font-family: var(--font-heading);
     font-size: 0.9rem;
+
 }
+ .custom__toast--success{
+        border-left: 5px solid var(--cta);
+    }
+
+ .custom__toast--error{
+        border-left: 5px solid red;
+    }
+ .custom__toast--info{
+     border-left: 5px solid blue;
+ }
 
 /* Media Queries */
 /*Media query to pad in content blocks on smaller screens*/

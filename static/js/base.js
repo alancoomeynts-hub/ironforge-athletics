@@ -13,15 +13,18 @@ document.addEventListener('DOMContentLoaded', function() {
 
     });
 
-function showToast(message) {
+function showToast(message,type) {
     const toastContainer=document.getElementById('js-toast-container');
        if (!toastContainer) {
         console.error("Toast element not found.");
         return;
     }
+    if(type===null){
+        type="success";
+    }
 
     const toastElement=document.createElement("div");
-    toastElement.className="toast align-items-center custom__toast border-0";
+    toastElement.className=`toast align-items-center custom__toast--${type}`;
 
     toastElement.setAttribute("role", "alert");
     toastElement.setAttribute("aria-live", "assertive");
@@ -32,7 +35,7 @@ function showToast(message) {
             <div class="toast-body"></div>
             <button
                 type="button"
-                class="btn-close btn-close-white me-2 m-auto"
+                class="btn-close btn-close-dark me-2 m-auto"
                 data-bs-dismiss="toast"
                 aria-label="Close"
             ></button>
@@ -44,4 +47,8 @@ function showToast(message) {
 
     const toast=bootstrap.Toast.getOrCreateInstance(toastElement,{delay:3000});
     toast.show();
+
+    toastElement.addEventListener('hidden.bs.toast', function () {
+        toastElement.remove();
+    });
 }

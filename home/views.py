@@ -1,5 +1,6 @@
 from django.views.generic import DetailView
 from django.views.generic.edit import FormMixin
+from django.contrib import messages
 
 from .forms import ContactForm
 from .models import Gym
@@ -21,4 +22,5 @@ class ContactUsView(FormMixin, DetailView):
 
     def form_valid(self, form):
         form.save()
+        messages.success(self.request, "Your message has been sent successfully!")
         return super().form_valid(form)
