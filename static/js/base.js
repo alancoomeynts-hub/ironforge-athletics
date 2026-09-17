@@ -11,6 +11,7 @@ document.addEventListener('DOMContentLoaded', function() {
             bootstrap.Toast.getOrCreateInstance(element).show();
         });
 
+        initialiseRatingSlider();
     });
 
 function showToast(message,type) {
@@ -51,4 +52,21 @@ function showToast(message,type) {
     toastElement.addEventListener('hidden.bs.toast', function () {
         toastElement.remove();
     });
+}
+
+function initialiseRatingSlider(){
+    const ratingInput = document.getElementById("id_rating");
+        const ratingValue = document.getElementById("rating-value");
+
+        if (!ratingInput || !ratingValue) {
+        return;
+        }
+
+        function updateRatingValue() {
+            ratingValue.textContent = ratingInput.value;
+        }
+
+        ratingInput.addEventListener("input", updateRatingValue);
+        updateRatingValue();
+
 }
