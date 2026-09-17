@@ -57,4 +57,58 @@
             </div>
         </div>
     </div>
+    <!-- Review Form Section -->
+    <div id="review-form"
+         class="content__wrapper container align-items-center my-4 p-3">
+        <div class="row justify-content-center align-items-center">
+            <div class="col-12 col-md-6 form-max-width py-2">
+                {% if request.user.is_authenticated %}
+                    <form method="post"
+                          action="{% url 'shop:create_review' product.id product.slug %}"
+                          class="review__form">
+                        {% csrf_token %}
+                        <label for="{{ review_form.rating.id_for_label }}" class="form-label">
+                            Rating:
+                            <output id="rating-value">3</output>/5
+                        </label>
+                        {{ review_form.rating }}
+                        <label for="{{ review_form.comment.id_for_label }}">{{ review_form.comment.label }}</label>
+                        {{ review_form.comment }}
+                        <button type="submit" class="btn btn-primary my-2">Submit review</button>
+                    </form>
+                {% else %}
+                    <p>
+                        <a href="{% url 'account_login' %}">Log in</a>
+                        to leave a review.
+                    </p>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+    <!-- Existing Reviews Section -->
+    <div class="container my-4 p-3">
+        <h2 class="text-center">Customer Reviews</h2>
+        <div class="row g-4">
+            {% for review in product_reviews %}
+                <div class="col-12">
+                    <div class="card h-100 review__card content__wrapper">
+                        <div class="card-body">
+                            <div class="review-rating" aria-label="{{ review.rating }} out of 5 stars">
+                                {% for star in "12345" %}
+                                    {% if forloop.counter <= review.rating %}
+                                        <span aria-hidden="true"><i class="fa-solid fa-star"></i></span>
+                                    {% else %}
+                                        <span aria-hidden="true"><i class="fa-regular fa-star"></i></span>
+                                    {% endif %}
+                                {% endfor %}
+                            </div>
+                            <p> <strong>{{ review.user.get_username }}</strong></p>
+                            <p>{{ review.comment|linebreaksbr }}</p>
+                            <small class="text-muted">{{ review.created_on|date:"j F Y" }}</small>
+                        </div>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+    </div>
 {% endblock %}

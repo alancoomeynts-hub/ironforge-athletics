@@ -1,5 +1,6 @@
 from cloudinary.models import CloudinaryField
 from django.contrib.auth.models import User
+from django.core.validators import MinValueValidator, MaxValueValidator
 from django.db import models
 
 
@@ -36,14 +37,17 @@ class Product(models.Model):
 
 class ProductReview(models.Model):
     product = models.ForeignKey(Product, on_delete=models.CASCADE, related_name='reviews')
-    user = models.ForeignKey(User, on_delete=models.CASCADE, related_name='reviews',null=True,blank=True)
-    rating = models.PositiveSmallIntegerField()
+    user = models.ForeignKey(User, on_delete=models.CASCADE, related_name='product_reviews')
+    rating = models.PositiveSmallIntegerField(validators=[MinValueValidator(1), MaxValueValidator(5)],)
     comment = models.TextField()
     created_on = models.DateTimeField(auto_now_add=True)
     updated_on = models.DateTimeField(auto_now=True)
 
     class Meta:
         ordering = ('-created_on',)
+        constraints = [
+            models.UniqueConstraint(fields=['product', 'user'], name='unique_product_review')
+        ]
 
     def __str__(self):
         return f'{self.product.name} review ({self.rating}/5)'
