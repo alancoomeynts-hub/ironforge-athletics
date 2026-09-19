@@ -26,41 +26,57 @@ def product_list(request, category_slug=None):
 def product_detail(request, id, slug):
     product = get_object_or_404(Product, id=id, slug=slug, is_available=True)
     cart_product_form = CartAddProductForm()
-    product_reviews = (product.reviews.select_related("user").all())
+    product_reviews = product.reviews.select_related("user").all()
     review_form = ProductReviewForm()
     return render(
         request,
         "shop/product_detail.html",
-        {"product": product,"product_reviews":product_reviews,"review_form":review_form, "cart_product_form": cart_product_form,},
+        {
+            "product": product,
+            "product_reviews": product_reviews,
+            "review_form": review_form,
+            "cart_product_form": cart_product_form,
+        },
     )
 
-def create_review(request, id,slug):
-    product=get_object_or_404(Product,id=id,slug=slug, is_available=True)
 
-    if request.method !="POST":
+def create_review(request, id, slug):
+    product = get_object_or_404(Product, id=id, slug=slug, is_available=True)
+
+    if request.method != "POST":
         return redirect(
-            "shop:product_detail",id=id,slug=slug,
+            "shop:product_detail",
+            id=id,
+            slug=slug,
         )
 
-    form=ProductReviewForm(request.POST)
+    form = ProductReviewForm(request.POST)
     if form.is_valid():
-        review=form.save(commit=False)
-        review.product=product
-        review.user=request.user
+        review = form.save(commit=False)
+        review.product = product
+        review.user = request.user
         review.save()
 
         messages.success(request, "Review submitted successfully!")
 
         return redirect(
-            "shop:product_detail",id=id,slug=slug,
+            "shop:product_detail",
+            id=id,
+            slug=slug,
         )
-    product_reviews=product.reviews.select_related("user").all()
+    product_reviews = product.reviews.select_related("user").all()
     cart_product_form = CartAddProductForm()
     return render(
         request,
         "shop/product_detail.html",
-        {"product": product,"product_reviews":product_reviews,"review_form":form, "cart_product_form": cart_product_form,},
+        {
+            "product": product,
+            "product_reviews": product_reviews,
+            "review_form": form,
+            "cart_product_form": cart_product_form,
+        },
     )
+
 
 def cart_detail(request):
     cart = Cart(request)
@@ -119,7 +135,7 @@ def cart_update(request, product_id):
         override_quantity=True,
     )
 
-    message= f"Quantity updated to {quantity}"
+    message = f"Quantity updated to {quantity}"
 
     return JsonResponse(
         {

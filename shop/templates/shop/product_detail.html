@@ -67,7 +67,6 @@
                           action="{% url 'shop:create_review' product.id product.slug %}"
                           class="review__form">
                         {% csrf_token %}
-
                         <label class="form-label">Rating:</label>
                         <div id="rating-value" class="review-rating__stars">
                             {% for radio in review_form.rating %}
@@ -77,7 +76,6 @@
                                 </label>
                             {% endfor %}
                         </div>
-                    
                         <label for="{{ review_form.comment.id_for_label }}">{{ review_form.comment.label }}</label>
                         {{ review_form.comment }}
                         <button type="submit" class="cta-btn-secondary btn btn-primary my-2">Submit review</button>
