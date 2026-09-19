@@ -61,20 +61,26 @@
     <div id="review-form"
          class="content__wrapper container align-items-center my-4 p-3">
         <div class="row justify-content-center align-items-center">
-            <div class="col-12 col-md-6 form-max-width py-2">
+            <div class="col-12 form-max-width py-2">
                 {% if request.user.is_authenticated %}
                     <form method="post"
                           action="{% url 'shop:create_review' product.id product.slug %}"
                           class="review__form">
                         {% csrf_token %}
-                        <label for="{{ review_form.rating.id_for_label }}" class="form-label">
-                            Rating:
-                            <output id="rating-value">3</output>/5
-                        </label>
-                        {{ review_form.rating }}
+
+                        <label class="form-label">Rating:</label>
+                        <div id="rating-value" class="review-rating__stars">
+                            {% for radio in review_form.rating %}
+                                {{ radio.tag }}
+                                <label for="{{ radio.id_for_label }}">
+                                    <i class="fa-regular fa-star"></i>
+                                </label>
+                            {% endfor %}
+                        </div>
+                    
                         <label for="{{ review_form.comment.id_for_label }}">{{ review_form.comment.label }}</label>
                         {{ review_form.comment }}
-                        <button type="submit" class="btn btn-primary my-2">Submit review</button>
+                        <button type="submit" class="cta-btn-secondary btn btn-primary my-2">Submit review</button>
                     </form>
                 {% else %}
                     <p>
@@ -93,10 +99,11 @@
                 <div class="col-12">
                     <div class="card h-100 review__card content__wrapper">
                         <div class="card-body">
-                            <div class="review-rating" aria-label="{{ review.rating }} out of 5 stars">
+                            <div class="review__rating"
+                                 aria-label="{{ review.rating }} out of 5 stars">
                                 {% for star in "12345" %}
                                     {% if forloop.counter <= review.rating %}
-                                        <span aria-hidden="true"><i class="fa-solid fa-star"></i></span>
+                                        <span aria-hidden="true"><i class="fa-solid fa-star review__star"></i></span>
                                     {% else %}
                                         <span aria-hidden="true"><i class="fa-regular fa-star"></i></span>
                                     {% endif %}

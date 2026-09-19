@@ -55,18 +55,23 @@ function showToast(message,type) {
 }
 
 function initialiseRatingSlider(){
-    const ratingInput = document.getElementById("id_rating");
         const ratingValue = document.getElementById("rating-value");
+        const ratingInputs = document.querySelectorAll('input[name="rating"]');
 
-        if (!ratingInput || !ratingValue) {
+        if (!ratingInputs.length || !ratingValue) {
         return;
         }
 
-        function updateRatingValue() {
-            ratingValue.textContent = ratingInput.value;
-        }
+        const stars = ratingValue.querySelectorAll("i");
 
-        ratingInput.addEventListener("input", updateRatingValue);
-        updateRatingValue();
+        ratingInputs.forEach((input) => {
+            input.addEventListener("change", () => {
+                const rating = Number(input.value);
+                stars.forEach((star, index) => {
+                    star.className= index < rating?"fa-solid fa-star review__star":"fa-regular fa-star";
+                });
+            });
+        });
+
 
 }
