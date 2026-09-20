@@ -4,6 +4,8 @@ Django settings for ironforge_athletics project.
 """
 
 import os
+from decimal import Decimal
+
 import dj_database_url
 from pathlib import Path
 
@@ -184,3 +186,8 @@ cloudinary.config(
 )
 
 CART_SESSION_ID = "cart"
+
+SHIPPING_COSTS = {
+    "pickup": Decimal("0.00"),
+    "delivery": Decimal("7.00"),
+}

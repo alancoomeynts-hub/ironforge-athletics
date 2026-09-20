@@ -6,15 +6,21 @@ document.addEventListener('DOMContentLoaded', function() {
             new bootstrap.Tooltip(tooltipTriggerEl)
         });
 
+        /* display toast messages from the server */
         const toast = document.querySelectorAll('.toast');
         toast.forEach(element => {
             bootstrap.Toast.getOrCreateInstance(element).show();
         });
 
-        initialiseRatingSlider();
+        initialiseRatingRadio();
     });
 
 function showToast(message,type) {
+    /* Show a toast message with a custom class.
+    * @param {string} message - The message to display in the toast.
+    * @param {string} type - The type of toast (success, error, warning, info).
+    */
+
     const toastContainer=document.getElementById('js-toast-container');
        if (!toastContainer) {
         console.error("Toast element not found.");
@@ -54,7 +60,9 @@ function showToast(message,type) {
     });
 }
 
-function initialiseRatingSlider(){
+function initialiseRatingRadio(){
+        /* Update the displayed star rating when a rating radio input changes. */
+
         const ratingValue = document.getElementById("rating-value");
         const ratingInputs = document.querySelectorAll('input[name="rating"]');
 
