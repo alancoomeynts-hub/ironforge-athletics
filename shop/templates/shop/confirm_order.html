@@ -33,13 +33,13 @@
                             <tr>
                                 <td>{{ item.product.name }}</td>
                                 <td>{{ item.quantity }}</td>
-                                <td>{{ item.total_price }}</td>
+                                <td>€{{ item.total_price }}</td>
                             </tr>
                         {% endfor %}
                     </tbody>
                 </table>
                 <div class="mt-2">
-                    <strong>Total:</strong> ${{ cart.get_total_price }}
+                    <strong>Total:</strong> €{{ cart.get_total_price }}
                 </div>
 
             <div class="mt-auto d-flex flex-column align-items-center gap-2">
