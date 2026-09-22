@@ -72,29 +72,63 @@ class ProductReview(models.Model):
     def __str__(self):
         return f"{self.product.name} review ({self.user.username})"
 
+
 class Order(models.Model):
     class Status(models.TextChoices):
-        PENDING = 'pending',"Pending"
-        PAID = 'paid',"Paid"
-        FAILED = 'failed',"Failed"
-        CANCELLED = 'cancelled',"Cancelled"
+        PENDING = "pending", "Pending"
+        PAID = "paid", "Paid"
+        FAILED = "failed", "Failed"
+        CANCELLED = "cancelled", "Cancelled"
 
     class ShippingMethod(models.TextChoices):
-        PICKUP = 'pickup',"Pickup"
-        DELIVERY = 'delivery',"Delivery"
+        PICKUP = "pickup", "Pickup"
+        DELIVERY = "delivery", "Delivery"
 
-    user = models.ForeignKey(User, on_delete=models.PROTECT,related_name="orders",)
-    status = models.CharField(max_length=20,choices=Status.choices,default=Status.PENDING,)
-    shipping_method = models.CharField(max_length=20,choices=ShippingMethod.choices,default=ShippingMethod.PICKUP,)
-    shipping_cost=models.DecimalField(max_digits=10,decimal_places=2,default=Decimal("0.00"),)
+    user = models.ForeignKey(
+        User,
+        on_delete=models.PROTECT,
+        related_name="orders",
+    )
+    status = models.CharField(
+        max_length=20,
+        choices=Status.choices,
+        default=Status.PENDING,
+    )
+    shipping_method = models.CharField(
+        max_length=20,
+        choices=ShippingMethod.choices,
+        default=ShippingMethod.PICKUP,
+    )
+    shipping_cost = models.DecimalField(
+        max_digits=10,
+        decimal_places=2,
+        default=Decimal("0.00"),
+    )
     created_on = models.DateTimeField(auto_now_add=True)
     updated_on = models.DateTimeField(auto_now=True)
-    stripe_payment_intent_id=models.CharField(max_length=30,blank=True,null=True,unique=True,)
+    stripe_payment_intent_id = models.CharField(
+        max_length=30,
+        blank=True,
+        null=True,
+        unique=True,
+    )
 
-    full_name = models.CharField(max_length=30,blank=True,default='',)
-    email = models.EmailField(max_length=30,blank=False,null=False,)
-    phone_number = models.CharField(max_length=20,blank=False,null=False,)
-    country = models.CharField(max_length=15,default='IE')
+    full_name = models.CharField(
+        max_length=30,
+        blank=True,
+        default="",
+    )
+    email = models.EmailField(
+        max_length=30,
+        blank=False,
+        null=False,
+    )
+    phone_number = models.CharField(
+        max_length=20,
+        blank=False,
+        null=False,
+    )
+    country = models.CharField(max_length=15, default="IE")
     eircode = models.CharField(max_length=10)
     town_or_city = models.CharField(max_length=25)
     street_address1 = models.CharField(max_length=50)
@@ -102,9 +136,9 @@ class Order(models.Model):
     county = models.CharField(max_length=25)
 
     class Meta:
-        ordering = ('-created_on',)
+        ordering = ("-created_on",)
         indexes = [
-            models.Index(fields=['-created_on']),
+            models.Index(fields=["-created_on"]),
         ]
 
     def __str__(self):
@@ -112,15 +146,21 @@ class Order(models.Model):
 
     @property
     def order_total(self):
-        return sum((item.line_total for item in self.items.all()),Decimal("0"),)
+        return sum(
+            (item.line_total for item in self.items.all()),
+            Decimal("0"),
+        )
 
     @property
     def grand_total(self):
         return self.order_total + self.shipping_cost
 
+
 class OrderItem(models.Model):
     order = models.ForeignKey(Order, on_delete=models.CASCADE, related_name="items")
-    product = models.ForeignKey(Product, on_delete=models.PROTECT, related_name="order_items")
+    product = models.ForeignKey(
+        Product, on_delete=models.PROTECT, related_name="order_items"
+    )
     price = models.DecimalField(max_digits=10, decimal_places=2)
     quantity = models.PositiveIntegerField(default=1)
 

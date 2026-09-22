@@ -10,14 +10,14 @@
     <div class="container py-5">
         <div class="d-flex flex-column flex-md-row justify-content-between align-items-md-center mb-4">
             <div>
-                <h1 class="mb-1">Your shopping cart</h1>
+                <h1 class="h3 mb-1">Your shopping cart</h1>
                 <p class="text-muted mb-0">Review your items before checkout.</p>
             </div>
             <a href="{% url 'shop:product_list' %}"
                class="btn cta-btn-secondary mt-3 mt-md-0">Continue shopping</a>
         </div>
         {% if cart %}
-            <div class="table-responsive">
+            <div class="table-responsive rounded-3 border-top">
                 <!-- Bootstrap table to display cart items-->
                 <table class="table table-sm table-hover align-middle cart__table">
                     <thead class="cart__table-head">
@@ -106,7 +106,7 @@
                 </table>
             </div>
             <div class="d-flex justify-content-end mt-4">
-                <a href="#" class="btn cta-btn">Checkout</a>
+                <a href="{% url 'shop:confirm_order' %}" class="btn cta-btn">Checkout</a>
             </div>
         {% else %}
             <div class="text-center pb-3">Your cart is currently empty.</div>

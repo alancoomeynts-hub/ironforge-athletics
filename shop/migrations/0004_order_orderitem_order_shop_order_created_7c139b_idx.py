@@ -6,49 +6,109 @@ from django.db import migrations, models
 
 
 class Migration(migrations.Migration):
-
     dependencies = [
-        ('shop', '0003_alter_productreview_rating'),
+        ("shop", "0003_alter_productreview_rating"),
         migrations.swappable_dependency(settings.AUTH_USER_MODEL),
     ]
 
     operations = [
         migrations.CreateModel(
-            name='Order',
+            name="Order",
             fields=[
-                ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('status', models.CharField(choices=[('pending', 'Pending'), ('paid', 'Paid'), ('failed', 'Failed'), ('cancelled', 'Cancelled')], default='pending', max_length=20)),
-                ('shipping_method', models.CharField(choices=[('pickup', 'Pickup'), ('delivery', 'Delivery')], default='pickup', max_length=20)),
-                ('created_on', models.DateTimeField(auto_now_add=True)),
-                ('updated_on', models.DateTimeField(auto_now=True)),
-                ('stripe_payment_intent_id', models.CharField(blank=True, max_length=30, null=True, unique=True)),
-                ('full_name', models.CharField(blank=True, default='', max_length=30)),
-                ('email', models.EmailField(max_length=30)),
-                ('phone_number', models.CharField(max_length=20)),
-                ('country', models.CharField(default='IE', max_length=15)),
-                ('eircode', models.CharField(max_length=10)),
-                ('town_or_city', models.CharField(max_length=25)),
-                ('street_address1', models.CharField(max_length=50)),
-                ('street_address2', models.CharField(max_length=50)),
-                ('county', models.CharField(max_length=25)),
-                ('user', models.ForeignKey(on_delete=django.db.models.deletion.PROTECT, related_name='orders', to=settings.AUTH_USER_MODEL)),
+                (
+                    "id",
+                    models.BigAutoField(
+                        auto_created=True,
+                        primary_key=True,
+                        serialize=False,
+                        verbose_name="ID",
+                    ),
+                ),
+                (
+                    "status",
+                    models.CharField(
+                        choices=[
+                            ("pending", "Pending"),
+                            ("paid", "Paid"),
+                            ("failed", "Failed"),
+                            ("cancelled", "Cancelled"),
+                        ],
+                        default="pending",
+                        max_length=20,
+                    ),
+                ),
+                (
+                    "shipping_method",
+                    models.CharField(
+                        choices=[("pickup", "Pickup"), ("delivery", "Delivery")],
+                        default="pickup",
+                        max_length=20,
+                    ),
+                ),
+                ("created_on", models.DateTimeField(auto_now_add=True)),
+                ("updated_on", models.DateTimeField(auto_now=True)),
+                (
+                    "stripe_payment_intent_id",
+                    models.CharField(blank=True, max_length=30, null=True, unique=True),
+                ),
+                ("full_name", models.CharField(blank=True, default="", max_length=30)),
+                ("email", models.EmailField(max_length=30)),
+                ("phone_number", models.CharField(max_length=20)),
+                ("country", models.CharField(default="IE", max_length=15)),
+                ("eircode", models.CharField(max_length=10)),
+                ("town_or_city", models.CharField(max_length=25)),
+                ("street_address1", models.CharField(max_length=50)),
+                ("street_address2", models.CharField(max_length=50)),
+                ("county", models.CharField(max_length=25)),
+                (
+                    "user",
+                    models.ForeignKey(
+                        on_delete=django.db.models.deletion.PROTECT,
+                        related_name="orders",
+                        to=settings.AUTH_USER_MODEL,
+                    ),
+                ),
             ],
             options={
-                'ordering': ('-created_on',),
+                "ordering": ("-created_on",),
             },
         ),
         migrations.CreateModel(
-            name='OrderItem',
+            name="OrderItem",
             fields=[
-                ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('price', models.DecimalField(decimal_places=2, max_digits=10)),
-                ('quantity', models.PositiveIntegerField(default=1)),
-                ('order', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, related_name='items', to='shop.order')),
-                ('product', models.ForeignKey(on_delete=django.db.models.deletion.PROTECT, related_name='order_items', to='shop.product')),
+                (
+                    "id",
+                    models.BigAutoField(
+                        auto_created=True,
+                        primary_key=True,
+                        serialize=False,
+                        verbose_name="ID",
+                    ),
+                ),
+                ("price", models.DecimalField(decimal_places=2, max_digits=10)),
+                ("quantity", models.PositiveIntegerField(default=1)),
+                (
+                    "order",
+                    models.ForeignKey(
+                        on_delete=django.db.models.deletion.CASCADE,
+                        related_name="items",
+                        to="shop.order",
+                    ),
+                ),
+                (
+                    "product",
+                    models.ForeignKey(
+                        on_delete=django.db.models.deletion.PROTECT,
+                        related_name="order_items",
+                        to="shop.product",
+                    ),
+                ),
             ],
         ),
         migrations.AddIndex(
-            model_name='order',
-            index=models.Index(fields=['-created_on'], name='shop_order_created_7c139b_idx'),
+            model_name="order",
+            index=models.Index(
+                fields=["-created_on"], name="shop_order_created_7c139b_idx"
+            ),
         ),
     ]

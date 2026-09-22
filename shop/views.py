@@ -1,9 +1,10 @@
+from django.contrib.auth.decorators import login_required
 from django.http import JsonResponse
 from django.shortcuts import render, get_object_or_404, redirect
 from django.views.decorators.http import require_POST
-from .models import Category, Product, ProductReview
+from .models import Category, Product, Order, OrderItem
 from .cart import Cart
-from .forms import CartAddProductForm, ProductReviewForm
+from .forms import CartAddProductForm, ProductReviewForm, OrderForm
 from django.contrib import messages
 
 
@@ -106,7 +107,8 @@ def cart_add(request, product_id):
     messages.success(request, f"Product {product.name} added to cart")
 
     return redirect(
-        "shop:product_list_by_category", category_slug=product.category.slug
+        "shop:product_list_by_category",
+        category_slug=product.category.slug,
     )
 
 
@@ -126,7 +128,10 @@ def cart_update(request, product_id):
 
     form = CartAddProductForm(request.POST)
     if not form.is_valid():
-        return JsonResponse({"success": False, "error": "Invalid quantity"}, status=400)
+        return JsonResponse(
+            {"success": False, "error": "Invalid quantity"},
+            status=400,
+        )
 
     quantity = form.cleaned_data["quantity"]
     cart.add_to_cart(
@@ -148,4 +153,37 @@ def cart_update(request, product_id):
             "type": "success",
             "message": message,
         }
+    )
+
+
+@login_required
+def confirm_order(request):
+    cart = Cart(request)
+    if request.method == "POST":
+        form = OrderForm(request.POST)
+        if form.is_valid():
+            order = form.save(commit=False)
+            order.user = request.user
+            order.save()
+            for item in cart:
+                product = item["product"]
+
+                OrderItem.objects.create(
+                    order=order,
+                    product=product,
+                    price=product.price,
+                    quantity=item["quantity"],
+                )
+            cart.clear()
+            return render(
+                request,
+                "shop/success.html",
+                {"order": order},
+            )
+    else:
+        form = OrderForm()
+    return render(
+        request,
+        "shop/confirm_order.html",
+        {"cart": cart, "form": form},
     )

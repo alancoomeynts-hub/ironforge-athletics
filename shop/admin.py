@@ -7,17 +7,24 @@ admin.site.register(Category)
 admin.site.register(Product)
 admin.site.register(ProductReview)
 
+
 class OrderItemInline(admin.TabularInline):
     model = OrderItem
     extra = 0
-    list_display = ("id","product","price","quantity",)
-    readonly_fields= ("line_total_display",)
+    list_display = (
+        "id",
+        "product",
+        "price",
+        "quantity",
+    )
+    readonly_fields = ("line_total_display",)
 
     @admin.display(description="Line total")
     def line_total_display(self, obj):
         if obj.pk:
             return obj.line_total
         return ""
+
 
 @admin.register(Order)
 class OrderAdmin(admin.ModelAdmin):
@@ -52,11 +59,14 @@ class OrderAdmin(admin.ModelAdmin):
         "grand_total_display",
     )
 
-    list_filter = ("status","created_on",)
-    inlines=[OrderItemInline,]
+    list_filter = (
+        "status",
+        "created_on",
+    )
+    inlines = [
+        OrderItemInline,
+    ]
 
     @admin.display(description="Grand Total")
     def grand_total_display(self, obj):
         return obj.grand_total
-
-
