@@ -1,0 +1,46 @@
+{% extends "base.html" %}
+{% load static %}
+{% block extra_css %}
+    <link rel="stylesheet" href="{% static 'css/shop.css' %}">
+{% endblock %}
+{% block content %}
+    <div class="content__wrapper container py-5">
+        <div class="col-12">
+            <table class="table table-sm table-hover align-middle order__table">
+                <thead class="order__table-head">
+                    <tr>
+                        <th scope="col">Product</th>
+                        <th scope="col">Quantity</th>
+                        <th scope="col">Sub Total</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for item in order.items.all %}
+                        <tr>
+                            <td>{{ item.product.name }}</td>
+                            <td>{{ item.quantity }}</td>
+                            <td>€{{ item.line_total }}</td>
+                        </tr>
+                    {% endfor %}
+                </tbody>
+                <tfoot>
+                    {% if order.shipping_cost %}
+                        <td>Delivery Charge</td>
+                        <td>1</td>
+                        <td>{{ order.shipping_cost|floatformat:2 }}</td>
+                    {% endif %}
+                </tfoot>
+            </table>
+            <div class="mt-2">
+                <strong>Total:</strong> €{{ order.grand_total }}
+            </div>
+            <div class="mt-auto d-flex flex-column align-items-center gap-2">
+                <form id="pay__form" action="{% url 'payment:process' %}" method="post">
+                    {% csrf_token %}
+                    <button type="submit" form="pay__form" class="btn w-100 mt-3 cta-btn buy-btn">Buy</button>
+                    <small class="text-muted">powered by <i class="fa-brands fa-stripe"></i></small>
+                </form>
+            </div>
+        </div>
+    </div>
+{% endblock %}

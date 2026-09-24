@@ -46,12 +46,19 @@ INSTALLED_APPS = [
     "django.contrib.messages",
     "django.contrib.staticfiles",
     "django.contrib.sites",
+
+    #Allauth
     "allauth",
     "allauth.account",
     "allauth.socialaccount",
+
+    # Local apps
     "home",
     "user_profile.apps.UserProfileConfig",
     "shop",
+    "payment",
+
+    # Third-party apps
     "django_summernote",
     "crispy_forms",
     "crispy_bootstrap5",
@@ -187,7 +194,9 @@ cloudinary.config(
 
 CART_SESSION_ID = "cart"
 
-SHIPPING_COSTS = {
-    "pickup": Decimal("0.00"),
-    "delivery": Decimal("7.00"),
-}
+DELIVERY_COSTS = 10
+
+STRIPE_CURRENCY='EUR'
+STRIPE_PUBLIC_KEY=os.getenv('STRIPE_PUBLIC_KEY','')
+STRIPE_SECRET_KEY=os.getenv('STRIPE_SECRET_KEY','')
+STRIPE_WH_SECRET=os.getenv('STRIPE_WH_SECRET','')
