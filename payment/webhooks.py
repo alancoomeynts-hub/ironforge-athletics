@@ -9,8 +9,6 @@ from shop.models import Order
 @csrf_exempt
 def stripe_webhook(request):
 
-    print("STRIPE WEBHOOK HIT")
-
     payload = request.body
     sig_header = request.META["HTTP_STRIPE_SIGNATURE"]
     event = None
@@ -22,13 +20,10 @@ def stripe_webhook(request):
             settings.STRIPE_WH_SECRET,
         )
     except ValueError as e:
-        print("INVALID PAYLOAD:", e)
         return HttpResponse(status=400)
     except stripe.error.SignatureVerificationError as e:
-        print("INVALID SIGNATURE:", e)
         return HttpResponse(status=400)
 
-    print("EVENT:", event.type)
     if event.type == "checkout.session.completed":
         session = event.data.object
 
