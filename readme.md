@@ -235,7 +235,7 @@ discuss topics, and share fitness achievements.
 - Members can create threads and posts in appropriate categories.
 - Non-members cannot access the forum.
 
-8. Browse Products: Implement a product catalog page where visitors and members can browse available products.
+8. **Browse Products:** Implement a product catalog page where visitors and members can browse available products.
 
 ##### Features
 
@@ -255,7 +255,7 @@ discuss topics, and share fitness achievements.
 - The product list is readable and navigable on mobile and desktop devices.
 - Each product card contains a clear link to its product detail page.
 
-9. View Product Details:
+9. **View Product Details:**
 Implement product detail pages with the information customers need to make purchase decisions.
 
 ##### Features
@@ -271,7 +271,7 @@ Display the following information:
 - An **Add to cart** button.
 
 ##### Acceptance Criteria
-
+- Implement the `Product` and `Product Review` models.
 - Product detail pages render correctly for all active products.
 - All key information, including price, description, and images, is visible.
 - The **Add to cart** button is present and functional.
@@ -428,7 +428,8 @@ was guided by course material, official documentation, and selected tutorials, w
 problem-solving carried out during development.
 
 ### Django 5 by Example by Antonio Melé: 
-Reference textbook to support course material. Used for Django ORM, templates, models, permissions, view patterns. Also as insight into profile blog, shop and message board app design.
+Reference textbook to support course material. Used for Django ORM, templates, models, permissions, view patterns. Also 
+as insight into profile blog, shop and message board app design.
 
 ### BEM Methodology for css  - 
 sources: https://getbem.com/ and https://bem.info/en/methodology/naming-convention/
@@ -436,6 +437,14 @@ sources: https://getbem.com/ and https://bem.info/en/methodology/naming-conventi
 sources: Learn Django - CLass Based Views Course by Very Academy: https://www.youtube.com/watch?v=GxA2I-n8NR8&list=PLOLrQ9Pn6caxNb9eFZJ6LfY29nZkKmmXT
 ### Django AllAuth Customization - 
 Tutorials Series by BugBytes: https://www.youtube.com/playlist?list=PL-2EBeDYMIbQqZZoo5Dj8YAkPnZeJfcZS
+### Bootstrap 5
+### AJAX methods: 
+sources -Course material (Boutique-Ado), Django 5 by example chapter 6, online tutorial: 
+### Custom Django Signals: https://stackandstories.vercel.app/blog/django-signals-beginner-to-advanced
+
+### .initial - prefill form
+### property decorators
+### never cache decorator: https://stackoverflow.com/questions/46996150/django-avoid-user-to-go-back-to-login-page-once-logged-in
 ## Bugs and Fixes
 ### AllAuth
 - I encountered several deprecation errors using settings from the 0.50 version of allauth. I resolved by replacing deprecated settings with the new ones.

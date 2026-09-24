@@ -6,15 +6,17 @@
         <div class="content__wrapper row justify-content-center form-max-width mx-auto mb-3">
             <div class="col-12 col-lg-9">
                 <hr>
-                <h2 class="mb-0"> Edit Profile</h2>
+                <h2 class="mb-0">Edit Profile</h2>
                 <hr>
- <form method="post" enctype="multipart/form-data">
- {{ user_form|crispy }}
- {{ profile_form|crispy }}
- {% csrf_token %}
-<p><input type="submit" value="Save changes"></p>
- </form>
-    </div>
+                <form method="post" enctype="multipart/form-data">
+                    {{ user_form|crispy }}
+                    {{ profile_form|crispy }}
+                    {% csrf_token %}
+                    <p>
+                        <input type="submit" value="Save changes">
+                    </p>
+                </form>
+            </div>
         </div>
     </div>
 {% endblock %}

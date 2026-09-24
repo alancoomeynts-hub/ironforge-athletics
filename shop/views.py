@@ -168,13 +168,13 @@ def confirm_order(request):
             order = form.save(commit=False)
             order.user = request.user
 
-            shipping_method=form.cleaned_data['shipping_method']
-            shipping_cost=Decimal(0.00)
-            if shipping_method=='delivery':
-                shipping_cost=Decimal(settings.DELIVERY_COSTS)
+            shipping_method = form.cleaned_data["shipping_method"]
+            shipping_cost = Decimal(0.00)
+            if shipping_method == "delivery":
+                shipping_cost = Decimal(settings.DELIVERY_COSTS)
 
-            order.shipping_method=shipping_method
-            order.shipping_cost=shipping_cost
+            order.shipping_method = shipping_method
+            order.shipping_cost = shipping_cost
 
             order.save()
             for item in cart:

@@ -46,18 +46,15 @@ INSTALLED_APPS = [
     "django.contrib.messages",
     "django.contrib.staticfiles",
     "django.contrib.sites",
-
-    #Allauth
+    # Allauth
     "allauth",
     "allauth.account",
     "allauth.socialaccount",
-
     # Local apps
     "home",
     "user_profile.apps.UserProfileConfig",
     "shop",
     "payment",
-
     # Third-party apps
     "django_summernote",
     "crispy_forms",
@@ -96,7 +93,7 @@ TEMPLATES = [
                 "django.contrib.auth.context_processors.auth",
                 "django.template.context_processors.media",
                 "django.contrib.messages.context_processors.messages",
-                'shop.context_processors.cart',
+                "shop.context_processors.cart",
             ],
         },
     },
@@ -196,7 +193,7 @@ CART_SESSION_ID = "cart"
 
 DELIVERY_COSTS = 10
 
-STRIPE_CURRENCY='EUR'
-STRIPE_PUBLIC_KEY=os.getenv('STRIPE_PUBLIC_KEY','')
-STRIPE_SECRET_KEY=os.getenv('STRIPE_SECRET_KEY','')
-STRIPE_WH_SECRET=os.getenv('STRIPE_WH_SECRET','')
+STRIPE_CURRENCY = "EUR"
+STRIPE_PUBLIC_KEY = os.getenv("STRIPE_PUBLIC_KEY", "")
+STRIPE_SECRET_KEY = os.getenv("STRIPE_SECRET_KEY", "")
+STRIPE_WH_SECRET = os.getenv("STRIPE_WH_SECRET", "")
