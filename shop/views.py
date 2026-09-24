@@ -1,8 +1,11 @@
+from decimal import Decimal
+
+from django.conf import settings
 from django.contrib.auth.decorators import login_required
 from django.http import JsonResponse
 from django.shortcuts import render, get_object_or_404, redirect
 from django.views.decorators.http import require_POST
-from .models import Category, Product, Order, OrderItem
+from .models import Category, Product, OrderItem
 from .cart import Cart
 from .forms import CartAddProductForm, ProductReviewForm, OrderForm
 from django.contrib import messages
@@ -164,6 +167,15 @@ def confirm_order(request):
         if form.is_valid():
             order = form.save(commit=False)
             order.user = request.user
+
+            shipping_method=form.cleaned_data['shipping_method']
+            shipping_cost=Decimal(0.00)
+            if shipping_method=='delivery':
+                shipping_cost=Decimal(settings.DELIVERY_COSTS)
+
+            order.shipping_method=shipping_method
+            order.shipping_cost=shipping_cost
+
             order.save()
             for item in cart:
                 product = item["product"]
@@ -175,11 +187,8 @@ def confirm_order(request):
                     quantity=item["quantity"],
                 )
             cart.clear()
-            return render(
-                request,
-                "shop/success.html",
-                {"order": order},
-            )
+            request.session["order_id"] = order.id
+            return redirect("payment:process")
     else:
         form = OrderForm()
     return render(
