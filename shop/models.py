@@ -113,6 +113,13 @@ class Order(models.Model):
         unique=True,
     )
 
+    stripe_receipt_url = models.URLField(
+        max_length=255,
+        blank=True,
+        default="",
+    )
+
+
     full_name = models.CharField(
         max_length=30,
         blank=True,

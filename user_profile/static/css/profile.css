@@ -1,0 +1,22 @@
+.order-history__table{
+    --bs-table-bg: transparent;
+    --bs-table-color: var(--primary-color);
+    --bs-table-striped-bg: #e9edf4;
+    --bs-table-striped-color: var(--primary-color);
+}
+
+.order-history__receipt-link{
+    color: var(--secondary-color);
+    text-decoration: underline;
+    font-weight: 600;
+    text-decoration-color: var(--primary-color) ;
+    text-decoration-thickness: 2px ;
+    text-underline-offset: 0.25em;
+
+    &:hover{
+        color: var(--cta);
+        text-decoration-color: var(--cta-hover) ;
+    }
+}
+
+

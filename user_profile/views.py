@@ -1,20 +1,23 @@
 from django.shortcuts import render
 from django.contrib.auth.decorators import login_required
 from .forms import UserEditForm, ProfileEditForm
-from .models import User, Profile
+from .models import Profile
+from shop.models import Order
 
 
 # Create your views here.
 @login_required
 def dashboard(request):
     user = request.user
+    order_history = None
     try:
         profile = request.user.profile
+        order_history= Order.objects.filter(user=user).order_by("-created_on")
     except Profile.DoesNotExist:
         profile = None
 
     return render(
-        request, "user_profile/dashboard.html", {"user": user, "profile": profile}
+        request, "user_profile/dashboard.html", {"user": user, "profile": profile,"order_history":order_history,},
     )
 
 

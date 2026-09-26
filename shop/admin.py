@@ -42,6 +42,7 @@ class OrderAdmin(admin.ModelAdmin):
         "eircode",
         "town_or_city",
         "county",
+        "stripe_receipt_url"
     )
 
     search_fields = (
