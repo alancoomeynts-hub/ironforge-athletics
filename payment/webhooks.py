@@ -3,6 +3,7 @@ from django.conf import settings
 from django.http import HttpResponse
 from django.views.decorators.csrf import csrf_exempt
 
+from membership.models import Membership
 from shop.models import Order
 
 
@@ -40,4 +41,24 @@ def stripe_webhook(request):
             order.status = Order.Status.PAID
             order.stripe_payment_intent_id = session.payment_intent
             order.save()
+        elif session.mode == "subscription":
+            if not session.subscription:
+                raise ValueError("Subscription not found")
+
+            if not session.client_reference_id or not session.metadata.membership_type_id:
+                raise ValueError("Missing local reference IDs")
+
+            if session.payment_status != "paid":
+                raise ValueError("Subscription checkout is not paid")
+
+            Membership.objects.update_or_create(
+                stripe_subscription_id=session.subscription,
+                defaults={
+                    "user_id": session.client_reference_id,
+                    "membership_type_id": session.metadata.membership_type_id,
+                    "stripe_customer_id": session.customer,
+                    "stripe_checkout_session_id": session.id,
+                    "status": Membership.Status.ACTIVE,
+                                    },
+            )
     return HttpResponse(status=200)
