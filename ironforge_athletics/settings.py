@@ -55,6 +55,7 @@ INSTALLED_APPS = [
     "user_profile.apps.UserProfileConfig",
     "shop",
     "payment",
+    "membership",
     # Third-party apps
     "django_summernote",
     "crispy_forms",
