@@ -13,16 +13,15 @@ class Membership(models.Model):
         UNPAID = "unpaid", "Unpaid"
         PAUSED = "paused", "Paused"
         CANCELED = "canceled", "Canceled"
-        PENDING = "pending", "Pending"
 
     user = models.ForeignKey(User, on_delete=models.CASCADE,related_name='memberships')
     membership_type = models.ForeignKey('MembershipType', on_delete=models.PROTECT, related_name='memberships')
     joined_date = models.DateField(auto_now_add=True)
     ended_at = models.DateTimeField(blank=True, null=True)
-    stripe_customer_id = models.CharField(max_length=255, blank=True)
-    stripe_subscription_id = models.CharField(max_length=255,blank=True,unique=True)
-    stripe_checkout_session_id = models.CharField(max_length=255, blank=True)
-    status=models.CharField(max_length=20,choices=Status.choices,default=Status.PENDING,)
+    stripe_customer_id = models.CharField(max_length=255)
+    stripe_subscription_id = models.CharField(max_length=255,unique=True)
+    stripe_checkout_session_id = models.CharField(max_length=255, unique=True)
+    status=models.CharField(max_length=20,choices=Status.choices,)
 
     def __str__(self):
         return f"{self.user.username}--{self.membership_type}"
