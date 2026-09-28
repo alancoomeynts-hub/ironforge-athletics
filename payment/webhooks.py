@@ -2,17 +2,18 @@ import stripe
 from django.conf import settings
 from django.http import HttpResponse
 from django.views.decorators.csrf import csrf_exempt
-
-from membership.models import Membership
-from shop.models import Order
+from django.db import transaction
+from .models import StripeEventLog
+from membership import services as membership_services
+from shop import services as shop_services
 
 
 @csrf_exempt
 def stripe_webhook(request):
+    """Webhook endpoint for routing Stripe events with event log to skip duplicate events"""
 
     payload = request.body
     sig_header = request.META["HTTP_STRIPE_SIGNATURE"]
-    event = None
 
     try:
         event = stripe.Webhook.construct_event(
@@ -20,45 +21,34 @@ def stripe_webhook(request):
             sig_header,
             settings.STRIPE_WH_SECRET,
         )
-    except ValueError as e:
+    except ValueError:
         return HttpResponse(status=400)
-    except stripe.error.SignatureVerificationError as e:
+    except stripe.error.SignatureVerificationError:
         return HttpResponse(status=400)
 
-    if event.type == "checkout.session.completed":
-        session = event.data.object
+    event_handlers = {
+        "checkout.session.completed": handle_checkout_completed,
+    }
 
-        if session.mode == "payment":
-            try:
-                order = Order.objects.get(id=session.client_reference_id)
-            except Order.DoesNotExist:
-                return HttpResponse(status=404)
+    handler = event_handlers.get(event.type)
+    if handler is None:
+        return HttpResponse(status=200)
+    with transaction.atomic():
+        log, created = StripeEventLog.objects.get_or_create(
+            event_id=event.id,
+            defaults={"event_type": event.type},
+        )
+        if not created:
+            return HttpResponse(status=200)
+        handler(event.data.object)
 
-            payment_intent = stripe.PaymentIntent.retrieve(session.payment_intent,expand=["latest_charge"])
-            charge = payment_intent.latest_charge
-            receipt_url=charge.receipt_url if charge else None
-            order.stripe_receipt_url = receipt_url or ""
-            order.status = Order.Status.PAID
-            order.stripe_payment_intent_id = session.payment_intent
-            order.save()
-        elif session.mode == "subscription":
-            if not session.subscription:
-                raise ValueError("Subscription not found")
-
-            if not session.client_reference_id or not session.metadata.membership_type_id:
-                raise ValueError("Missing local reference IDs")
-
-            if session.payment_status != "paid":
-                raise ValueError("Subscription checkout is not paid")
-
-            Membership.objects.update_or_create(
-                stripe_subscription_id=session.subscription,
-                defaults={
-                    "user_id": session.client_reference_id,
-                    "membership_type_id": session.metadata.membership_type_id,
-                    "stripe_customer_id": session.customer,
-                    "stripe_checkout_session_id": session.id,
-                    "status": Membership.Status.ACTIVE,
-                                    },
-            )
     return HttpResponse(status=200)
+
+
+def handle_checkout_completed(session):
+    if session.mode == "payment":
+        shop_services.update_order_paid(session)
+    elif session.mode == "subscription":
+        membership_services.create_membership(session)
+    else:
+        raise ValueError("Unexpected checkout session mode")

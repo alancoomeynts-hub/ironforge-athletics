@@ -12,6 +12,7 @@ from membership.models import MembershipType
 
 stripe_secret_key = settings.STRIPE_SECRET_KEY
 
+
 @login_required
 def payment_process(request):
     order_id = request.session.get("order_id")
@@ -92,19 +93,17 @@ def subscribe(request, slug):
     try:
         checkout_session = stripe.checkout.Session.create(
             line_items=[
-                {'price': membership_type.stripe_price_id, 'quantity': 1},
+                {"price": membership_type.stripe_price_id, "quantity": 1},
             ],
-            mode='subscription',
+            mode="subscription",
             client_reference_id=str(request.user.id),
-            metadata={'membership_type_id': str(membership_type.pk)},
+            metadata={"membership_type_id": str(membership_type.pk)},
             customer_email=request.user.email,
-            success_url=request.build_absolute_uri(reverse('payment:success')),
-            cancel_url=request.build_absolute_uri(reverse('payment:canceled')),
-
+            success_url=request.build_absolute_uri(reverse("payment:success")),
+            cancel_url=request.build_absolute_uri(reverse("payment:canceled")),
         )
     except stripe.error.StripeError as e:
-        messages.error(request, 'An error occurred while processing your payment.')
+        messages.error(request, "An error occurred while processing your payment.")
         return redirect("membership:join")
 
     return redirect(checkout_session.url, code=303)
-
