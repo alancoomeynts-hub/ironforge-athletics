@@ -27,7 +27,8 @@ def stripe_webhook(request):
         return HttpResponse(status=400)
 
     event_handlers = {
-        "checkout.session.completed": handle_checkout_completed,
+        "checkout.session.completed": handle_checkout_session_completed,
+        "invoice.paid": membership_services.update_membership,
     }
 
     handler = event_handlers.get(event.type)
@@ -45,7 +46,7 @@ def stripe_webhook(request):
     return HttpResponse(status=200)
 
 
-def handle_checkout_completed(session):
+def handle_checkout_session_completed(session):
     if session.mode == "payment":
         shop_services.update_order_paid(session)
     elif session.mode == "subscription":

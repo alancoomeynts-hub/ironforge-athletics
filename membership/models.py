@@ -22,6 +22,7 @@ class Membership(models.Model):
     stripe_subscription_id = models.CharField(max_length=255,unique=True)
     stripe_checkout_session_id = models.CharField(max_length=255, unique=True)
     status=models.CharField(max_length=20,choices=Status.choices,)
+    last_renewal_date = models.DateField(blank=True, null=True)
 
     def __str__(self):
         return f"{self.user.username}--{self.membership_type}"
