@@ -16,7 +16,8 @@
                         <h5 class="mb-0">Profile</h5>
                         <div class="d-flex flex-row gap-2 flex-wrap">
                             <a href="{% url 'edit_profile' %}" class="cta-btn-secondary btn">Edit Profile</a>
-                            <a href="{% url 'account_change_password' %}" class="cta-btn-secondary btn">Change Password</a>
+                            <a href="{% url 'account_change_password' %}"
+                               class="cta-btn-secondary btn">Change Password</a>
                         </div>
                     </div>
                     <div class="card-body">
@@ -114,7 +115,7 @@
             <!-- ROW 2 - Orders-->
             <div class="col-12">
                 <div class="content__wrapper">
-                    <div class="card-header ">
+                    <div class="card-header">
                         <h5 class="mb-0">Order History</h5>
                     </div>
                     <div class="card-body">
@@ -139,7 +140,7 @@
                                                     {% if order.stripe_receipt_url %}
                                                         <a href="{{ order.stripe_receipt_url }}"
                                                            class="order-history__receipt-link">View Receipt</a>
-                                                     {% else %}
+                                                    {% else %}
                                                         <small>Receipt Unavailable</small>
                                                     {% endif %}
                                                 </td>
@@ -155,7 +156,29 @@
                 </div>
             </div>
             <!-- ROW 3 - Membership-->
-            <!-- ROW 4 - Posts-->
-        </div>
-    </div>
+            <div class="col-12">
+                <div class="content__wrapper p-4">
+                    <div class="card-header">
+                        <h2 class="h5 mb-2">Membership</h2>
+                    </div>
+                    <div class="card-body text-center">
+                        {% if current_membership %}
+                            <p class="text-muted mb-4">
+                                You are currently subscribed to
+                                {{ current_membership.membership_type.name }}.
+                            </p>
+                            <form action="{% url 'membership:manage' %}" method="post">
+                                {% csrf_token %}
+                                <button type="submit" class="btn cta-btn-secondary">Manage Membership</button>
+                                <small class="text-muted d-block mb-2">Last renewed on {{ current_membership.last_renewal_date }}</small>
+                            </form>
+                            </div>
+                        {% else %}
+                            <p class="text-muted mb-0">You are not currently subscribed to any membership.</p>
+                            </div>
+                        {% endif %}
+                    </div>
+                    <!-- ROW 4 - Posts-->
+                </div>
+            </div>
 {% endblock %}

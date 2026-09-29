@@ -1,44 +1,55 @@
 {% extends "base.html" %}
 {% load static %}
-
 {% block extra_css %}
     <link rel="stylesheet" href="{% static 'css/shop.css' %}">
 {% endblock %}
-
 {% block content %}
-<div class="container pb-5">
-    <h1 class="h3 text-center mb-1">Join our Gym</h1>
-    <p class="text-center text-muted mb-4">Please select a membership package</p>
-
-    <div class="row g-4">
-        {% for membership_type in membership_types %}
-            <div class="col-12 col-md-6">
-                <div class="card h-100">
-                    <div class="card-body d-flex flex-column">
-                        <h2 class="h5">{{ membership_type.name }}</h2>
-                        <p>{{ membership_type.price }} per month</p>
-
-                        <div>{{ membership_type.description|safe }}</div>
-                        <div>{{ membership_type.benefits|safe }}</div>
-
-                        <form
-                            action="{% url 'payment:subscribe' membership_type.slug %}"
-                            method="post"
-                            class="mt-auto pt-3"
-                        >
+    <div class="container pb-5">
+        <div class="row mb-4">
+            <div class="col-12 text-center">
+                {% if current_membership %}
+                    <div class="content__wrapper p-4">
+                        <h1 class="h3 mb-2">Your Current Membership</h1>
+                        <p class="text-muted mb-4">
+                            You are currently subscribed to
+                            {{ current_membership.membership_type.name }}.
+                        </p>
+                        <form action="{% url 'membership:manage' %}" method="post">
                             {% csrf_token %}
-                            <div class="d-flex align-items-center flex-column pb-3">
-                            <button type="submit" class="btn cta-btn">Join with {{ membership_type.name }}</button>
-                                </div>
+                            <button type="submit" class="btn cta-btn-secondary">Manage Membership</button>
                         </form>
                     </div>
+                {% else %}
+                    <h1 class="h3 mb-2">Join our Gym</h1>
+                    <p class="text-muted mb-0">Please select a membership package.</p>
+                {% endif %}
+            </div>
+        </div>
+        <div class="row g-4">
+            {% for membership_type in membership_types %}
+                <div class="col-12 col-md-6">
+                    <div class="card h-100">
+                        <div class="card-body d-flex flex-column">
+                            <h2 class="h5">{{ membership_type.name }}</h2>
+                            <p>{{ membership_type.price }} per month</p>
+                            <div>{{ membership_type.description|safe }}</div>
+                            <div>{{ membership_type.benefits|safe }}</div>
+                            {% if not current_membership %}
+                                <form action="{% url 'payment:subscribe' membership_type.slug %}"
+                                      method="post"
+                                      class="mt-auto pt-3 text-center">
+                                    {% csrf_token %}
+                                    <button type="submit" class="btn cta-btn">Join with {{ membership_type.name }}</button>
+                                </form>
+                            {% endif %}
+                        </div>
+                    </div>
                 </div>
-            </div>
-        {% empty %}
-            <div class="col-12">
-                <p>No memberships are currently available.</p>
-            </div>
-        {% endfor %}
+            {% empty %}
+                <div class="col-12 text-center">
+                    <p>No memberships are currently available.</p>
+                </div>
+            {% endfor %}
+        </div>
     </div>
-</div>
 {% endblock %}

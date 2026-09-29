@@ -3,21 +3,45 @@ from django.contrib.auth.decorators import login_required
 from .forms import UserEditForm, ProfileEditForm
 from .models import Profile
 from shop.models import Order
+from membership.models import Membership
 
 
 # Create your views here.
 @login_required
 def dashboard(request):
     user = request.user
-    order_history = None
+
     try:
         profile = request.user.profile
-        order_history= Order.objects.filter(user=user).order_by("-created_on")
+
     except Profile.DoesNotExist:
         profile = None
 
+    order_history = Order.objects.filter(user=user).order_by("-created_on")
+    current_membership = (
+        Membership.objects.filter(
+            user=request.user,
+            status__in=[
+                Membership.Status.ACTIVE,
+                Membership.Status.TRIALING,
+                Membership.Status.PAST_DUE,
+                Membership.Status.UNPAID,
+                Membership.Status.PAUSED,
+                Membership.Status.INCOMPLETE,
+            ],
+        )
+        .select_related("membership_type")
+        .first()
+    )
     return render(
-        request, "user_profile/dashboard.html", {"user": user, "profile": profile,"order_history":order_history,},
+        request,
+        "user_profile/dashboard.html",
+        {
+            "user": user,
+            "profile": profile,
+            "order_history": order_history,
+            "current_membership": current_membership,
+        },
     )
 
 
