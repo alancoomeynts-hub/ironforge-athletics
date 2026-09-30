@@ -1,0 +1,12 @@
+.buy-btn{
+    max-width: 13rem;
+    background-color: #5148d8;
+    text-transform: uppercase;
+    letter-spacing: 0.05rem;
+    font-weight: 700;
+}
+
+.buy-btn:hover{
+    background-color: #453fd8;
+}
+
