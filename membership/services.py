@@ -1,9 +1,9 @@
 from datetime import datetime, timezone
-from .models import Membership
+from .models import Membership, MembershipType
 
 
 def create_membership(session):
-    """ Create membership record when Subscription checkout session completed and paid"""
+    """Create membership record when Subscription checkout session completed and paid"""
     if not session.subscription:
         raise ValueError("Subscription not found")
 
@@ -25,8 +25,8 @@ def create_membership(session):
     )
 
 
-def update_membership(invoice):
-    """ Update membership when Stripe subscription renewed"""
+def renew_membership(invoice):
+    """Update membership when Stripe subscription renewed"""
     if invoice.billing_reason != "subscription_cycle":
         return
     subscription_id = invoice.parent.subscription_details.subscription
@@ -38,4 +38,33 @@ def update_membership(invoice):
         paid_at,
         tz=timezone.utc,
     )  # convert Stripe unix timestamp to datetime
+    membership.save()
+
+
+def update_membership(subscription):
+    """Update membership when Stripe subscription updated"""
+    membership = Membership.objects.get(
+        stripe_subscription_id=subscription.id,
+    )
+
+    membership.status = subscription.status
+
+    price_id = subscription.items.data[0].price.id
+    membership.membership_type = MembershipType.objects.get(
+        stripe_price_id=price_id,
+    )
+
+    membership.save()
+
+
+def cancel_membership(subscription):
+    """Cancel membership when Stripe subscription canceled"""
+    membership = Membership.objects.get(
+        stripe_subscription_id=subscription.id,
+    )
+    membership.status = Membership.Status.CANCELED
+    membership.ended_at = datetime.fromtimestamp(
+        subscription.ended_at,
+        tz=timezone.utc,
+    )
     membership.save()

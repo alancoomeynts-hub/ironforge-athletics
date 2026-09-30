@@ -28,7 +28,9 @@ def stripe_webhook(request):
 
     event_handlers = {
         "checkout.session.completed": handle_checkout_session_completed,
-        "invoice.paid": membership_services.update_membership,
+        "invoice.paid": membership_services.renew_membership,
+        "customer.subscription.updated": membership_services.update_membership,
+        "customer.susbcription.deleted":membership_services.cancel_membership,
     }
 
     handler = event_handlers.get(event.type)
