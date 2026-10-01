@@ -1,6 +1,9 @@
 {% url 'home:home' as home_url %}
 {% url 'home:about' as about_url %}
 {% url 'home:contact_us' as contact_us %}
+{% url 'shop:product_list' as product_catalog %}
+{% url 'community:community' as community_url %}
+{% load static %}
 <nav class="navbar navbar-expand-lg navbar-dark site-nav py-2 mt-2"
      aria-label="Primary navigation bar"
      role="navigation">
@@ -30,10 +33,12 @@
                        href="{{ about_url }}">Our Gym</a>
                 </li>
                 <li class="nav-item">
-                    <a class="site-nav__link nav-link" href="{% url 'shop:product_list' %}">Shop</a>
+                    <a class="site-nav__link nav-link {% if request.path == product_catalog %}active{% endif %}"
+                       href="{{ product_catalog }}">Shop</a>
                 </li>
                 <li class="nav-item">
-                    <a class="site-nav__link nav-link" href="">Community</a>
+                    <a class="site-nav__link nav-link {% if request.path == community_url %}active{% endif %}"
+                       href="{{ community_url }}">Community</a>
                 </li>
                 <li class="nav-item">
                     <a href="{{ contact_us }}"

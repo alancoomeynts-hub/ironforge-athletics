@@ -56,6 +56,7 @@ INSTALLED_APPS = [
     "shop",
     "payment",
     "membership",
+    "community",
     # Third-party apps
     "django_summernote",
     "crispy_forms",
