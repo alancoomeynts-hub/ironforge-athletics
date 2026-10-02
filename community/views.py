@@ -1,10 +1,11 @@
+from django.contrib import messages
 from django.contrib.auth.decorators import login_required
 from django.shortcuts import render, get_object_or_404
 from django.core.paginator import Paginator
 from django.shortcuts import render, redirect, reverse
 from django.utils.text import slugify
-from community.models import Post, PostImage
-from .forms import PostForm
+from community.models import Post, PostImage, Comment
+from .forms import PostForm, CommentForm
 
 
 def render_community_board(request):
@@ -30,11 +31,16 @@ def post_detail(request, pk, slug):
         pk=pk,
         slug=slug,
     )
+    comment_form = CommentForm()
+    comments = post.comments.all()
+
     return render(
         request,
         "community/post.html",
         {
             "post": post,
+            "comment_form": comment_form,
+            "comments": comments,
         },
     )
 
@@ -59,7 +65,16 @@ def create_post(request):
             post.save()
 
             for photo in request.FILES.getlist("photos"):
-                PostImage.objects.create(post=post, image=photo)
+                PostImage.objects.create(
+                    post=post,
+                    image=photo,
+                )
+
+            messages.success(
+                request,
+                "Post created successfully!",
+            )
+
             return redirect(reverse("community:community"))
 
     form = PostForm()
@@ -69,5 +84,83 @@ def create_post(request):
         "community/community.html",
         {
             "form": form,
+            "posts": posts,
         },
     )
+
+
+def edit_post(request, pk):
+    post = get_object_or_404(Post, pk=pk)
+
+    if post.author != request.user:
+        messages.error(request, "You are not authorized to edit this post.")
+        return redirect("community:post", pk=post.pk, slug=post.slug)
+
+    if request.method == "POST":
+        form = PostForm(request.POST, instance=post)
+
+        if form.is_valid():
+            form.save()
+
+            for photo in request.FILES.getlist("photos"):
+                PostImage.objects.create(
+                    post=post,
+                    image=photo,
+                )
+            messages.success(request, "Post updated successfully!")
+
+    return redirect("community:post", pk=post.pk, slug=post.slug)
+
+
+def delete_post(request, pk):
+    post = get_object_or_404(Post, pk=pk)
+
+    if post.author != request.user:
+        messages.error(request, "You are not authorized to delete this post.")
+        return redirect("community:post", pk=post.pk, slug=post.slug)
+
+    if request.method == "POST":
+        post.delete()
+        messages.success(request, "Post deleted successfully!")
+    return redirect("community:community")
+
+
+def add_comment(request, pk):
+    post = get_object_or_404(Post, pk=pk)
+
+    if request.method == "POST":
+        form = CommentForm(request.POST)
+        if form.is_valid():
+            comment = form.save(commit=False)
+            comment.author = request.user
+            comment.post = post
+            comment.save()
+    return redirect("community:post", pk=post.pk, slug=post.slug)
+
+
+def edit_comment(request, pk):
+    comment = get_object_or_404(Comment.objects.select_related("post"), pk=pk)
+
+    if comment.author != request.user:
+        messages.error(request, "You are not authorized to edit this post.")
+        return redirect("community:post", pk=comment.post.pk, slug=comment.post.slug)
+
+    if request.method == "POST":
+        form = CommentForm(request.POST, instance=comment)
+        if form.is_valid():
+            form.save()
+            messages.success(request, "Comment updated successfully!")
+    return redirect("community:post", pk=comment.post.pk, slug=comment.post.slug)
+
+
+def delete_comment(request, pk):
+    comment = get_object_or_404(Comment.objects.select_related("post"), pk=pk)
+
+    if comment.author != request.user:
+        messages.error(request, "You are not authorized to delete this post.")
+        return redirect("community:post", pk=comment.post.pk, slug=comment.post.slug)
+
+    if request.method == "POST":
+        comment.delete()
+        messages.success(request, "Comment deleted successfully!")
+    return redirect("community:post", pk=comment.post.pk, slug=comment.post.slug)

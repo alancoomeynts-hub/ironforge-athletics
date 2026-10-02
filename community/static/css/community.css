@@ -1,0 +1,25 @@
+.community__link,
+.post__link{
+    color: var(--cta) ;
+    background-color: transparent;
+    border: 0;
+    border-radius: 999px;
+    padding: 0.2rem 0.4rem;
+    font-size: 0.875rem;
+    font-weight: 600;
+    line-height: 1.25;
+}
+
+.community__link:hover,
+.post__link:hover{
+    color: var(--cta-hover);
+    background-color: var(--background);
+
+}
+
+.post__image {
+    width: 100%;
+    max-width: 700px;
+    height: 400px;
+    object-fit: cover;
+}

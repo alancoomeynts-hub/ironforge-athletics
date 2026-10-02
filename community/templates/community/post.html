@@ -1,0 +1,88 @@
+{% extends "base.html" %}
+{% load static %}
+{% block title %}{{ post.title }}{% endblock %}
+{% block extra_css %}
+    <link rel="stylesheet" href="{% static 'css/community.css' %}">
+{% endblock %}
+{% block content %}
+    <div class="content__wrapper container mb-2">
+    <!--Post Detail Section -->
+        <article class="card mb-3">
+            <div class="card-body">
+                <div class="d-flex flex-wrap align-items-center justify-content-between gap-3 mt-2">
+                    <p class="text-muted small mb-0">{{ post.author }} · {{ post.created_on|date:"j M Y" }}</p>
+                    {% if request.user == post.author %}
+                        <div class="d-flex flex-wrap gap-2">
+                            <button type="button"
+                                    class="btn post__link btn-link btn-sm text-decoration-none"
+                                    data-bs-toggle="modal"
+                                    data-bs-target="#editPostModal"
+                                    data-edit-url="{% url 'community:edit_post' post.pk %}"
+                                    data-post-title="{{ post.title }}">Edit</button>
+                            <button type="button"
+                                    class="btn post__link btn-link btn-sm text-decoration-none"
+                                    data-bs-toggle="modal"
+                                    data-bs-target="#deletePostModal"
+                                    data-delete-url="{% url 'community:delete_post' post.pk %}"
+                                    data-post-title="{{ post.title }}">Delete</button>
+                        </div>
+                    {% endif %}
+                </div>
+                <h1 class="h4">{{ post.title }}</h1>
+                <div id="postContentForEdit">{{ post.content|linebreaks }}</div>
+                {% for photo in post.images.all %}
+                    <img src="{{ photo.image.url }}"
+                         alt="{{ photo.caption|default:post.title }}"
+                         class="img-fluid rounded mb-3 post__image">
+                {% endfor %}
+            </div>
+        </article>
+    <!-- Comments history -->
+        <section aria-labelledby="comments-heading">
+            <h2 class="h5">Comments</h2>
+            {% for comment in comments %}
+                <article class="card mb-2">
+                    <div class="card-body">
+                        <p class="text-muted small">{{ comment.author }} · {{ comment.created_on|date:"j M Y" }}</p>
+                        <div>{{ comment.content|linebreaks }}</div>
+                        {% if request.user == comment.author %}
+                            <div class="d-flex flex-wrap gap-3 align-items-center mt-2">
+                                <button type="button"
+                                        class="btn post__link btn-link btn-sm text-decoration-none"
+                                        data-bs-toggle="modal"
+                                        data-bs-target="#editCommentModal"
+                                        data-edit-url="{% url 'community:edit_comment' comment.pk %}"
+                                        data-comment-content="{{ comment.content }}">Edit comment</button>
+                                <button type="button"
+                                        class="btn post__link btn-link btn-sm text-decoration-none"
+                                        data-bs-toggle="modal"
+                                        data-bs-target="#deleteCommentModal"
+                                        data-delete-url="{% url 'community:delete_comment' comment.pk %}">Delete comment</button>
+                            </div>
+                        {% endif %}
+                    </div>
+                </article>
+            {% empty %}
+                <p>No comments yet.</p>
+            {% endfor %}
+        </section>
+    <!--Comment Form-->
+        <section aria-labelledby="comment-form-heading" class="mt-4">
+            <h2 class="h5">Add a comment</h2>
+            <form method="post" action="{% url 'community:add_comment' post.pk %}">
+                {% csrf_token %}
+                {{ comment_form.as_p }}
+                <button type="submit" class="btn cta-btn-secondary">Post comment</button>
+            </form>
+        </section>
+    </div>
+
+    <!--Modals-->
+    {% include 'includes/edit_comment_modals.html' %}
+    {% include 'includes/edit_post_modals.html' %}
+
+{% endblock %}
+{% block extra_js %}
+    {{ block.super }}
+    <script src="{% static 'js/community.js' %}" defer> </script>
+{% endblock %}
