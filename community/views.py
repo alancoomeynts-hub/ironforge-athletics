@@ -108,6 +108,8 @@ def edit_post(request, pk):
                     image=photo,
                 )
             messages.success(request, "Post updated successfully!")
+            if request.POST.get("origin")=="dashboard":
+                return redirect("user_profile:dashboard")
 
     return redirect("community:post", pk=post.pk, slug=post.slug)
 
@@ -122,6 +124,8 @@ def delete_post(request, pk):
     if request.method == "POST":
         post.delete()
         messages.success(request, "Post deleted successfully!")
+        if request.POST.get("origin") == "dashboard":
+            return redirect("user_profile:dashboard")
     return redirect("community:community")
 
 

@@ -1,5 +1,7 @@
 from django.shortcuts import render
 from django.contrib.auth.decorators import login_required
+
+from community.models import Post
 from .forms import UserEditForm, ProfileEditForm
 from .models import Profile
 from shop.models import Order
@@ -33,6 +35,7 @@ def dashboard(request):
         .select_related("membership_type")
         .first()
     )
+    post_history= Post.objects.filter(author=user,status=Post.Status.PUBLISHED,).order_by("-created_on")
     return render(
         request,
         "user_profile/dashboard.html",
@@ -41,6 +44,7 @@ def dashboard(request):
             "profile": profile,
             "order_history": order_history,
             "current_membership": current_membership,
+            "post_history": post_history,
         },
     )
 

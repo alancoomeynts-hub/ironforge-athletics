@@ -10,6 +10,7 @@
                 {% csrf_token %}
                 <div class="modal-header">
                     <h2 class="h5 modal-title" id="editPostModalLabel">Edit post</h2>
+                    <input type="hidden" name="origin" value="dashboard">
                     <button type="button"
                             class="btn-close"
                             data-bs-dismiss="modal"
@@ -73,6 +74,7 @@
                 <button type="button" class="btn cta-btn-secondary" data-bs-dismiss="modal">Keep Post</button>
                 <form id="deletePostConfirm" method="post">
                     {% csrf_token %}
+                    <input type="hidden" name="origin" value="dashboard">
                     <button type="submit" class="btn cta-btn-secondary">Delete Post</button>
                 </form>
             </div>

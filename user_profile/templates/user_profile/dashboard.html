@@ -15,7 +15,8 @@
                     <div class="card-header d-flex justify-content-between align-items-center">
                         <h5 class="mb-0">Profile</h5>
                         <div class="d-flex flex-row gap-2 flex-wrap">
-                            <a href="{% url 'user_profile:edit_profile' %}" class="cta-btn-secondary btn">Edit Profile</a>
+                            <a href="{% url 'user_profile:edit_profile' %}"
+                               class="cta-btn-secondary btn">Edit Profile</a>
                             <a href="{% url 'account_change_password' %}"
                                class="cta-btn-secondary btn">Change Password</a>
                         </div>
@@ -155,30 +156,113 @@
                     </div>
                 </div>
             </div>
-            <!-- ROW 3 - Membership-->
+            <!-- ROW 3: Membership -->
             <div class="col-12">
                 <div class="content__wrapper p-4">
                     <div class="card-header">
                         <h2 class="h5 mb-2">Membership</h2>
                     </div>
+
                     <div class="card-body text-center">
                         {% if current_membership %}
                             <p class="text-muted mb-4">
                                 You are currently subscribed to
                                 {{ current_membership.membership_type.name }}.
                             </p>
-                            <form action="{% url 'membership:manage' %}" method="post">
+
+                            <form action="{% url 'membership:manage' %}"
+                                  method="post">
                                 {% csrf_token %}
-                                <button type="submit" class="btn cta-btn-secondary">Manage Membership</button>
-                                <small class="text-muted d-block mb-2">Last renewed on {{ current_membership.last_renewal_date }}</small>
+                                <button type="submit"
+                                        class="btn cta-btn-secondary">
+                                    Manage Membership
+                                </button>
+                                <small class="text-muted d-block mb-2">
+                                    Last renewed on
+                                    {{ current_membership.last_renewal_date }}
+                                </small>
                             </form>
-                            </div>
                         {% else %}
-                            <p class="text-muted mb-0">You are not currently subscribed to any membership.</p>
-                            </div>
+                            <p class="text-muted mb-0">
+                                You are not currently subscribed to any
+                                membership.
+                            </p>
                         {% endif %}
                     </div>
-                    <!-- ROW 4 - Posts-->
                 </div>
             </div>
+
+            <!-- ROW 4: Posts -->
+            <div class="col-12">
+                <div class="content__wrapper">
+                    <div class="card-header">
+                        <h2 class="h5 mb-0">Post History</h2>
+                    </div>
+
+                    <div class="card-body">
+                        {% if post_history %}
+                            <div class="table-responsive">
+                                <table class="table table-striped post-history__table">
+                                    <thead>
+                                        <tr>
+                                            <th scope="col">Post</th>
+                                            <th scope="col">Edit</th>
+                                            <th scope="col">Delete</th>
+                                            <th scope="col">Link</th>
+                                        </tr>
+                                    </thead>
+
+                                    <tbody>
+                                        {% for post in post_history %}
+                                            <tr>
+                                                <td>{{ post.title }}</td>
+
+                                                <td>
+                                                    <button type="button"
+                                                            class="btn post__link btn-link btn-sm text-decoration-none"
+                                                            data-bs-toggle="modal"
+                                                            data-bs-target="#editPostModal"
+                                                            data-edit-url="{% url 'community:edit_post' post.pk %}"
+                                                            data-post-title="{{ post.title }}">
+                                                        Edit
+                                                    </button>
+                                                </td>
+
+                                                <td>
+                                                    <button type="button"
+                                                            class="btn post__link btn-link btn-sm text-decoration-none"
+                                                            data-bs-toggle="modal"
+                                                            data-bs-target="#deletePostModal"
+                                                            data-delete-url="{% url 'community:delete_post' post.pk %}"
+                                                            data-post-title="{{ post.title }}">
+                                                        Delete
+                                                    </button>
+                                                </td>
+
+                                                <td>
+                                                    <a href="{% url 'community:post' post.pk post.slug %}"
+                                                       class="post-history__link">
+                                                        View post
+                                                    </a>
+                                                </td>
+                                            </tr>
+                                        {% endfor %}
+                                    </tbody>
+                                </table>
+                            </div>
+                        {% else %}
+                            <p class="mb-0">No posts yet.</p>
+                        {% endif %}
+                    </div>
+                </div>
+            </div>
+
+            {% include "includes/edit_comment_modals.html" %}
+            {% include "includes/edit_post_modals.html" %}
+        </div>
+    </div>
+{% endblock %}
+{% block extra_js %}
+    {{ block.super }}
+    <script src="{% static 'js/community.js' %}" defer> </script>
 {% endblock %}

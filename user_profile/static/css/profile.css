@@ -6,16 +6,18 @@
 }
 
 .order-history__receipt-link{
-    color: var(--secondary-color);
-    text-decoration: underline;
+        color: var(--cta) ;
+    background-color: transparent;
+    border: 0;
+    border-radius: 999px;
+    padding: 0.2rem 0.4rem;
+    font-size: 0.875rem;
     font-weight: 600;
-    text-decoration-color: var(--primary-color) ;
-    text-decoration-thickness: 2px ;
-    text-underline-offset: 0.25em;
+    line-height: 1.25;
 
     &:hover{
-        color: var(--cta);
-        text-decoration-color: var(--cta-hover) ;
+    color: var(--cta-hover);
+    background-color: var(--background);
     }
 }
 
