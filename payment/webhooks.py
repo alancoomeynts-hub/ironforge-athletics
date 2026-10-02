@@ -15,6 +15,9 @@ def stripe_webhook(request):
     payload = request.body
     sig_header = request.META["HTTP_STRIPE_SIGNATURE"]
 
+    if not sig_header:
+        return HttpResponse(status=400)
+
     try:
         event = stripe.Webhook.construct_event(
             payload,
@@ -30,7 +33,7 @@ def stripe_webhook(request):
         "checkout.session.completed": handle_checkout_session_completed,
         "invoice.paid": membership_services.renew_membership,
         "customer.subscription.updated": membership_services.update_membership,
-        "customer.susbcription.deleted":membership_services.cancel_membership,
+        "customer.subcription.deleted":membership_services.cancel_membership,
     }
 
     handler = event_handlers.get(event.type)
