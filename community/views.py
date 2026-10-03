@@ -1,6 +1,7 @@
 from django.contrib import messages
 from django.core.paginator import Paginator
-from django.shortcuts import render, redirect, reverse,get_object_or_404
+from django.shortcuts import render, redirect, reverse, get_object_or_404
+from django.http import Http404
 from django.utils.text import slugify
 from community.models import Post, PostImage, Comment
 from membership.models import Membership
@@ -44,6 +45,10 @@ def post_detail(request, pk, slug):
     )
     comment_form = CommentForm()
     comments = post.comments.all()
+
+    if post.status != Post.Status.PUBLISHED:
+        if post.author != request.user and not request.user.is_staff:
+            raise Http404("Post not found")
 
     return render(
         request,
@@ -176,12 +181,14 @@ def add_comment(request, pk):
             comment.author = request.user
             comment.post = post
             comment.save()
+    messages.success(request, "Comment added successfully!")
 
     return redirect(
         "community:post",
         pk=post.pk,
         slug=post.slug,
     )
+
 
 @staff_or_membership_required
 def edit_comment(request, pk):
@@ -207,6 +214,7 @@ def edit_comment(request, pk):
         pk=comment.post.pk,
         slug=comment.post.slug,
     )
+
 
 @staff_or_membership_required
 def delete_comment(request, pk):

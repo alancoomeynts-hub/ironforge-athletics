@@ -1,4 +1,5 @@
-from django.shortcuts import render
+from django.contrib.auth.models import User
+from django.shortcuts import render, get_object_or_404
 from django.contrib.auth.decorators import login_required
 
 from community.models import Post
@@ -35,7 +36,7 @@ def dashboard(request):
         .select_related("membership_type")
         .first()
     )
-    post_history= Post.objects.filter(author=user,status=Post.Status.PUBLISHED,).order_by("-created_on")
+    post_history = Post.objects.filter(author=user).order_by("-created_on")
     return render(
         request,
         "user_profile/dashboard.html",
@@ -68,4 +69,21 @@ def edit_profile(request):
         request,
         "user_profile/edit_profile.html",
         {"user_form": user_form, "profile_form": profile_form},
+    )
+
+
+def member_profile(request, username):
+    member = get_object_or_404(User, username=username)
+
+    posts = Post.objects.filter(author=member, status=Post.Status.PUBLISHED).order_by(
+        "-created_on"
+    )
+
+    return render(
+        request,
+        "user_profile/member_profile.html",
+        {
+            "member": member,
+            "posts": posts,
+        },
     )
