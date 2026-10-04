@@ -2,6 +2,7 @@
 {% url 'home:about' as about_url %}
 {% url 'home:contact_us' as contact_us %}
 {% url 'shop:product_list' as product_catalog %}
+{%  url 'membership:join' as membership_url %}
 {% url 'community:community' as community_url %}
 {% load static %}
 <nav class="navbar navbar-expand-lg navbar-dark site-nav py-2 mt-2"
@@ -39,6 +40,10 @@
                 <li class="nav-item">
                     <a class="site-nav__link nav-link {% if request.path == community_url %}active{% endif %}"
                        href="{{ community_url }}">Community</a>
+                </li>
+                <li class="nav-item">
+                    <a class="site-nav__link nav-link {% if request.path == membership_url %}active{% endif %}"
+                       href="{{ membership_url }}">Membership</a>
                 </li>
                 <li class="nav-item">
                     <a href="{{ contact_us }}"

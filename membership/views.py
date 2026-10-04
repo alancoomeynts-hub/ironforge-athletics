@@ -12,7 +12,7 @@ def membership_types(request):
     types = MembershipType.objects.filter(is_available=True)
 
     # check if a logged-in user has active membership. Flag used in template to show the join buttons or manage portal
-    current_membership = False
+    current_membership = None
     if request.user.is_authenticated:
         current_membership = (
             Membership.objects.filter(
