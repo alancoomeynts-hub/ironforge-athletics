@@ -52,7 +52,7 @@ INSTALLED_APPS = [
     "allauth.socialaccount",
     # Local apps
     "home",
-    "user_profile.apps.UserProfileConfig",
+    "user_profile",
     "shop",
     "payment",
     "membership",

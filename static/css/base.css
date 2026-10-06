@@ -81,6 +81,7 @@ main{
     font-family: var(--font-heading);
     font-size: 0.9rem;
     color: var(--text-color);
+    max-width: 100px;
 
     &:focus{
         outline: none;

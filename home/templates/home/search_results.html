@@ -1,0 +1,61 @@
+{% extends "base.html" %}
+{% load static %}
+{% block content %}
+    <div class="content__wrapper container py-4">
+        <h1>Search results</h1>
+        {% if query %}
+            <p>
+                Results for <strong>{{ query }}</strong>
+                in {{ result_type }}
+            </p>
+        {% endif %}
+        {% if results %}
+            <div class="row g-4">
+                {% for result in results %}
+                    {% if page == "shop" %}
+                        <div class="col-md-6 col-lg-4">
+                            <article class="card h-100">
+                                <div class="card-body">
+                                    <h2 class="h5">{{ result.name }}</h2>
+                                    <p class="card-text">{{ result.description|truncatewords:25 }}</p>
+                                    <a href="{% url 'shop:product_detail' result.pk result.slug %}"
+                                       class="btn cta-btn-secondary">View product</a>
+                                </div>
+                            </article>
+                        </div>
+                    {% elif page == "members" %}
+                        <div class="col-md-6 col-lg-4">
+                            <article class="card h-100">
+                                <div class="card-body">
+                                    <h2 class="h5">{{ result.user.get_full_name }}</h2>
+                                    <p class="card-text">{{ result.user.user_name }}</p>
+                                    <a href="{% url 'user_profile:profile' result.user.username %}"
+                                       class="btn cta-btn-secondary">View membership</a>
+                                </div>
+                            </article>
+                        </div>
+                    {% elif page == "community" %}
+                        <div class="col-md-6 col-lg-4">
+                            <article class="card h-100">
+                                <div class="card-body">
+                                    <h2 class="h5">
+                                        {{ result.user.get_full_name }}
+                                        {{ result.user.username }}
+                                        {{ result.title }}
+                                    </h2>
+                                    <p class="card-text">{{ result.content|truncatewords:25 }}</p>
+                                    <a href="{% url 'community:post' result.pk result.slug %}"
+                                       class="btn cta-btn-secondary">Read post</a>
+                                </div>
+                            </article>
+                        </div>
+                    {% endif %}
+                {% endfor %}
+            </div>
+        {% elif query %}
+            <p>No {{ result_type }} matched your search.</p>
+        {% else %}
+            <p>Enter a search term to see results.</p>
+        {% endif %}
+    </div>
+{% endblock %}

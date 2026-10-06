@@ -2,20 +2,23 @@
     <div class="row align-items-center">
         <!-- Search form -->
         <div class="site-header__search col-9 col-md-5 order-1 ms-auto mt-2 mt-md-0">
-            <form action="" method="get" class="d-flex">
+            <form method="get" action="{% url 'home:results' %}" >
                 <div class="input-group d-flex flex-row">
-                    <select name="page"
+                    <label for="page" class="visually-hidden">Search</label>
+                    <select id="page"
+                            name="page"
                             class="form-select border-end-0 site-header__search-select">
-                        <option value="members">Members</option>
                         <option value="shop">Shop</option>
+                        <option value="members">Members</option>
                         <option value="community">Community</option>
                     </select>
-                    <input type="search"
+                    <label for="search" class="visually-hidden">Search</label>
+                    <input id="search"
+                           type="search"
                            name="q"
                            class="form-control border-start-0 site-header__search-input"
-                           placeholder="Search..."
-                           aria-label="Search" />
-                    <button class="btn btn-outline-light site-header__search-btn" type="submit">
+                           placeholder="Search...">
+                    <button type="submit" class="btn btn-outline-light site-header__search-btn">
                         <i class="fa-solid fa-magnifying-glass"></i>
                     </button>
                 </div>
@@ -68,11 +71,10 @@
                                     <a class="dropdown-item site-header__link"
                                        href="{% url 'admin:index' %}">Admin</a>
                                 </li>
-
-                            <li>
-                                <hr class="dropdown-divider">
-                            </li>
-                             {% endif %}
+                                <li>
+                                    <hr class="dropdown-divider">
+                                </li>
+                            {% endif %}
                             <li>
                                 <a class="dropdown-item site-header__link"
                                    href="{% url 'account_logout' %}">Log Out</a>
