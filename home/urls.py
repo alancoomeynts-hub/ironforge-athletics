@@ -1,16 +1,27 @@
+from django.contrib.auth import views
 from django.urls import path
 from django.views.generic import TemplateView
+from . import views
 
 from home.views import ContactUsView
 
 app_name = "home"
 
 urlpatterns = [
-    path("", TemplateView.as_view(template_name="home/index.html"), name="home",),
-    path("about/", TemplateView.as_view(template_name="home/about.html"), name="about",),
+    path(
+        "",
+        TemplateView.as_view(template_name="home/index.html"),
+        name="home",
+    ),
+    path(
+        "about/",
+        TemplateView.as_view(template_name="home/about.html"),
+        name="about",
+    ),
     path(
         "contact_us/",
         ContactUsView.as_view(template_name="home/contact_us.html"),
         name="contact_us",
     ),
+    path("search_results/", views.search_results, name="results"),
 ]
