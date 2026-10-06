@@ -130,7 +130,7 @@ def subscribe(request, slug):
             client_reference_id=str(request.user.id),
             metadata={"membership_type_id": str(membership_type.pk)},
             **customer_details,
-            success_url=request.build_absolute_uri(reverse("payment:success")),
+            success_url=request.build_absolute_uri(reverse("payment:membership_success")),
             cancel_url=request.build_absolute_uri(reverse("payment:canceled")),
         )
     except stripe.error.StripeError as e:
@@ -139,3 +139,6 @@ def subscribe(request, slug):
         return redirect("membership:join")
 
     return redirect(checkout_session.url, code=303)
+
+def membership_success(request):
+    return render(request, "payment/membership_success.html")
