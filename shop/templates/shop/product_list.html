@@ -1,13 +1,14 @@
 {% extends "base.html" %}
 {% load static %}
+{% block extra_title %}- Shop{% endblock %}
 {% block extra_css %}
     <link rel="stylesheet" href="{% static 'css/shop.css' %}">
 {% endblock %}
 {% block content %}
-    <h1 class="p-4 text-center">Shop</h1>
-    <div class="content__wrapper m-4">
+    <div class="content__wrapper m-4 py-5 ">
+        <h1 class="text-center">Shop</h1>
         <!-- render product catalogue as Bootstrap tabs -->
-        <ul class="shop__tabs nav nav-pills nav-justified flex-column flex-lg-row gap-2 mb-4">
+        <ul class="shop__tabs nav nav-pills nav-justified flex-column flex-lg-row gap-2 my-4">
             <!-- Render All -->
             <li class="nav-item">
                 <a class="shop__tab nav-link {% if not category %}active{% endif %}"
