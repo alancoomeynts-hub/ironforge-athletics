@@ -1,0 +1,444 @@
+[
+  {
+    "model": "auth.user",
+    "pk": 9,
+    "fields": {
+      "password": "!",
+      "last_login": null,
+      "is_superuser": false,
+      "username": "alan",
+      "first_name": "Alan",
+      "last_name": "Coomey",
+      "email": "alan@example.com",
+      "is_staff": false,
+      "is_active": true,
+      "date_joined": "2026-01-12T09:15:00Z",
+      "groups": [],
+      "user_permissions": []
+    }
+  },
+  {
+    "model": "auth.user",
+    "pk": 10,
+    "fields": {
+      "password": "!",
+      "last_login": null,
+      "is_superuser": false,
+      "username": "sarah_fit",
+      "first_name": "Sarah",
+      "last_name": "Murphy",
+      "email": "sarah.murphy@example.com",
+      "is_staff": false,
+      "is_active": true,
+      "date_joined": "2026-02-03T11:30:00Z",
+      "groups": [],
+      "user_permissions": []
+    }
+  },
+  {
+    "model": "auth.user",
+    "pk": 11,
+    "fields": {
+      "password": "!",
+      "last_login": null,
+      "is_superuser": false,
+      "username": "mike_runs",
+      "first_name": "Michael",
+      "last_name": "O'Brien",
+      "email": "michael.obrien@example.com",
+      "is_staff": false,
+      "is_active": true,
+      "date_joined": "2026-03-16T14:45:00Z",
+      "groups": [],
+      "user_permissions": []
+    }
+  },
+  {
+    "model": "auth.user",
+    "pk": 12,
+    "fields": {
+      "password": "!",
+      "last_login": null,
+      "is_superuser": false,
+      "username": "emma_strength",
+      "first_name": "Emma",
+      "last_name": "Walsh",
+      "email": "emma.walsh@example.com",
+      "is_staff": false,
+      "is_active": true,
+      "date_joined": "2026-04-08T08:10:00Z",
+      "groups": [],
+      "user_permissions": []
+    }
+  },
+  {
+    "model": "auth.user",
+    "pk": 13,
+    "fields": {
+      "password": "!",
+      "last_login": null,
+      "is_superuser": false,
+      "username": "james",
+      "first_name": "James",
+      "last_name": "Kavanagh",
+      "email": "james.kavanagh@example.com",
+      "is_staff": false,
+      "is_active": true,
+      "date_joined": "2026-05-20T17:25:00Z",
+      "groups": [],
+      "user_permissions": []
+    }
+  },
+  {
+    "model": "auth.user",
+    "pk": 14,
+    "fields": {
+      "password": "!",
+      "last_login": null,
+      "is_superuser": false,
+      "username": "nina",
+      "first_name": "Nina",
+      "last_name": "Byrne",
+      "email": "nina.byrne@example.com",
+      "is_staff": false,
+      "is_active": true,
+      "date_joined": "2026-06-02T10:50:00Z",
+      "groups": [],
+      "user_permissions": []
+    }
+  },
+  {
+    "model": "auth.user",
+    "pk": 15,
+    "fields": {
+      "password": "!",
+      "last_login": null,
+      "is_superuser": false,
+      "username": "liam",
+      "first_name": "Liam",
+      "last_name": "Ryan",
+      "email": "liam.ryan@example.com",
+      "is_staff": false,
+      "is_active": true,
+      "date_joined": "2026-07-15T16:20:00Z",
+      "groups": [],
+      "user_permissions": []
+    }
+  },
+
+  {
+    "model": "user_profile.profile",
+    "pk": 9,
+    "fields": {
+      "user": 9,
+      "profile_image": null,
+      "bio": "Full-time software builder and gym regular. I am building consistency around strength training, mobility, and running.",
+      "goals": "Build sustainable gym habits, complete a 5K comfortably, improve mobility after long coding sessions, and share useful progress with the community.",
+      "member_since": "2026-01-12",
+      "date_of_birth": "1994-06-18",
+      "height": 178.0,
+      "weight": 79.5,
+      "default_phone_number": "087 555 0101",
+      "default_street_address1": "12 Oakfield Drive",
+      "default_street_address2": "",
+      "default_town_or_city": "Cork",
+      "default_county": "Cork",
+      "default_postcode": "T12 AB12"
+    }
+  },
+  {
+    "model": "user_profile.profile",
+    "pk": 10,
+    "fields": {
+      "user": 10,
+      "profile_image": null,
+      "bio": "Nutrition-focused gym member who enjoys simple meal preparation, strength training, and helping people make healthier routines practical.",
+      "goals": "Maintain a balanced strength programme, improve daily protein intake, and share easy meal ideas for busy members.",
+      "member_since": "2026-02-03",
+      "date_of_birth": "1992-11-04",
+      "height": 165.0,
+      "weight": 63.0,
+      "default_phone_number": "087 555 0102",
+      "default_street_address1": "4 Willow Grove",
+      "default_street_address2": "Apartment 6",
+      "default_town_or_city": "Cork",
+      "default_county": "Cork",
+      "default_postcode": "T23 CD34"
+    }
+  },
+  {
+    "model": "user_profile.profile",
+    "pk": 11,
+    "fields": {
+      "user": 11,
+      "profile_image": null,
+      "bio": "Recreational runner preparing for a first half marathon. I also enjoy weekend hikes and low-pressure outdoor training.",
+      "goals": "Complete my first half marathon, build stronger legs, and stay injury-free while increasing weekly running distance.",
+      "member_since": "2026-03-16",
+      "date_of_birth": "1989-03-22",
+      "height": 181.0,
+      "weight": 82.0,
+      "default_phone_number": "087 555 0103",
+      "default_street_address1": "27 River View",
+      "default_street_address2": "",
+      "default_town_or_city": "Kinsale",
+      "default_county": "Cork",
+      "default_postcode": "P17 EF56"
+    }
+  },
+  {
+    "model": "user_profile.profile",
+    "pk": 12,
+    "fields": {
+      "user": 12,
+      "profile_image": null,
+      "bio": "Strength-training enthusiast focused on sustainable programming, recovery, and making fitness fit around a demanding career.",
+      "goals": "Progress on major compound lifts, maintain a four-day training split, and keep recovery and sleep consistent.",
+      "member_since": "2026-04-08",
+      "date_of_birth": "1990-08-11",
+      "height": 170.0,
+      "weight": 68.5,
+      "default_phone_number": "087 555 0104",
+      "default_street_address1": "8 Meadow Park",
+      "default_street_address2": "",
+      "default_town_or_city": "Carrigaline",
+      "default_county": "Cork",
+      "default_postcode": "P43 GH78"
+    }
+  },
+  {
+    "model": "user_profile.profile",
+    "pk": 13,
+    "fields": {
+      "user": 13,
+      "profile_image": null,
+      "bio": "Beginner runner and casual five-a-side football player. I joined to build better habits and stay accountable.",
+      "goals": "Run 5K without stopping, improve general fitness, and train two or three times each week.",
+      "member_since": "2026-05-20",
+      "date_of_birth": "1996-01-29",
+      "height": 176.0,
+      "weight": 86.0,
+      "default_phone_number": "087 555 0105",
+      "default_street_address1": "16 Harbour Road",
+      "default_street_address2": "",
+      "default_town_or_city": "Cobh",
+      "default_county": "Cork",
+      "default_postcode": "P24 JK90"
+    }
+  },
+  {
+    "model": "user_profile.profile",
+    "pk": 14,
+    "fields": {
+      "user": 14,
+      "profile_image": null,
+      "bio": "Yoga, Pilates, and walking enthusiast. I am especially interested in mobility work that supports a comfortable, active lifestyle.",
+      "goals": "Improve flexibility, maintain a consistent walking routine, and include more short mobility sessions during the working day.",
+      "member_since": "2026-06-02",
+      "date_of_birth": "1995-09-15",
+      "height": 168.0,
+      "weight": 61.0,
+      "default_phone_number": "087 555 0106",
+      "default_street_address1": "3 Fernhill Avenue",
+      "default_street_address2": "",
+      "default_town_or_city": "Douglas",
+      "default_county": "Cork",
+      "default_postcode": "T12 LM23"
+    }
+  },
+  {
+    "model": "user_profile.profile",
+    "pk": 15,
+    "fields": {
+      "user": 15,
+      "profile_image": null,
+      "bio": "Busy professional learning to balance resistance training, cycling, and healthier eating around work and family life.",
+      "goals": "Train consistently three times a week, improve strength, and prepare simple meals instead of relying on takeaways.",
+      "member_since": "2026-07-15",
+      "date_of_birth": "1987-12-07",
+      "height": 183.0,
+      "weight": 91.5,
+      "default_phone_number": "087 555 0107",
+      "default_street_address1": "41 Birchwood Estate",
+      "default_street_address2": "",
+      "default_town_or_city": "Midleton",
+      "default_county": "Cork",
+      "default_postcode": "P25 NP45"
+    }
+  },
+
+  {
+    "model": "community.post",
+    "pk": 24,
+    "fields": {
+      "author": 9,
+      "title": "My First 5K Training Plan: Week One",
+      "slug": "first-5k-training-plan-week-one",
+      "content": "I decided to give myself a realistic goal for the next eight weeks: complete a 5K without stopping.\n\nThis week is about consistency rather than speed. I am using three run/walk sessions.\n\nSession 1: Five-minute walk, then one minute running and two minutes walking, repeated eight times.\n\nSession 2: Five-minute walk, then ninety seconds running and two minutes walking, repeated seven times.\n\nSession 3: Twenty minutes of comfortable walking or cycling.\n\nI am also doing two short strength sessions focused on squats, lunges, calf raises, planks, and glute bridges. My main aim is to build the habit first, then improve the pace later.\n\nHas anyone else started running from scratch? What helped you stay consistent?",
+      "created_on": "2026-09-26T09:00:00Z",
+      "updated_at": "2026-09-26T09:00:00Z",
+      "status": "published"
+    }
+  },
+  {
+    "model": "community.post",
+    "pk": 25,
+    "fields": {
+      "author": 10,
+      "title": "Three High-Protein Breakfasts for Busy Mornings",
+      "slug": "high-protein-breakfasts-busy-mornings",
+      "content": "When work gets busy, breakfast is usually the first meal I neglect. These are three quick options I rotate through during the week.\n\n1. Greek yoghurt bowl\nGreek yoghurt, berries, oats, chia seeds, and a spoonful of peanut butter. This is easy to prepare in under five minutes.\n\n2. Egg and spinach wrap\nTwo scrambled eggs, spinach, tomatoes, and a wholemeal wrap. Add reduced-fat cheese if you want something more filling.\n\n3. Overnight oats\nOats, milk, protein powder, Greek yoghurt, and fruit in a jar overnight. Prepare two or three portions at once to make weekday mornings easier.\n\nThe best choice is the one you will actually make consistently. What is your go-to breakfast when you are short on time?",
+      "created_on": "2026-09-28T07:30:00Z",
+      "updated_at": "2026-09-28T07:30:00Z",
+      "status": "published"
+    }
+  },
+  {
+    "model": "community.post",
+    "pk": 26,
+    "fields": {
+      "author": 12,
+      "title": "Why I Switched from Six Training Days to Four",
+      "slug": "why-i-switched-six-training-days-to-four",
+      "content": "For a long time, I assumed more training always meant better results. I was lifting six days per week, squeezing workouts around work, and feeling guilty whenever I missed a session.\n\nEventually I noticed that my progress had stalled. I was tired, my workouts were inconsistent, and I was no longer enjoying training.\n\nI now follow a four-day upper/lower split.\n\nMonday: Upper body strength.\nTuesday: Lower body strength.\nThursday: Upper body hypertrophy.\nSaturday: Lower body hypertrophy.\n\nThe extra recovery has improved my energy, concentration, and performance in the gym. Four good sessions are more useful than six sessions completed while exhausted.\n\nQuality, recovery, nutrition, and consistency matter just as much as frequency.",
+      "created_on": "2026-09-30T18:15:00Z",
+      "updated_at": "2026-10-01T08:20:00Z",
+      "status": "published"
+    }
+  },
+  {
+    "model": "community.post",
+    "pk": 27,
+    "fields": {
+      "author": 11,
+      "title": "Looking for Advice on My First Half Marathon",
+      "slug": "advice-first-half-marathon",
+      "content": "I have signed up for my first half marathon in autumn. At the moment, I can comfortably run 8 km, usually at an easy pace, two or three times per week.\n\nMy initial plan is to build one weekly long run gradually while keeping two shorter easy runs. I also want to include one strength session each week, especially for legs and core.\n\nI would appreciate advice from anyone who has trained for a first half marathon. How quickly did you increase your long runs, and what mistakes would you avoid?",
+      "created_on": "2026-10-02T16:40:00Z",
+      "updated_at": "2026-10-02T16:40:00Z",
+      "status": "published"
+    }
+  },
+  {
+    "model": "community.post",
+    "pk": 28,
+    "fields": {
+      "author": 9,
+      "title": "Planning a Beginner-Friendly Mobility Challenge",
+      "slug": "planning-beginner-mobility-challenge",
+      "content": "I am putting together a short mobility challenge for the community.\n\nThe idea is five to ten minutes per day for seven days, with movements aimed at people who spend a lot of time sitting at a desk or working on a laptop. I am thinking of including hip flexor stretches, thoracic rotations, ankle mobility, cat-cow stretches, and shoulder circles.\n\nI am still refining the format, so this is currently a draft. I want the final version to be approachable for beginners and easy to fit into a busy day.",
+      "created_on": "2026-10-05T12:00:00Z",
+      "updated_at": "2026-10-05T12:00:00Z",
+      "status": "draft"
+    }
+  },
+
+  {
+    "model": "community.comment",
+    "pk": 24,
+    "fields": {
+      "post": 24,
+      "author": 13,
+      "parent": null,
+      "content": "Great first-week plan. I started with run/walk intervals too, and it made running feel much less intimidating. The biggest thing for me was keeping the early runs slow enough that I wanted to go out again.",
+      "created_on": "2026-09-26T12:30:00Z",
+      "updated_on": "2026-09-26T12:30:00Z"
+    }
+  },
+  {
+    "model": "community.comment",
+    "pk": 25,
+    "fields": {
+      "post": 24,
+      "author": 9,
+      "parent": 24,
+      "content": "Thanks, that is exactly what I am trying to avoid: going too hard in the first week and then losing motivation. I am deliberately keeping the pace easy.",
+      "created_on": "2026-09-26T13:00:00Z",
+      "updated_on": "2026-09-26T13:00:00Z"
+    }
+  },
+  {
+    "model": "community.comment",
+    "pk": 26,
+    "fields": {
+      "post": 24,
+      "author": 14,
+      "parent": 24,
+      "content": "I had the same experience. Good running shoes also made a bigger difference than I expected when I was starting out.",
+      "created_on": "2026-09-26T14:10:00Z",
+      "updated_on": "2026-09-26T14:10:00Z"
+    }
+  },
+  {
+    "model": "community.comment",
+    "pk": 27,
+    "fields": {
+      "post": 25,
+      "author": 15,
+      "parent": null,
+      "content": "The overnight oats idea is useful. Do you use protein powder in every batch, or only when you know you will not have time for a proper lunch?",
+      "created_on": "2026-09-28T10:20:00Z",
+      "updated_on": "2026-09-28T10:20:00Z"
+    }
+  },
+  {
+    "model": "community.comment",
+    "pk": 28,
+    "fields": {
+      "post": 25,
+      "author": 10,
+      "parent": 27,
+      "content": "Usually every batch, mainly because it helps keep me full until lunch. I use a vanilla flavour, but cocoa powder and banana works nicely as well.",
+      "created_on": "2026-09-28T11:05:00Z",
+      "updated_on": "2026-09-28T11:05:00Z"
+    }
+  },
+  {
+    "model": "community.comment",
+    "pk": 29,
+    "fields": {
+      "post": 26,
+      "author": 9,
+      "parent": null,
+      "content": "This is a really good reminder that recovery is part of the programme, not a failure to train. I find four sessions much easier to maintain alongside a full-time job.",
+      "created_on": "2026-10-01T09:15:00Z",
+      "updated_on": "2026-10-01T09:15:00Z"
+    }
+  },
+  {
+    "model": "community.comment",
+    "pk": 30,
+    "fields": {
+      "post": 26,
+      "author": 12,
+      "parent": 29,
+      "content": "Exactly. A plan is only useful if it still works during a stressful or busy week. Flexibility is what made the routine sustainable for me.",
+      "created_on": "2026-10-01T10:00:00Z",
+      "updated_on": "2026-10-01T10:00:00Z"
+    }
+  },
+  {
+    "model": "community.comment",
+    "pk": 31,
+    "fields": {
+      "post": 27,
+      "author": 13,
+      "parent": null,
+      "content": "I have not done a half marathon yet, but the biggest lesson from training for my first 10K was not trying to make every run fast. Easy runs felt almost too slow at first, but they helped me stay consistent.",
+      "created_on": "2026-10-03T08:45:00Z",
+      "updated_on": "2026-10-03T08:45:00Z"
+    }
+  },
+  {
+    "model": "community.comment",
+    "pk": 32,
+    "fields": {
+      "post": 27,
+      "author": 11,
+      "parent": 31,
+      "content": "That is helpful. I think I need to be more disciplined about treating easy runs as genuinely easy rather than turning every session into a test.",
+      "created_on": "2026-10-03T10:30:00Z",
+      "updated_on": "2026-10-03T10:30:00Z"
+    }
+  }
+]
