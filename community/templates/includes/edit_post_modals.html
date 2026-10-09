@@ -4,7 +4,7 @@
      tabindex="-1"
      aria-labelledby="editPostModalLabel"
      aria-hidden="true">
-    <div class="modal-dialog">
+    <div class="modal-dialog modal-fullscreen-sm-down">
         <div class="modal-content">
             <form id="editPostForm" method="post">
                 {% csrf_token %}
@@ -33,15 +33,15 @@
                                   rows="5"
                                   required></textarea>
                     </div>
-                </div>
+
                 <div class="mb-3">
                     <label for="editPostPhoto" class="form-label">Add photo</label>
                     <input type="file"
                            id="editPostPhoto"
                            name="photo"
                            accept="image/*"
-                           class="form-control">
-                </div>
+                           class="form-control" multiple>
+                </div></div>
                 <div class="modal-footer">
                     <button type="button" class="btn cta-btn-secondary" data-bs-dismiss="modal">Cancel</button>
                     <button type="submit" class="btn cta-btn-secondary">Save changes</button>
@@ -57,7 +57,7 @@
      aria-labelledby="deletePostModalLabel"
      role="dialog"
      aria-hidden="true">
-    <div class="modal-dialog">
+    <div class="modal-dialog modal-fullscreen-sm-down">
         <div class="modal-content">
             <div class="modal-header">
                 <h2 class="modal-title" id="deletePostModalLabel">Delete Post</h2>

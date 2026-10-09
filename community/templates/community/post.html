@@ -1,11 +1,11 @@
 {% extends "base.html" %}
 {% load static %}
-{% block title %}{{ post.title }}{% endblock %}
+{% block extra_title %}- {{ post.title }}{% endblock %}
 {% block extra_css %}
     <link rel="stylesheet" href="{% static 'css/community.css' %}">
 {% endblock %}
 {% block content %}
-    <div class="content__wrapper container mb-2">
+    <div class="content__wrapper container py-5 mb-2">
         <!--Post Detail Section -->
         <article class="card mb-3">
             <div class="card-body">
