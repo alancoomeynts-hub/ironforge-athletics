@@ -26,7 +26,7 @@ function showToast(message,type) {
         console.error("Toast element not found.");
         return;
     }
-    if(type===null){
+    if(!type){
         type="success";
     }
 
