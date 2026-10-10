@@ -63,7 +63,7 @@
          class="content__wrapper container align-items-center my-4 p-3">
         <div class="row justify-content-center align-items-center">
             <div class="col-12 form-max-width py-2">
-                {% if request.user.is_authenticated %}
+                {% if request.user.is_authenticated and not has_reviewed %}
                     <form method="post"
                           action="{% url 'shop:create_review' product.id product.slug %}"
                           class="review__form">
@@ -81,6 +81,8 @@
                         {{ review_form.comment }}
                         <button type="submit" class="cta-btn-secondary btn btn-primary my-2">Submit review</button>
                     </form>
+                {% elif request.user.is_authenticated and has_reviewed %}
+                    <p>You have already reviewed this product.</p>
                 {% else %}
                     <p>
                         <a href="{% url 'account_login' %}">Log in</a>
@@ -109,7 +111,7 @@
                                 {% endfor %}
                             </div>
                             <a href="{% url 'user_profile:profile' review.user.username %}"
-    class="text-muted text-decoration-none">{{ review.user.username }}</a>
+                               class="text-muted text-decoration-none">{{ review.user.username }}</a>
                             <p>{{ review.comment|linebreaksbr }}</p>
                             <small class="text-muted">{{ review.created_on|date:"j F Y" }}</small>
                         </div>
