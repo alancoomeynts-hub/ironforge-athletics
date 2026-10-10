@@ -108,7 +108,8 @@
                                     {% endif %}
                                 {% endfor %}
                             </div>
-                            <p> <strong>{{ review.user.get_username }}</strong></p>
+                            <a href="{% url 'user_profile:profile' review.user.username %}"
+    class="text-muted text-decoration-none">{{ review.user.username }}</a>
                             <p>{{ review.comment|linebreaksbr }}</p>
                             <small class="text-muted">{{ review.created_on|date:"j F Y" }}</small>
                         </div>
