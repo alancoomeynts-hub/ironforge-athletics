@@ -1,16 +1,21 @@
 import stripe
 from django.conf import settings
+from django.db import transaction
 from django.http import HttpResponse
 from django.views.decorators.csrf import csrf_exempt
-from django.db import transaction
-from .models import StripeEventLog
+
 from membership import services as membership_services
 from shop import services as shop_services
+
+from .models import StripeEventLog
 
 
 @csrf_exempt
 def stripe_webhook(request):
-    """Webhook endpoint for routing Stripe events with event log to skip duplicate events"""
+    """
+        Webhook endpoint for routing Stripe events with
+        event log to skip duplicate events
+     """
 
     payload = request.body
     sig_header = request.META["HTTP_STRIPE_SIGNATURE"]
@@ -33,14 +38,14 @@ def stripe_webhook(request):
         "checkout.session.completed": handle_checkout_session_completed,
         "invoice.paid": membership_services.renew_membership,
         "customer.subscription.updated": membership_services.update_membership,
-        "customer.subcription.deleted":membership_services.cancel_membership,
+        "customer.subcription.deleted": membership_services.cancel_membership,
     }
 
     handler = event_handlers.get(event.type)
     if handler is None:
         return HttpResponse(status=200)
     with transaction.atomic():
-        log, created = StripeEventLog.objects.get_or_create(
+        _log, created = StripeEventLog.objects.get_or_create(
             event_id=event.id,
             defaults={"event_type": event.type},
         )

@@ -1,9 +1,9 @@
 from django import forms
-from .models import Post, Comment
+
+from .models import Comment, Post
 
 
 class PostForm(forms.ModelForm):
-
     class Meta:
         model = Post
         fields = ("title", "content")
@@ -24,15 +24,18 @@ class PostForm(forms.ModelForm):
             ),
         }
 
+
 class CommentForm(forms.ModelForm):
     class Meta:
         model = Comment
         fields = ("content",)
-        widgets = {"content": forms.Textarea(
+        widgets = {
+            "content": forms.Textarea(
                 attrs={
                     "placeholder": "Enter your content",
                     "rows": "4",
                     "cols": "40",
                     "class": "form-control",
                 },
-            ),}
+            ),
+        }

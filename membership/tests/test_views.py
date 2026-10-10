@@ -32,7 +32,7 @@ class MembershipTypeViewTest(TestCase):
         self.manage_url = reverse("membership:manage")
 
     def test_membership_page_anonymous_user(self):
-        """Test that the membership page is accessible to anonymous users."""
+
         response = self.client.get(self.join_url)
         assert response.status_code == 200
         assert "membership/join.html" in [t.name for t in response.templates]
@@ -45,14 +45,14 @@ class MembershipTypeViewTest(TestCase):
         assert self.membership_type in types
 
     def test_membership_logged_in_no_membership(self):
-        """Test that the membership page is accessible to logged-in users without a membership."""
+
         self.client.login(username=self.user.username, password="testpass123")
         response = self.client.get(self.join_url)
         assert response.status_code == 200
         assert response.context["current_membership"] is None
 
     def test_membership_logged_in_with_membership(self):
-        """Test that the membership page is accessible to logged-in users with a membership."""
+
         self.client.login(username=self.user.username, password="123")
 
         membership = Membership.objects.create(
@@ -75,13 +75,13 @@ class MembershipTypeViewTest(TestCase):
         assert current_membership.status == Membership.Status.ACTIVE
 
     def test_manage_membership_anonymous_redirects_to_login(self):
-        """Test if anonymous users can access the manage membership page and are redirected to login."""
+
         response = self.client.get(self.manage_url)
         assert response.status_code == 302
         assert "login" in response.url
 
     def test_manage_membership_logged_in_no_membership_redirects_to_join(self):
-        """Test if non-members can access the manage membership page and are redirected to join."""
+
         self.client.login(username=self.user.username, password="123")
         response = self.client.get(self.manage_url)
 

@@ -16,7 +16,7 @@ Including another URLconf
 """
 
 from django.contrib import admin
-from django.urls import path, include
+from django.urls import include, path
 
 urlpatterns = [
     path("admin/", admin.site.urls),
@@ -24,8 +24,8 @@ urlpatterns = [
     path("user_profile/", include("user_profile.urls")),
     path("shop/", include("shop.urls")),
     path("payment/", include("payment.urls")),
-    path("membership/",include("membership.urls")),
-    path("community/",include("community.urls")),
+    path("membership/", include("membership.urls")),
+    path("community/", include("community.urls")),
     path("", include("home.urls")),
     path("summernote/", include("django_summernote.urls")),
 ]

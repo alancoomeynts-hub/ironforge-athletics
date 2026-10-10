@@ -1,12 +1,14 @@
 from django.contrib import messages
 from django.core.paginator import Paginator
-from django.shortcuts import render, redirect, reverse, get_object_or_404
 from django.http import Http404
+from django.shortcuts import get_object_or_404, redirect, render, reverse
 from django.utils.text import slugify
-from community.models import Post, PostImage, Comment
+
+from community.models import Comment, Post, PostImage
 from membership.models import Membership
-from .forms import PostForm, CommentForm
 from user_profile.decorators import staff_or_membership_required
+
+from .forms import CommentForm, PostForm
 
 
 @staff_or_membership_required
@@ -19,7 +21,8 @@ def render_community_board(request):
     paginator = Paginator(published_posts, 10)
     page_obj = paginator.get_page(request.GET.get("page"))
 
-    # Pass is_active_member or is_staff to the template context. Used to determine if user can create a new post
+    # Pass is_active_member or is_staff to the template context.
+    # Used to determine if user can create a new post
     is_active_member = Membership.objects.filter(
         user=request.user, status=Membership.Status.ACTIVE
     ).exists()
@@ -70,7 +73,7 @@ def create_post(request):
         if form.is_valid():
             post = form.save(commit=False)
 
-            # Determine the status based on the create post form action (draft or publish)
+            # Determine the status based on the create post form action
             action = request.POST.get("action")
             if action == "draft":
                 status = Post.Status.DRAFT

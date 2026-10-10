@@ -1,6 +1,6 @@
 from django import forms
 
-from shop.models import ProductReview, Order
+from shop.models import Order, ProductReview
 
 QUANTITY_CHOICES = [(i, str(i)) for i in range(1, 21)]
 

@@ -1,17 +1,24 @@
 import stripe
+from django.conf import settings
+from django.shortcuts import redirect, render, reverse
 
 from user_profile.decorators import staff_or_membership_required
-from .models import MembershipType, Membership
-from django.shortcuts import render, redirect, reverse
-from django.conf import settings
+
+from .models import Membership, MembershipType
 
 stripe_secret_key = settings.STRIPE_SECRET_KEY
 
+
 def membership_types(request):
-    """ render membership types and join buttons. If the user is a member, show a button to the manage portal"""
+    """
+        render membership types and join buttons.
+        If the user is a member, show a button to the manage portal
+    """
+
     types = MembershipType.objects.filter(is_available=True)
 
-    # check if a logged-in user has active membership. Flag used in template to show the join buttons or manage portal
+    # check if a logged-in user has active membership.
+    # Flag used in template to show the join buttons or manage portal
     current_membership = None
     if request.user.is_authenticated:
         current_membership = (
@@ -39,6 +46,7 @@ def membership_types(request):
         },
     )
 
+
 @staff_or_membership_required
 def manage_membership(request):
     """Redirect to Stripe billing portal"""
@@ -56,7 +64,7 @@ def manage_membership(request):
         membership.stripe_checkout_session_id
     )
 
-    #Redirect to Stripe billing portal
+    # Redirect to Stripe billing portal
     portal = stripe.billing_portal.Session.create(
         customer=checkout_session.customer,
         return_url=request.build_absolute_uri(

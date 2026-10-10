@@ -1,13 +1,14 @@
 from django.contrib import messages
-from django.contrib.auth.models import User
-from django.shortcuts import render, get_object_or_404, redirect
 from django.contrib.auth.decorators import login_required
+from django.contrib.auth.models import User
+from django.shortcuts import get_object_or_404, redirect, render
 
 from community.models import Post
-from .forms import UserEditForm, ProfileEditForm
-from .models import Profile
-from shop.models import Order
 from membership.models import Membership
+from shop.models import Order
+
+from .forms import ProfileEditForm, UserEditForm
+from .models import Profile
 
 
 # Create your views here.

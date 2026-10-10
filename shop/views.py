@@ -1,16 +1,17 @@
 from decimal import Decimal
 
 from django.conf import settings
+from django.contrib import messages
 from django.contrib.auth.decorators import login_required
 from django.http import JsonResponse
-from django.shortcuts import render, get_object_or_404, redirect
+from django.shortcuts import get_object_or_404, redirect, render
 from django.views.decorators.http import require_POST
 
 from user_profile.decorators import staff_or_membership_required
-from .models import Category, Product, OrderItem, ProductReview
+
 from .cart import Cart
-from .forms import CartAddProductForm, ProductReviewForm, OrderForm
-from django.contrib import messages
+from .forms import CartAddProductForm, OrderForm, ProductReviewForm
+from .models import Category, OrderItem, Product, ProductReview
 
 
 def product_list(request, category_slug=None):
@@ -53,10 +54,7 @@ def product_detail(request, id, slug):
     has_reviewed = False
 
     if request.user.is_authenticated:
-        has_reviewed = product.reviews.filter(
-            user=request.user
-        ).exists()
-
+        has_reviewed = product.reviews.filter(user=request.user).exists()
 
     return render(
         request,
@@ -82,8 +80,8 @@ def create_review(request, id, slug):
 
     # Prevent users from submitting multiple reviews for the same product.
     if ProductReview.objects.filter(
-            product=product,
-            user=request.user,
+        product=product,
+        user=request.user,
     ).exists():
         messages.error(
             request,

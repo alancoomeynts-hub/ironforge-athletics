@@ -1,13 +1,12 @@
-from django.views.generic import DetailView
-from django.views.generic.edit import FormMixin
 from django.contrib import messages
 from django.db.models import Q
 from django.shortcuts import render
+from django.views.generic import DetailView
+from django.views.generic.edit import FormMixin
 
-from shop.models import Product
-from membership.models import Membership
 from community.models import Post
-
+from membership.models import Membership
+from shop.models import Product
 
 from .forms import ContactForm
 from .models import Gym

@@ -1,12 +1,14 @@
 from decimal import Decimal
+
 import stripe
 from django.conf import settings
 from django.contrib import messages
 from django.contrib.auth.decorators import login_required
 from django.shortcuts import get_object_or_404, redirect, render
 from django.urls import reverse
+
+from membership.models import Membership, MembershipType
 from shop.models import Order
-from membership.models import MembershipType, Membership
 
 stripe_secret_key = settings.STRIPE_SECRET_KEY
 
@@ -85,7 +87,7 @@ def payment_canceled(request):
 
 @login_required
 def subscribe(request, slug):
-    #short circuit if user is already a member
+    # short circuit if user is already a member
     current_membership = Membership.objects.filter(
         user=request.user,
         status__in=[
@@ -99,7 +101,10 @@ def subscribe(request, slug):
     ).first()
 
     if current_membership:
-        messages.error(request, "You are already a member. You can manage your membership from your dashboard.")
+        messages.error(
+            request,
+            "You are already a member. You can manage your membership from your dashboard.",
+        )
         return redirect("user_profile:dashboard")
 
     # check if user has a previous membership that was canceled
@@ -112,7 +117,8 @@ def subscribe(request, slug):
         .first()
     )
 
-    # if user has a previous membership that was canceled, use the stripe customer id from that membership
+    # if user has a previous membership that was canceled,
+    # use the stripe customer id from that membership
     customer_details = (
         {"customer": previous_membership.stripe_customer_id}
         if previous_membership
@@ -130,7 +136,9 @@ def subscribe(request, slug):
             client_reference_id=str(request.user.id),
             metadata={"membership_type_id": str(membership_type.pk)},
             **customer_details,
-            success_url=request.build_absolute_uri(reverse("payment:membership_success")),
+            success_url=request.build_absolute_uri(
+                reverse("payment:membership_success")
+            ),
             cancel_url=request.build_absolute_uri(reverse("payment:canceled")),
         )
     except stripe.error.StripeError as e:
@@ -139,6 +147,7 @@ def subscribe(request, slug):
         return redirect("membership:join")
 
     return redirect(checkout_session.url, code=303)
+
 
 def membership_success(request):
     return render(request, "payment/membership_success.html")

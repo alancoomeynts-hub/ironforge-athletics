@@ -1,8 +1,6 @@
-from django.contrib.auth import views
+from . import views
 from django.urls import path
 from django.views.generic import TemplateView
-from . import views
-
 from home.views import ContactUsView
 
 app_name = "home"

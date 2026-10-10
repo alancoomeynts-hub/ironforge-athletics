@@ -6,6 +6,7 @@ from membership.models import Membership, MembershipType
 # Register your models here.
 admin.site.register(Membership)
 
+
 @admin.register(MembershipType)
 class MembershipTypeAdmin(SummernoteModelAdmin):
     summernote_fields = ("benefits",)

@@ -1,6 +1,6 @@
 from django.contrib import admin
 
-from shop.models import Category, Product, ProductReview, OrderItem, Order
+from shop.models import Category, Order, OrderItem, Product, ProductReview
 
 # Register your models here.
 admin.site.register(Category)
@@ -42,7 +42,7 @@ class OrderAdmin(admin.ModelAdmin):
         "eircode",
         "town_or_city",
         "county",
-        "stripe_receipt_url"
+        "stripe_receipt_url",
     )
 
     search_fields = (

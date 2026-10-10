@@ -4,10 +4,9 @@ Django settings for ironforge_athletics project.
 """
 
 import os
-from decimal import Decimal
-
-import dj_database_url
 from pathlib import Path
+import cloudinary
+import dj_database_url
 
 if os.path.isfile("env.py"):
     import env  # noqa: F401
@@ -184,8 +183,6 @@ STORAGES = {
         "BACKEND": "whitenoise.storage.CompressedManifestStaticFilesStorage",
     },
 }
-
-import cloudinary
 
 cloudinary.config(
     cloudinary_url=os.environ.get("CLOUDINARY_URL"),
