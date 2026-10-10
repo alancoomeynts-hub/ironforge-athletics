@@ -1,4 +1,4 @@
-from datetime import datetime, timezone, date
+from datetime import date, datetime, timezone
 from unittest.mock import Mock
 
 from django.contrib.auth import get_user_model
@@ -6,10 +6,10 @@ from django.test import TestCase
 
 from membership.models import Membership, MembershipType
 from membership.services import (
+    cancel_membership,
     create_membership,
     renew_membership,
     update_membership,
-    cancel_membership,
 )
 
 User = get_user_model()
@@ -221,7 +221,6 @@ class TestUpdateMembership(TestCase):
 
 
 class TestCancelMembership(TestCase):
-
     def setUp(self):
         self.user = User.objects.create_user(
             username="testuser4",

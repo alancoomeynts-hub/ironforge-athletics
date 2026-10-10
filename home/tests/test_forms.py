@@ -1,10 +1,11 @@
 from django.test import TestCase
+
 from home.forms import ContactForm
 
 
 class ContactFormTests(TestCase):
     def test_valid_data(self):
-        """ Test that the form validates with valid data"""
+        """Test that the form validates with valid data"""
         data = {
             "name": "Alan Coomey",
             "email": "alan@example.com",
@@ -16,7 +17,7 @@ class ContactFormTests(TestCase):
         assert form.is_valid()
 
     def test_required_fields(self):
-        """ Test Invalid form submission when required fields are missing"""
+        """Test Invalid form submission when required fields are missing"""
         form = ContactForm({})
         assert not form.is_valid()
 
@@ -24,7 +25,7 @@ class ContactFormTests(TestCase):
             assert field in form.errors
 
     def test_widget_attrs(self):
-        """ Test that the form widgets have the correct attributes"""
+        """Test that the form widgets have the correct attributes"""
         form = ContactForm()
 
         for field_name in ["name", "email", "phone", "subject", "message"]:

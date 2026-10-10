@@ -1,9 +1,8 @@
-from django.test import TestCase, Client
 from django.contrib.auth import get_user_model
+from django.test import Client, TestCase
 from django.urls import reverse
 
-from membership.models import MembershipType, Membership
-
+from membership.models import Membership, MembershipType
 
 User = get_user_model()
 

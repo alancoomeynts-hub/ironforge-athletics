@@ -1,9 +1,8 @@
 from django.test import TestCase
 from django.urls import reverse
 
-from home.models import Gym, ContactSubmission
 from home.forms import ContactForm
-from django.contrib.auth.models import User
+from home.models import ContactSubmission, Gym
 
 
 class ContactUsViewTest(TestCase):
