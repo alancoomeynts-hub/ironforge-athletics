@@ -11,8 +11,8 @@ stripe_secret_key = settings.STRIPE_SECRET_KEY
 
 def membership_types(request):
     """
-        render membership types and join buttons.
-        If the user is a member, show a button to the manage portal
+    render membership types and join buttons.
+    If the user is a member, show a button to the manage portal
     """
 
     types = MembershipType.objects.filter(is_available=True)

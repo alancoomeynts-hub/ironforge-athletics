@@ -116,7 +116,7 @@ def edit_post(request, pk):
     """Edit a post. Only staff and author can edit a post."""
     post = get_object_or_404(Post, pk=pk)
 
-    # Allow only staff and author to edit the post
+    # Check request.user is the author of the comment or is staff
     if post.author != request.user and not request.user.is_staff:
         messages.error(request, "You are not authorized to edit this post.")
         return redirect(

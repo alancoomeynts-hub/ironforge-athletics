@@ -46,7 +46,7 @@ class MembershipTypeViewTest(TestCase):
 
     def test_membership_logged_in_no_membership(self):
 
-        self.client.login(username=self.user.username, password="testpass123")
+        self.client.login(username=self.user.username, password="123")
         response = self.client.get(self.join_url)
         assert response.status_code == 200
         assert response.context["current_membership"] is None
