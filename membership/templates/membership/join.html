@@ -1,6 +1,9 @@
 {% extends "base.html" %}
 {% load static %}
 {% block extra_title %}-Memberships{% endblock %}
+{% block extra_css %}
+    <link rel="stylesheet" href="{% static 'css/payments.css' %}">
+{% endblock %}
 {% block content %}
     <div class="container pb-5">
         <!-- Membership Header -->
@@ -27,7 +30,7 @@
         </div>
         <!-- Membership Types -->
         <ul class="row g-4 list-unstyled">
-            <!-- Display each membership type as a card -->
+            <!-- Display each membership type with Stripe checkout button as a card -->
             {% for membership_type in membership_types %}
                 <li class="col-12 col-md-6">
                     <article class="card h-100">
@@ -41,7 +44,7 @@
                                       method="post"
                                       class="mt-auto pt-3 text-center">
                                     {% csrf_token %}
-                                    <button type="submit" class="btn cta-btn">Join with {{ membership_type.name }}</button>
+                                    <button type="submit" class="btn cta-btn pay-btn">Join with {{ membership_type.name }}</button>
                                 </form>
                             {% endif %}
                         </div>
@@ -52,4 +55,12 @@
             {% endfor %}
         </ul>
     </div>
+    <!-- show Stripe Payment Footer for non-members -->
+    {% if not current_membership %}
+     <p class="text-muted small mb-0 mt-3 d-flex justify-content-center align-items-center gap-2">
+                Powered by
+                <i class="fa-brands fa-stripe pay__icon" aria-hidden="true"></i>
+                <span class="visually-hidden">Stripe</span>
+            </p>
+{% endif %}
 {% endblock %}

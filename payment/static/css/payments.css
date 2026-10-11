@@ -1,12 +1,18 @@
-.buy-btn{
-    max-width: 13rem;
+/* payment button styles */
+.pay-btn{
+    max-width: 15rem;
     background-color: #5148d8;
     text-transform: uppercase;
     letter-spacing: 0.05rem;
-    font-weight: 700;
+    font-weight: 600;
 }
 
-.buy-btn:hover{
+.pay-btn:hover{
     background-color: #453fd8;
+}
+
+.pay__icon{
+    font-size: 2rem;
+    color:#453fd8;
 }
 
