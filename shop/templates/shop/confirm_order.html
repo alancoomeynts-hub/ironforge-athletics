@@ -1,6 +1,6 @@
 {% extends "base.html" %}
 {% load static %}
-{% block extra_title %}- Confirm Order{%  endblock %}
+{% block extra_title %}- Confirm Order{% endblock %}
 {% block extra_css %}
     <link rel="stylesheet" href="{% static 'css/shop.css' %}">
 {% endblock %}
@@ -10,8 +10,8 @@
             <h1 class="h3 mb-1">Confirm your Order</h1>
             <p class="text-muted mb-0">Please confirm details</p>
         </div>
-        <div class="row  g-4 justify-content-center">
-            <div class="col-12 col-md-6 ">
+        <div class="row g-4 justify-content-center">
+            <div class="col-12 col-md-6">
                 <form id="confirm-order__form"
                       action="{% url 'shop:confirm_order' %}"
                       method="post"

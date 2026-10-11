@@ -22,7 +22,7 @@
                                     <h2 class="h5">{{ result.name }}</h2>
                                     <p class="card-text">{{ result.description|truncatewords:25 }}</p>
                                     <a href="{% url 'shop:product_detail' result.pk result.slug %}"
-                                       class="btn cta-btn-secondary">View product</a>
+                                       class="btn cta-btn-secondary">View product<span class="visually-hidden">: {{ product.name }}</span></a>
                                 </div>
                             </article>
                         </div>
@@ -33,7 +33,7 @@
                                     <h2 class="h5">{{ result.user.get_full_name }}</h2>
                                     <p class="card-text">{{ result.user.username }}</p>
                                     <a href="{% url 'user_profile:profile' result.user.username %}"
-                                       class="btn cta-btn-secondary">View membership</a>
+                                       class="btn cta-btn-secondary">View membership<span class="visually-hidden">: {{ result.user.username }}</span></a>
                                 </div>
                             </article>
                         </div>
@@ -48,7 +48,7 @@
                                     </h2>
                                     <p class="card-text">{{ result.content|truncatewords:25 }}</p>
                                     <a href="{% url 'community:post' result.pk result.slug %}"
-                                       class="btn cta-btn-secondary">Read post</a>
+                                       class="btn cta-btn-secondary">Read post<span class="visually-hidden">: {{ result.title }}</span></a>
                                 </div>
                             </article>
                         </div>

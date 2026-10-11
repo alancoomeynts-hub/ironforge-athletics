@@ -93,14 +93,15 @@
         </div>
     </div>
     <!-- Existing Reviews Section -->
-    <div class="container my-4 p-3">
+    <section aria-labelledby="reviews" class="container my-4 p-3">
         <h2 class="text-center">Customer Reviews</h2>
-        <div class="row g-4">
+        <ul class="row g-4 list-unstyled">
             {% for review in product_reviews %}
-                <div class="col-12">
-                    <div class="card h-100 review__card content__wrapper">
+                <li class="col-12">
+                    <article class="card h-100 review__card content__wrapper">
                         <div class="card-body">
                             <div class="review__rating"
+                                 role="img"
                                  aria-label="{{ review.rating }} out of 5 stars">
                                 {% for star in "12345" %}
                                     {% if forloop.counter <= review.rating %}
@@ -112,12 +113,14 @@
                             </div>
                             <a href="{% url 'user_profile:profile' review.user.username %}"
                                class="text-muted text-decoration-none">{{ review.user.username }}</a>
-                            <p>{{ review.comment|linebreaksbr }}</p>
-                            <small class="text-muted">{{ review.created_on|date:"j F Y" }}</small>
+                            <p class="py-1">{{ review.comment|linebreaksbr }}</p>
+                            <time class="small text-muted">{{ review.created_on|date:"j F Y" }}</time>
                         </div>
-                    </div>
-                </div>
+                    </article>
+                </li>
+            {% empty %}
+                <li class="col-12 text-center">No reviews yet.</li>
             {% endfor %}
-        </div>
-    </div>
+        </ul>
+    </section>
 {% endblock %}
