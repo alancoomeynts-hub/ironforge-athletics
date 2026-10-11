@@ -6,7 +6,7 @@
 {% endblock %}
 {% block content %}
     <div class="content__wrapper container py-5">
-    <!-- Order Summary -->
+        <!-- Order Summary -->
         <h1 class="h3 mb-4">Review your order</h1>
         <div class="table-responsive">
             <table class="table table-sm align-middle order__table">
@@ -41,7 +41,7 @@
                 </tfoot>
             </table>
         </div>
-    <!-- Stripe Checkout Form -->
+        <!-- Stripe Checkout Form -->
         <form action="{% url 'payment:process' %}"
               method="post"
               class="d-flex flex-column align-items-center gap-2 mt-3">

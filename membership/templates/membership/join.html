@@ -57,10 +57,10 @@
     </div>
     <!-- show Stripe Payment Footer for non-members -->
     {% if not current_membership %}
-     <p class="text-muted small mb-0 mt-3 d-flex justify-content-center align-items-center gap-2">
-                Powered by
-                <i class="fa-brands fa-stripe pay__icon" aria-hidden="true"></i>
-                <span class="visually-hidden">Stripe</span>
-            </p>
-{% endif %}
+        <p class="text-muted small mb-0 mt-3 d-flex justify-content-center align-items-center gap-2">
+            Powered by
+            <i class="fa-brands fa-stripe pay__icon" aria-hidden="true"></i>
+            <span class="visually-hidden">Stripe</span>
+        </p>
+    {% endif %}
 {% endblock %}
