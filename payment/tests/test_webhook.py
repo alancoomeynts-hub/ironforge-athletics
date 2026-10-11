@@ -2,10 +2,9 @@ import json
 from types import SimpleNamespace
 from unittest.mock import patch
 
+import stripe
 from django.test import TestCase, override_settings
 from django.urls import reverse
-
-import stripe
 
 from payment.models import StripeEventLog
 

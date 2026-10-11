@@ -50,7 +50,8 @@ def stripe_webhook(request):
     if handler is None:
         return HttpResponse(status=200)
 
-    # transaction.atomic ensures that all database changes are either committed together or rolled back together
+    # transaction.atomic ensures that all database changes are either committed together
+    # or rolled back together
     with transaction.atomic():
         # Log the event and skip duplicate events
         _log, created = StripeEventLog.objects.get_or_create(

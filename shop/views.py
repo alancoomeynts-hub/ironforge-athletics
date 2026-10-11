@@ -239,7 +239,7 @@ def confirm_order(request):
             order.user = request.user
 
             shipping_method = form.cleaned_data["shipping_method"]
-            shipping_cost = Decimal(0.00)
+            shipping_cost = Decimal("0.00")
 
             # Collection is free; delivery uses the configured cost.
             if shipping_method == "delivery":

@@ -1,4 +1,4 @@
-from datetime import datetime, timezone
+from datetime import UTC, datetime
 
 from .models import Membership, MembershipType
 
@@ -37,7 +37,7 @@ def renew_membership(invoice):
     )
     membership.last_renewal_date = datetime.fromtimestamp(
         paid_at,
-        tz=timezone.utc,
+        tz=UTC,
     )  # convert Stripe unix timestamp to datetime
     membership.save()
 
@@ -66,6 +66,6 @@ def cancel_membership(subscription):
     membership.status = Membership.Status.CANCELED
     membership.ended_at = datetime.fromtimestamp(
         subscription.ended_at,
-        tz=timezone.utc,
+        tz=UTC,
     )
     membership.save()

@@ -97,7 +97,7 @@ def payment_process(request):
         return render(
             request,
             "payment/process.html",
-            locals(),
+            {"order": order},
         )
 
 
@@ -144,7 +144,7 @@ def subscribe(request, slug):
     if current_membership:
         messages.error(
             request,
-            "You are already a member. You can manage your membership from your dashboard.",
+            "You can manage your membership from the dashboard.",
         )
         return redirect("user_profile:dashboard")
 

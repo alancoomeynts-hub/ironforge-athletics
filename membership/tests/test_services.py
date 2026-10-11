@@ -1,4 +1,4 @@
-from datetime import date, datetime, timezone
+from datetime import UTC, date, datetime
 from unittest.mock import Mock
 
 from django.contrib.auth import get_user_model
@@ -113,7 +113,7 @@ class TestRenewMembership(TestCase):
             status=Membership.Status.ACTIVE,
         )
 
-        paid_at_ts = int(datetime(2026, 10, 1, tzinfo=timezone.utc).timestamp())
+        paid_at_ts = int(datetime(2026, 10, 1, tzinfo=UTC).timestamp())
         invoice = Mock()
         invoice.billing_reason = "subscription_cycle"
         invoice.parent = Mock()
@@ -125,17 +125,20 @@ class TestRenewMembership(TestCase):
         renew_membership(invoice)
 
         membership.refresh_from_db()
-        expected_date = datetime(2026, 10, 1, tzinfo=timezone.utc).date()
+        expected_date = datetime(2026, 10, 1, tzinfo=UTC).date()
         self.assertEqual(membership.last_renewal_date, expected_date)
 
     def test_ignores_non_cycle_invoice(self):
-        """Test that an invoice with a billing reason other than "subscription_cycle" is ignored."""
+        """
+        Test that an invoice with a billing reason other than
+        "subscription_cycle" is ignored.
+        """
         membership = Membership.objects.create(
             user=self.user,
             membership_type=self.membership_type,
             stripe_subscription_id="sub_123",
             status=Membership.Status.ACTIVE,
-            last_renewal_date=datetime(2020, 1, 1, tzinfo=timezone.utc),
+            last_renewal_date=datetime(2020, 1, 1, tzinfo=UTC),
         )
 
         invoice = Mock()
@@ -245,7 +248,7 @@ class TestCancelMembership(TestCase):
             status=Membership.Status.ACTIVE,
         )
 
-        ended_at_ts = int(datetime(2026, 10, 1, tzinfo=timezone.utc).timestamp())
+        ended_at_ts = int(datetime(2026, 10, 1, tzinfo=UTC).timestamp())
         subscription = Mock()
         subscription.id = "sub_123"
         subscription.status = "canceled"
@@ -256,7 +259,7 @@ class TestCancelMembership(TestCase):
         membership.refresh_from_db()
         self.assertEqual(membership.status, Membership.Status.CANCELED)
 
-        expected_ended_at = datetime(2026, 10, 1, tzinfo=timezone.utc)
+        expected_ended_at = datetime(2026, 10, 1, tzinfo=UTC)
         self.assertEqual(membership.ended_at, expected_ended_at)
 
     def test_raises_if_subscription_not_found(self):

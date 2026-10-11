@@ -5,6 +5,7 @@ Django settings for ironforge_athletics project.
 
 import os
 from pathlib import Path
+
 import cloudinary
 import dj_database_url
 
@@ -142,7 +143,8 @@ ACCOUNT_FORMS = {
 
 AUTH_PASSWORD_VALIDATORS = [
     {
-        "NAME": "django.contrib.auth.password_validation.UserAttributeSimilarityValidator",
+        "NAME": "django.contrib.auth.password_validation."
+        "UserAttributeSimilarityValidator",
     },
     {
         "NAME": "django.contrib.auth.password_validation.MinimumLengthValidator",

@@ -70,7 +70,7 @@ class CommunityViewTests(TestCase):
             status=Post.Status.DRAFT,
         )
 
-        other_user = User.objects.create_user(
+        User.objects.create_user(
             username="sarah",
             email="sarah@example.com",
             password="testpass123",
@@ -111,7 +111,7 @@ class CommunityViewTests(TestCase):
         self.assertEqual(post.slug, "my-new-post")
 
     def test_author_can_edit_own_post(self):
-        response = self.client.post(
+        self.client.post(
             reverse(
                 "community:edit_post",
                 args=[self.post.pk],
@@ -128,7 +128,7 @@ class CommunityViewTests(TestCase):
         self.assertEqual(self.post.title, "Updated title")
 
     def test_author_can_delete_own_post(self):
-        response = self.client.post(
+        self.client.post(
             reverse(
                 "community:delete_post",
                 args=[self.post.pk],
@@ -139,7 +139,7 @@ class CommunityViewTests(TestCase):
         self.assertFalse(Post.objects.filter(pk=self.post.pk).exists())
 
     def test_member_can_add_comment(self):
-        response = self.client.post(
+        self.client.post(
             reverse(
                 "community:add_comment",
                 args=[self.post.pk],

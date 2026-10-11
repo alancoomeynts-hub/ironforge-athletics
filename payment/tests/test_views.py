@@ -3,7 +3,6 @@ from types import SimpleNamespace
 from unittest.mock import patch
 
 import stripe
-
 from django.contrib.auth.models import User
 from django.test import TestCase
 from django.urls import reverse
