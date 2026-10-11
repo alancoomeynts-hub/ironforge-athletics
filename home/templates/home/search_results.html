@@ -1,6 +1,8 @@
 {% extends "base.html" %}
+{% block extra_title %} - Search Results {% endblock %}
 {% load static %}
 {% block content %}
+    <!-- Search Results Section -->
     <div class="content__wrapper container py-4">
         <h1>Search results</h1>
         {% if query %}
@@ -12,6 +14,7 @@
         {% if results %}
             <div class="row g-4">
                 {% for result in results %}
+                    <!-- Display different types of results based on the page depending on the page type-->
                     {% if page == "shop" %}
                         <div class="col-md-6 col-lg-4">
                             <article class="card h-100">
@@ -28,7 +31,7 @@
                             <article class="card h-100">
                                 <div class="card-body">
                                     <h2 class="h5">{{ result.user.get_full_name }}</h2>
-                                    <p class="card-text">{{ result.user.user_name }}</p>
+                                    <p class="card-text">{{ result.user.username }}</p>
                                     <a href="{% url 'user_profile:profile' result.user.username %}"
                                        class="btn cta-btn-secondary">View membership</a>
                                 </div>

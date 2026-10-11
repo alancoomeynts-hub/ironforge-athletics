@@ -1,15 +1,20 @@
 {% load static %}
 <!DOCTYPE html>
 <html lang="en">
+    <!-- Global Head with shared meta, title and styles-->
     <head>
         {% block meta %}
-            <meta http-equiv="X-UA-Compatible" content="ie=edge">
+            <meta http-equiv="X-UA-Compatible" content="IE=edge">
             <meta charset="utf-8">
             <meta name="viewport"
                   content="width=device-width, initial-scale=1, shrink-to-fit=no">
+            <meta name="description"
+                  content="Train at IronForge Athletics with strength training, group classes and expert coaching to build strength, fitness and confidence.">
         {% endblock %}
+        <link rel="icon" href="{% static 'media/favicon-anvil.png' %}">
         {% block extra_meta %}{% endblock %}
         <title>IronForge Athletics {% block extra_title %}{% endblock %}</title>
+        <!-- Site Wide CSS -->
         {% block corecss %}
             <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css"
                   rel="stylesheet"
@@ -19,19 +24,24 @@
                   href="https://fonts.googleapis.com/css?family=Lato&display=swap">
             <link rel="stylesheet" href="{% static 'css/base.css' %}">
         {% endblock %}
+        <!-- Page-specific CSS -->
         {% block extra_css %}{% endblock %}
         {% block extra_head %}{% endblock %}
     </head>
     <body class="site-shell d-flex flex-column min-vh-100">
+        <!--Global site header and primary navigation -->
         <header class="site-header pt-2 pb-3">
             {% include "includes/header.html" %}
             {% include "includes/navbar.html" %}
         </header>
+        <!-- Page content with message toast system-->
         <main class="flex-grow-1">
             {% include "includes/messages.html" %}
             {% block content %}{% endblock %}
         </main>
+        <!-- Global site footer -->
         {% include "includes/footer.html" %}
+        <!-- Site Wide JS -->
         {% block corejs %}
             <!-- Font Awesome -->
             <script src="https://kit.fontawesome.com/398116af51.js"
@@ -46,6 +56,7 @@
             <!-- Custom JS -->
             <script src="{% static 'js/base.js' %}" defer></script>
         {% endblock %}
+        <!-- Page-specific JS -->
         {% block extra_js %}{% endblock %}
     </body>
 </html>

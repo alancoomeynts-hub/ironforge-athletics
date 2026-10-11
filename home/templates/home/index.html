@@ -1,6 +1,9 @@
 {% extends "base.html" %}
 {% load static %}
+{% block extra_title %} - Home {% endblock %}
 {% block extra_css %}
+
+    <!-- Inline style to add Hero Section background image -->
     <style>
     body{
     background: url('{%  static 'media/hero-image.png'  %}') no-repeat center top fixed;
@@ -8,8 +11,8 @@
     height: calc(100vh - 160px);
     color: var(--text-color-light);
     }
-
     </style>
+
 {% endblock %}
 {% block content %}
     <!-- Hero Section -->
