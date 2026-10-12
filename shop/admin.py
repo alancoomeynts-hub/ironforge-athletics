@@ -5,6 +5,8 @@ from shop.models import Category, Order, OrderItem, Product, ProductReview
 # Register your models here.
 admin.site.register(Category)
 
+admin.site.register(ProductReview)
+
 class ProductReviewInline(admin.TabularInline):
     model = ProductReview
     extra = 0
