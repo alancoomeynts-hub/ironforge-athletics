@@ -5,9 +5,6 @@ from shop.models import Category, Order, OrderItem, Product, ProductReview
 # Register your models here.
 admin.site.register(Category)
 
-admin.site.register(ProductReview)
-
-
 class ProductReviewInline(admin.TabularInline):
     model = ProductReview
     extra = 0
@@ -16,6 +13,14 @@ class ProductReviewInline(admin.TabularInline):
         "product",
         "rating",
         "comment",
+        "created_on",
+    )
+
+    readonly_fields = (
+        "rating",
+        "comment",
+        "created_on",
+        "user",
     )
 
 
@@ -113,3 +118,7 @@ class ProductAdmin(admin.ModelAdmin):
         "category",
         "created_on",
     )
+
+    inlines = [
+        ProductReviewInline,
+    ]
