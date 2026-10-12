@@ -137,9 +137,6 @@ def edit_post(request, pk):
                     image=photo,
                 )
             messages.success(request, "Post updated successfully!")
-            # if the user came from the dashboard, redirect them there
-            if request.POST.get("origin") == "dashboard":
-                return redirect("user_profile:dashboard")
 
     # Otherwise, redirect back to the post detail page
     return redirect(

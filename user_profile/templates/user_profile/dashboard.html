@@ -201,8 +201,6 @@
                                         <tr>
                                             <th scope="col">Post</th>
                                             <th scope="col">Status</th>
-                                            <th scope="col">Edit</th>
-                                            <th scope="col">Delete</th>
                                             <th scope="col">Link</th>
                                         </tr>
                                     </thead>
@@ -211,22 +209,6 @@
                                             <tr>
                                                 <td>{{ post.title }}</td>
                                                 <td>{{ post.status }}</td>
-                                                <td>
-                                                    <button type="button"
-                                                            class="btn post__link btn-link btn-sm text-decoration-none"
-                                                            data-bs-toggle="modal"
-                                                            data-bs-target="#editPostModal"
-                                                            data-edit-url="{% url 'community:edit_post' post.pk %}"
-                                                            data-post-title="{{ post.title }}">Edit</button>
-                                                </td>
-                                                <td>
-                                                    <button type="button"
-                                                            class="btn post__link btn-link btn-sm text-decoration-none"
-                                                            data-bs-toggle="modal"
-                                                            data-bs-target="#deletePostModal"
-                                                            data-delete-url="{% url 'community:delete_post' post.pk %}"
-                                                            data-post-title="{{ post.title }}">Delete</button>
-                                                </td>
                                                 <td>
                                                     <a href="{% url 'community:post' post.pk post.slug %}"
                                                        class="post-history__link">View post</a>
@@ -242,8 +224,7 @@
                     </div>
                 </div>
             </div>
-            {% include "includes/edit_comment_modals.html" %}
-            {% include "includes/edit_post_modals.html" %}
+
         </div>
     </div>
 {% endblock %}
