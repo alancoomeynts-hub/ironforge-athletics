@@ -4,8 +4,19 @@ from shop.models import Category, Order, OrderItem, Product, ProductReview
 
 # Register your models here.
 admin.site.register(Category)
-admin.site.register(Product)
+
 admin.site.register(ProductReview)
+
+
+class ProductReviewInline(admin.TabularInline):
+    model = ProductReview
+    extra = 0
+    list_display = (
+        "id",
+        "product",
+        "rating",
+        "comment",
+    )
 
 
 class OrderItemInline(admin.TabularInline):
@@ -71,3 +82,34 @@ class OrderAdmin(admin.ModelAdmin):
     @admin.display(description="Grand Total")
     def grand_total_display(self, obj):
         return obj.grand_total
+
+
+@admin.register(Product)
+class ProductAdmin(admin.ModelAdmin):
+    list_display = (
+        "id",
+        "name",
+        "sku",
+        "category",
+        "price",
+        "is_available",
+        "created_on",
+        "updated_on",
+    )
+
+    search_fields = (
+        "id",
+        "name",
+        "sku",
+    )
+
+    readonly_fields = (
+        "created_on",
+        "updated_on",
+        "sku",
+    )
+
+    list_filter = (
+        "category",
+        "created_on",
+    )
