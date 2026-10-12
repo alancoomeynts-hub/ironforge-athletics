@@ -38,7 +38,7 @@ def renew_membership(invoice):
     membership.last_renewal_date = datetime.fromtimestamp(
         paid_at,
         tz=UTC,
-    )  # convert Stripe unix timestamp to datetime
+    ).date()  # convert Stripe unix timestamp to datetime
     membership.save()
 
 
@@ -60,12 +60,18 @@ def update_membership(subscription):
 
 def cancel_membership(subscription):
     """Cancel membership when Stripe subscription canceled"""
+
     membership = Membership.objects.get(
         stripe_subscription_id=subscription.id,
     )
-    membership.status = Membership.Status.CANCELED
+
+    if membership is None:
+        return
+
+    membership.status = subscription.status
     membership.ended_at = datetime.fromtimestamp(
         subscription.ended_at,
         tz=UTC,
-    )
+    ).date()
+
     membership.save()

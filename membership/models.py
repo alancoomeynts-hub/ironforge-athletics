@@ -20,7 +20,7 @@ class Membership(models.Model):
         "MembershipType", on_delete=models.PROTECT, related_name="memberships"
     )
     joined_date = models.DateField(auto_now_add=True)
-    ended_at = models.DateTimeField(blank=True, null=True)
+    ended_at = models.DateField(blank=True, null=True)
     stripe_customer_id = models.CharField(max_length=255)
     stripe_subscription_id = models.CharField(max_length=255, unique=True)
     stripe_checkout_session_id = models.CharField(max_length=255, unique=True)
