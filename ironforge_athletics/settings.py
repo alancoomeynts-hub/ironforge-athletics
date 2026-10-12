@@ -8,21 +8,16 @@ from pathlib import Path
 
 import cloudinary
 import dj_database_url
-
+#import env.py only if it exists in local directory
 if os.path.isfile("env.py"):
     import env  # noqa: F401
 
-# Build paths inside the project like this: BASE_DIR / 'subdir'.
+# Root directory of the project
 BASE_DIR = Path(__file__).resolve().parent.parent
 
-
-# Quick-start development settings - unsuitable for production
-# See https://docs.djangoproject.com/en/6.1/howto/deployment/checklist/
-
-# SECURITY WARNING: keep the secret key used in production secret!
 SECRET_KEY = os.environ.get("SECRET_KEY")
 
-# SECURITY WARNING: don't run with debug turned on in production!
+# Set Debug based on environment variable
 DEBUG = os.environ.get("DEVELOPMENT", "0") == "1"
 
 ALLOWED_HOSTS = [
@@ -36,7 +31,6 @@ CSRF_TRUSTED_ORIGINS = [
     "https://*.codeinstitute-ide.net/",
 ]
 
-# Application definition
 
 INSTALLED_APPS = [
     "django.contrib.admin",
@@ -107,6 +101,7 @@ AUTHENTICATION_BACKENDS = (
 
 SITE_ID = 1
 
+#Allauth settings
 EMAIL_BACKEND = "django.core.mail.backends.console.EmailBackend"
 ACCOUNT_ACCOUNT_LOGIN_METHODS = {"email", "username"}
 ACCOUNT_SIGNUP_FIELDS = ["email*", "username*", "password1*", "password2*"]
@@ -115,13 +110,16 @@ ACCOUNT_USERNAME_MIN_LENGTH = 4
 LOGIN_URL = "/accounts/login/"
 LOGIN_REDIRECT_URL = "/"
 LOGOUT_REDIRECT_URL = "/"
+ACCOUNT_FORMS = {
+    "signup": "user_profile.forms.CustomSignupForm",
+    "login": "user_profile.forms.LoginForm",
+}
+
 
 WSGI_APPLICATION = "ironforge_athletics.wsgi.application"
 
 
-# Database
-# https://docs.djangoproject.com/en/6.1/ref/settings/#databases
-
+# Database configuration using DATABASE_URL environment variable
 if "DATABASE_URL" in os.environ:
     DATABASES = {"default": dj_database_url.parse(os.environ.get("DATABASE_URL"))}
 else:
@@ -132,14 +130,6 @@ else:
         }
     }
 
-ACCOUNT_FORMS = {
-    "signup": "user_profile.forms.CustomSignupForm",
-    "login": "user_profile.forms.LoginForm",
-}
-
-
-# Password validation
-# https://docs.djangoproject.com/en/6.1/ref/settings/#auth-password-validators
 
 AUTH_PASSWORD_VALIDATORS = [
     {
@@ -164,15 +154,17 @@ USE_TZ = True
 
 DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
 
+# Crispy forms settings
 CRISPY_ALLOWED_TEMPLATE_PACKS = "bootstrap5"
 CRISPY_TEMPLATE_PACK = "bootstrap5"
 
-
+# Storage settings
 STATIC_ROOT = BASE_DIR / "staticfiles"
 STATIC_URL = "/static/"
 STATICFILES_DIRS = (os.path.join(BASE_DIR, "static"),)
 MEDIA_URL = "/media/"
 MEDIA_ROOT = os.path.join(BASE_DIR, "static/media")
+
 
 STORAGES = {
     "default": {
@@ -189,29 +181,12 @@ cloudinary.config(
     cloudinary_url=os.environ.get("CLOUDINARY_URL"),
 )
 
+# Shop settings
 CART_SESSION_ID = "cart"
-
 DELIVERY_COSTS = 10
 
+# Stripe settings
 STRIPE_CURRENCY = "EUR"
 STRIPE_PUBLIC_KEY = os.getenv("STRIPE_PUBLIC_KEY", "")
 STRIPE_SECRET_KEY = os.getenv("STRIPE_SECRET_KEY", "")
 STRIPE_WH_SECRET = os.getenv("STRIPE_WH_SECRET", "")
-
-LOGGING = {
-    "version": 1,
-    "disable_existing_loggers": False,
-    "handlers": {
-        "console": {
-            "class": "logging.StreamHandler",
-            "level": "ERROR",
-        },
-    },
-    "loggers": {
-        "django": {
-            "handlers": ["console"],
-            "level": "ERROR",
-            "propagate": False,
-        },
-    },
-}
