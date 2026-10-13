@@ -102,7 +102,7 @@ AUTHENTICATION_BACKENDS = (
 SITE_ID = 1
 
 #Allauth settings
-EMAIL_BACKEND = "django.core.mail.backends.console.EmailBackend"
+
 ACCOUNT_ACCOUNT_LOGIN_METHODS = {"email", "username"}
 ACCOUNT_SIGNUP_FIELDS = ["email*", "username*", "password1*", "password2*"]
 ACCOUNT_EMAIL_VERIFICATION = "mandatory"
@@ -115,6 +115,16 @@ ACCOUNT_FORMS = {
     "login": "user_profile.forms.LoginForm",
 }
 
+#Email settings
+EMAIL_BACKEND = "django.core.mail.backends.smtp.EmailBackend"
+EMAIL_HOST = "smtp.gmail.com"
+EMAIL_PORT = 587
+EMAIL_USE_TLS = True
+EMAIL_USE_SSL = False
+
+EMAIL_HOST_USER = os.environ.get("EMAIL_HOST_USER")
+EMAIL_HOST_PASSWORD = os.environ.get("EMAIL_HOST_PASSWORD")
+DEFAULT_FROM_EMAIL = os.environ.get("EMAIL_HOST_USER")
 
 WSGI_APPLICATION = "ironforge_athletics.wsgi.application"
 
@@ -189,3 +199,4 @@ DELIVERY_COSTS = 10
 STRIPE_CURRENCY = "EUR"
 STRIPE_SECRET_KEY = os.getenv("STRIPE_SECRET_KEY", "")
 STRIPE_WH_SECRET = os.getenv("STRIPE_WH_SECRET", "")
+

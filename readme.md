@@ -1163,7 +1163,7 @@ sources -Course material (Boutique-Ado), Django 5 by example chapter 6, online t
 - https://docs.djangoproject.com/en/5.2/topics/testing/tools/
 - unittest.mock: https://docs.python.org/3/library/unittest.mock.html
 - Stripe Automated Testing: https://docs.stripe.com/automated-testing
-
+#### Gmail SMTP: used setting from the following tutorial: https://www.codingforentrepreneurs.com/blog/sending-email-in-django-from-gmail
 
 
 ### Bugs and Fixes
