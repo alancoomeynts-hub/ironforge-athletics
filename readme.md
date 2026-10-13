@@ -1118,7 +1118,7 @@ Python files were tested using Ruff. All files passed without major errors.
 
 #### Lighthouse Testing
 
-Lighthouse was used to test performance, accessibility, best practices, and SEO across key pages. Most pages scored 70+ points on each category except for My Gym and Contact Us.
+Lighthouse was used to test performance, accessibility, best practices, and SEO across key pages. Most pages scored 70+ points on each category except for product list and Contact Us.
 
 ---
 
